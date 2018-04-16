@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# copy config files to $ETC
+sudo cp ~/.vimrc $ETC/.vimrc
+sudo cp ~/.zshrc $ETC/.zshrc
+sudo cp ~/.local/share/konsole/base16-material-arc.colorscheme $ETC/.local/share/konsole/base16-material-arc.colorscheme
