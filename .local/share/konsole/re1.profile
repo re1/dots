@@ -2,7 +2,7 @@
 AntiAliasFonts=true
 BoldIntense=true
 ColorScheme=base16-material-arc
-Font=Noto Sans Mono,10,-1,5,75,0,0,0,0,0,Bold
+Font=Hack,10,-1,5,75,0,0,0,0,0,Bold
 LineSpacing=0
 UseFontLineChararacters=false
 
