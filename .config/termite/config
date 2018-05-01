@@ -1,0 +1,95 @@
+[options]
+allow_bold = false
+#audible_bell = false
+clickable_url = true
+dynamic_title = true
+font = Hack Bold 9.8
+#fullscreen = true
+#geometry = 640x480
+icon_name = terminal
+mouse_autohide = true
+#scroll_on_output = false
+#scroll_on_keystroke = true
+# Length of the scrollback buffer, 0 disabled the scrollback buffer
+# and setting it to a negative value means "infinite scrollback"
+scrollback_lines = 5000
+#search_wrap = true
+#urgent_on_bell = true
+#hyperlinks = false
+
+# $BROWSER is used by default if set, with xdg-open as a fallback
+#browser = xdg-open
+
+# "system", "on" or "off"
+#cursor_blink = system
+
+# "block", "underline" or "ibeam"
+#cursor_shape = block
+
+# Hide links that are no longer valid in url select overlay mode
+#filter_unmatched_urls = true
+
+# Emit escape sequences for extra modified keys
+#modify_other_keys = false
+
+# set size hints for the window
+#size_hints = false
+
+# "off", "left" or "right"
+scrollbar = off
+
+[colors]
+# If both of these are unset, cursor falls back to the foreground color,
+# and cursor_foreground falls back to the background color.
+#cursor = #dcdccc
+#cursor_foreground = #dcdccc
+
+foreground = #d3dae3
+foreground_bold = #ffffff
+#background = #3f3f3f
+
+# 5% background transparency (requires a compositor)
+background = rgba(47, 52, 63, 0.95)
+
+# If unset, will reverse foreground and background
+# highlight = #2f2f2f
+
+# Colors from color0 to color254 can be set
+# Black (dark, light)
+color0  = #4b5164
+color7  = #959dcb
+
+# White (dark, light)
+color8  = #616981
+color15 = #ffffff
+# Red (dark, light)
+color1  = #f07178
+color9  = #f07178
+# Green (dark, light)
+color2  = #c3e88d
+color10 = #c3e88d
+# Yellow
+color3  = #ffcb6b
+color11 = #ffcb6b
+# Blue
+color4  = #82aaff
+color12 = #82aaff
+# Purple
+color5  = #c792ea
+color13 = #c792ea
+# Teal
+color6  = #89ddff
+color14 = #89ddff
+
+[hints]
+#font = Monospace 12
+#foreground = #dcdccc
+#background = #3f3f3f
+#active_foreground = #e68080
+#active_background = #3f3f3f
+#padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
+
+# vim: ft=dosini cms=#%s

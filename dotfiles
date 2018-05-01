@@ -1,0 +1,16 @@
+#!/bin/sh
+DOTS=/data/re1/dotfiles
+
+# create config folders if they do not exist
+mkdir -p $DOTS/.config/i3
+mkdir -p $DOTS/.config/termite
+mkdir -p $DOTS/.config/tint2
+mkdir -p $DOTS/.oh-my-zsh/custom
+
+# copy config files to $DOTS
+cp ~/.config/i3/config $DOTS/.config/i3/config
+cp ~/.config/termite/config $DOTS/.config/termite/config
+cp ~/.config/tint2/tint2rc $DOTS/.config/tint2/tint2rc
+cp ~/.oh-my-zsh/custom/greeter.sh $DOTS/.oh-my-zsh/custom/greeter.sh
+cp ~/.vimrc $DOTS/.vimrc
+cp ~/.zshrc $DOTS/.zshrc

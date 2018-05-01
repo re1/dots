@@ -1,0 +1,212 @@
+# =============== #
+# :: i3 Config :: #
+# =============== #
+# @author   Markus Re1 <markus@re1.at>
+# @version  2018-04-30.1
+#
+#
+# Visit https://i3wm.org/docs/userguide.html for a complete i3 config reference!
+
+# set modifiers
+set $mod Mod4
+set $alt Mod1
+
+# font for window titles (bar font in {} block below)
+font pango:sans 8
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# autostart
+exec --no-startup-id feh --bg-fill ~/.background.png
+exec --no-startup-id xsettingsd &
+exec --no-startup-id compton -b
+exec --no-startup-id redshift
+exec --no-startup-id tint2
+exec --no-startup-id ~/.config/Thunar/tumblerd
+
+# lock screen
+bindsym $mod+l  exec i3lock -n -u -f -i ~/.background.png
+
+# screenshots
+bindsym Print   exec Spectacle
+
+# common apps
+bindsym $mod+Shift+e  exec i3-sensible-terminal -e i3-sensible-editor
+bindsym $mod+Shift+f  exec thunar
+bindsym $mod+Shift+w  exec firefox
+bindsym $mod+Shift+p  exec okular
+
+# audio control
+bindsym XF86AudioRaiseVolume    exec amixer -D pulse sset Master '5%+'
+bindsym XF86AudioLowerVolume    exec amixer -D pulse sset Master '5%-'
+bindsym XF86AudioMute           exec amixer set Master toggle
+
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioStop exec mpc stop
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+q kill
+bindsym $alt+F4 kill
+
+# start the program launcher
+bindsym $mod+d          exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'sans 8'
+bindsym $mod+Shift+d    exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'sans:size=8'"
+
+# change focus
+bindsym $mod+semicolon                  border pixel 4;
+
+bindsym $alt+Tab        focus right;    border pixel 4;
+bindsym $alt+Shift+Tab  focus left;     border pixel 4;
+
+bindsym $mod+Left       focus left;     border pixel 4;
+bindsym $mod+Down       focus down;     border pixel 4;
+bindsym $mod+Up         focus up;       border pixel 4;
+bindsym $mod+Right      focus right;    border pixel 4;
+
+bindsym --release $mod+semicolon    border none;
+
+bindsym --release $alt+Tab          border none;
+bindsym --release $alt+Shift+Tab    border none;
+
+bindsym --release $mod+Left         border none;
+bindsym --release $mod+Down         border none;
+bindsym --release $mod+Up           border none;
+bindsym --release $mod+Right        border none;
+
+# move focused window
+bindsym $mod+Shift+Left         move left
+bindsym $mod+Shift+Down         move down
+bindsym $mod+Shift+Up           move up
+bindsym $mod+Shift+Right        move right
+
+# split (horizontal, vertical)
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+Shift+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# define names for default workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+Control+Right  workspace next
+bindsym $mod+Control+Left   workspace prev
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'Sure?' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    bindsym j resize shrink width 4 px or 4 ppt
+    bindsym k resize grow height 4 px or 4 ppt
+    bindsym l resize shrink height 4 px or 4 ppt
+    bindsym odiaeresis resize grow width 4 px or 4 ppt
+
+    bindsym Left resize shrink width 4 px or 4 ppt
+    bindsym Down resize grow height 4 px or 4 ppt
+    bindsym Up resize shrink height 4 px or 4 ppt
+    bindsym Right resize grow width 4 px or 4 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# gaps
+gaps inner 8
+gaps outer 0
+smart_gaps on
+
+mode "gaps" {
+    bindsym Down    gaps inner all minus 2
+    bindsym Left    gaps outer all minus 2
+    bindsym Up      gaps inner all plus 2
+    bindsym Right   gaps outer all plus 2
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym Tab    mode "default"
+}
+
+bindsym $mod+g mode "gaps"
+
+# window rules (you can find the window class using xprop)
+default_border none
+default_floating_border none
+hide_edge_borders smart
+focus_follows_mouse no
+
+# handle floating dialogs
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+# colour of             border  base    text    index   child_border
+client.focused		    #bf616a #2f343f #d8dee8 #bf616a #d8dee8
+client.focused_inactive	#2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.unfocused		#2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.urgent			#2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.placeholder		#2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.background       #2f343f
+

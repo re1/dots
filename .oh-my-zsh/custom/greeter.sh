@@ -3,7 +3,8 @@
 # Greet user according to the current time
 
 hour=$(date +"%H")
-name=$(tr '[:lower:]' '[:upper:]' <<< ${USER:0:1})${USER:1}
+# name=$(tr '[:lower:]' '[:upper:]' <<< ${USER:0:1})${USER:1}
+name=Markus
 
 if [ $hour -ge 0 -a $hour -lt 12 ]
 then

@@ -92,4 +92,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source "/home/markus/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+key=key+sizeof(key);
 

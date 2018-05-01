@@ -1,0 +1,308 @@
+[$Version]
+update_info=powerdevil_move_shortcuts.upd:powerdevil_move_shortcuts
+
+[ActivityManager]
+_k_friendly_name=Plasma
+switch-to-activity-03616d84-1f16-4f1c-be82-d5428b9cbb57=none,Meta+Shift+S,
+switch-to-activity-4d7a492f-f423-47fb-87c2-435b6efc5f37=none,Meta+Shift+S,
+switch-to-activity-94261ea5-b14a-4b1d-a14c-e28132fb182c=Meta+Shift+T,none,
+switch-to-activity-981ded28-ac97-4b92-acc0-a7d830a41689=none,none,
+
+[KDE Keyboard Layout Switcher]
+Switch keyboard layout to Deutsch (Österreich)=none,none,Tastaturbelegung zu Deutsch (Österreich) umschalten
+Switch keyboard layout to de-latin1-nodeadkeys=none,none,Tastaturbelegung zu de-latin1-nodeadkeys umschalten
+Switch to Next Keyboard Layout=Ctrl+Alt+K,Ctrl+Alt+K,Auf nächste Tastaturbelegung umschalten
+_k_friendly_name=KDE Daemon
+
+[kaccess]
+Toggle Screen Reader On and Off=Meta+Alt+S,Meta+Alt+S,Screen-Reader ein-/ausschalten
+_k_friendly_name=Zugangshilfen
+
+[kcm_touchpad]
+Disable Touchpad=Touchpad Off,Touchpad Off,Touchpad abschalten
+Enable Touchpad=Touchpad On,Touchpad On,Touchpad aktivieren
+Toggle Touchpad=Touchpad Toggle,Touchpad Toggle,Touchpad umschalten
+_k_friendly_name=KDE Daemon
+
+[kded5]
+Show System Activity=Ctrl+Esc,Ctrl+Esc,Systemaktivität anzeigen
+_k_friendly_name=KDE Daemon
+display=Display\tMeta+P,Display\tMeta+P,Anzeige wechseln
+
+[khotkeys]
+_k_friendly_name=KDE Daemon
+{082b2db2-369a-4b52-b7ce-d06181307397}=Print,none,Bildschirmfoto-Programm starten
+{3d72f959-1085-42ae-bcf8-05d205ba9596}=Meta+Shift+Print,none,Bildschirmfoto eines rechteckigen Bereichs
+{4e4d2fd9-2162-4f1c-b445-8ebe76f66c81}=Meta+Print,none,Bildschirmfoto des aktiven Fensters
+{5ee01b4b-e11e-496d-8585-6398ed97622e}=Shift+Print,none,Bildschirmfoto des ganzen Bildschirms aufnehmen
+{d03619b6-9b3c-48cc-9d9c-a2aadb485550}=Meta+S,none,Suchen
+
+[kmix]
+_k_friendly_name=Lautstärke
+decrease_microphone_volume=Microphone Volume Down,Microphone Volume Down,Mikrofonlautstärke verringern
+decrease_volume=Volume Down,Volume Down,Lautstärke verringern
+increase_microphone_volume=Microphone Volume Up,Microphone Volume Up,Mikrofonlautstärke erhöhen
+increase_volume=Volume Up,Volume Up,Lautstärke erhöhen
+mic_mute=Microphone Mute,Microphone Mute,Mikrofon stummschalten
+mute=Volume Mute,Volume Mute,Stummschalten
+
+[krunner]
+_k_friendly_name=Befehl ausführen
+run command=Alt+Space\t\tSearch,Alt+Space,Befehl ausführen
+run command on clipboard contents=Alt+Shift+Space,Alt+Shift+F2,Befehl mit dem Inhalt der Zwischenablage ausführen
+
+[ksmserver]
+Halt Without Confirmation=Ctrl+Alt+Shift+PgDown,none,Ohne Rückfrage herunterfahren
+Lock Session=Ctrl+Alt+L\tScreensaver,Ctrl+Alt+L\tScreensaver,Sitzung sperren
+Log Out=Ctrl+Alt+Del,none,Abmelden
+Log Out Without Confirmation=Ctrl+Alt+Shift+Del,none,Ohne Rückfrage abmelden
+Reboot Without Confirmation=Ctrl+Alt+Shift+PgUp,none,Ohne Rückfrage neu starten
+_k_friendly_name=ksmserver
+
+[kwin]
+Activate Window Demanding Attention=Ctrl+Alt+A,Ctrl+Alt+A,Fenster aktivieren\\, das Aufmerksamkeit erfordert
+Decrease Opacity=none,none,Die Deckkraft des aktiven Fensters um 5 % verringern
+Expose=Ctrl+F9,Ctrl+F9,Fenster der aktuellen Arbeitsfläche anzeigen
+ExposeAll=Ctrl+F10\tLaunch (C),Ctrl+F10\tLaunch (C),Fenster aller Arbeitsflächen anzeigen
+ExposeClass=Ctrl+F7,Ctrl+F7,Fenster zeigen umschalten (Fensterklasse)
+FlipSwitchAll=none,none,3D-Fensterstapel umschalten (alle Arbeitsflächen)
+FlipSwitchCurrent=none,none,3D-Fensterstapel umschalten (aktuelle Arbeitsfläche)
+Increase Opacity=none,none,Die Deckkraft des aktiven Fensters um 5 % erhöhen
+Invert Screen Colors=none,none,Bildschirmfarben umkehren
+Kill Window=Ctrl+Alt+Esc,Ctrl+Alt+Esc,Fenster beseitigen
+MinimizeAll=Meta+Alt+M,none,MinimizeAll
+MoveMouseToCenter=Meta+F6,Meta+F6,Mauszeiger zentrieren
+MoveMouseToFocus=Meta+F5,Meta+F5,Mauszeiger in den Fokus verschieben
+MoveZoomDown=,Meta+Down,Vergrößerten Bereich nach unten verschieben
+MoveZoomLeft=,Meta+Left,Vergrößerten Bereich nach links verschieben
+MoveZoomRight=,Meta+Right,Vergrößerten Bereich nach rechts verschieben
+MoveZoomUp=,Meta+Up,Vergrößerten Bereich nach oben verschieben
+Remove Window From Group=none,none,Fenster aus Gruppe herauslösen
+Setup Window Shortcut=none,none,Kurzbefehl für Fenster einrichten
+Show Desktop=none,none,Arbeitsfläche anzeigen
+ShowDesktopGrid=Ctrl+F8,Ctrl+F8,Arbeitsflächen-Raster anzeigen
+Suspend Compositing=Alt+Shift+F12,Alt+Shift+F12,Compositing aussetzen
+Switch One Desktop Down=none,none,Eine Arbeitsfläche nach unten
+Switch One Desktop Up=none,none,Eine Arbeitsfläche nach oben
+Switch One Desktop to the Left=none,none,Eine Arbeitsfläche nach links
+Switch One Desktop to the Right=none,none,Eine Arbeitsfläche nach rechts
+Switch Window Down=Meta+Alt+Down,Meta+Alt+Down,Zum Fenster darunter wechseln
+Switch Window Left=Meta+Alt+Left,Meta+Alt+Left,Zum Fenster links wechseln
+Switch Window Right=Meta+Alt+Right,Meta+Alt+Right,Zum Fenster rechts wechseln
+Switch Window Up=Meta+Alt+Up,Meta+Alt+Up,Zum Fenster darüber wechseln
+Switch to Desktop 1=Ctrl+Alt+1,Ctrl+F1,Auf Arbeitsfläche 1 umschalten
+Switch to Desktop 10=none,none,Auf Arbeitsfläche 10 umschalten
+Switch to Desktop 11=none,none,Auf Arbeitsfläche 11 umschalten
+Switch to Desktop 12=none,none,Auf Arbeitsfläche 12 umschalten
+Switch to Desktop 13=none,none,Auf Arbeitsfläche 13 umschalten
+Switch to Desktop 14=none,none,Auf Arbeitsfläche 14 umschalten
+Switch to Desktop 15=none,none,Auf Arbeitsfläche 15 umschalten
+Switch to Desktop 16=none,none,Auf Arbeitsfläche 16 umschalten
+Switch to Desktop 17=none,none,Auf Arbeitsfläche 17 umschalten
+Switch to Desktop 18=none,none,Auf Arbeitsfläche 18 umschalten
+Switch to Desktop 19=none,none,Auf Arbeitsfläche 19 umschalten
+Switch to Desktop 2=none,Ctrl+F2,Auf Arbeitsfläche 2 umschalten
+Switch to Desktop 20=none,none,Auf Arbeitsfläche 20 umschalten
+Switch to Desktop 3=none,Ctrl+F3,Auf Arbeitsfläche 3 umschalten
+Switch to Desktop 4=none,Ctrl+F4,Auf Arbeitsfläche 4 umschalten
+Switch to Desktop 5=none,none,Auf Arbeitsfläche 5 umschalten
+Switch to Desktop 6=none,none,Auf Arbeitsfläche 6 umschalten
+Switch to Desktop 7=none,none,Auf Arbeitsfläche 7 umschalten
+Switch to Desktop 8=none,none,Auf Arbeitsfläche 8 umschalten
+Switch to Desktop 9=none,none,Auf Arbeitsfläche 9 umschalten
+Switch to Next Desktop=none,none,Zur nächsten Arbeitsfläche umschalten
+Switch to Next Screen=none,none,Zum nächsten Bildschirm umschalten
+Switch to Previous Desktop=none,none,Zur vorherigen Arbeitsfläche umschalten
+Switch to Previous Screen=none,none,Zum vorherigen Bildschirm umschalten
+Switch to Screen 0=none,none,Auf Bildschirm 0 umschalten
+Switch to Screen 1=none,none,Auf Bildschirm 1 umschalten
+Switch to Screen 2=none,none,Auf Bildschirm 2 umschalten
+Switch to Screen 3=none,none,Auf Bildschirm 3 umschalten
+Switch to Screen 4=none,none,Auf Bildschirm 4 umschalten
+Switch to Screen 5=none,none,Auf Bildschirm 5 umschalten
+Switch to Screen 6=none,none,Auf Bildschirm 6 umschalten
+Switch to Screen 7=none,none,Auf Bildschirm 7 umschalten
+Toggle Window Raise/Lower=none,none,Fenster nach vorne/hinten
+Walk Through Desktop List=none,none,Nächster Eintrag in Arbeitsflächenliste
+Walk Through Desktop List (Reverse)=none,none,Nächster Eintrag in Arbeitsflächenliste (Gegenrichtung)
+Walk Through Desktops=none,none,Zwischen Arbeitsflächen umschalten
+Walk Through Desktops (Reverse)=none,none,Zwischen Arbeitsflächen umschalten (Gegenrichtung)
+Walk Through Window Tabs=none,none,Zwischen Unterfenstern wechseln
+Walk Through Window Tabs (Reverse)=none,none,Zwischen Unterfenstern wechseln (Gegenrichtung)
+Walk Through Windows=Alt+Tab,none,Zwischen Fenstern wechseln
+Walk Through Windows (Reverse)=Alt+Shift+Backtab,none,Zwischen Fenstern wechseln (Gegenrichtung)
+Walk Through Windows Alternative=none,none,Alternatives Wechseln zwischen Fenstern
+Walk Through Windows Alternative (Reverse)=none,none,Alternatives Wechseln zwischen Fenstern (Gegenrichtung)
+Walk Through Windows of Current Application=Alt+`,none,Zwischen Fenstern der aktuellen Anwendung wechseln
+Walk Through Windows of Current Application (Reverse)=Alt+~,none,Zwischen Fenstern der aktuellen Anwendung wechseln (Gegenrichtung)
+Walk Through Windows of Current Application Alternative=none,none,Alternatives Wechseln zwischen Fenstern der aktuellen Anwendung
+Walk Through Windows of Current Application Alternative (Reverse)=none,none,Alternatives Wechseln zwischen Fenstern der aktuellen Anwendung (Gegenrichtung)
+Window Above Other Windows=none,none,Fenster im Vordergrund halten
+Window Below Other Windows=none,none,Fenster im Hintergrund halten
+Window Close=Alt+F4,Alt+F4,Fenster schließen
+Window Fullscreen=Meta+F,none,Fenster auf Vollbildgröße
+Window Grow Horizontal=none,none,Fenster zum linken Bildschirmrand ausdehnen
+Window Grow Vertical=none,none,Fenster zum oberen Bildschirmrand ausdehnen
+Window Lower=none,none,Fenster nach hinten
+Window Maximize=Meta+M,none,Fenster maximieren
+Window Maximize Horizontal=none,none,Fenster waagerecht maximieren
+Window Maximize Vertical=none,none,Fenster senkrecht maximieren
+Window Minimize=Meta+Shift+M,none,Fenster minimieren
+Window Move=none,none,Fenster verschieben
+Window No Border=none,none,Fensterumrandung ausblenden
+Window On All Desktops=none,none,Fenster auf allen Arbeitsflächen anzeigen
+Window One Desktop Down=none,none,Fenster eine Arbeitsfläche nach unten
+Window One Desktop Up=none,none,Fenster eine Arbeitsfläche nach oben
+Window One Desktop to the Left=none,none,Fenster eine Arbeitsfläche nach links
+Window One Desktop to the Right=none,none,Fenster eine Arbeitsfläche nach rechts
+Window Operations Menu=Alt+F3,Alt+F3,Fensteraktionen-Menü
+Window Pack Down=none,none,Fenster bündig mit unterem Bildschirmrand
+Window Pack Left=none,none,Fenster bündig mit linkem Bildschirmrand
+Window Pack Right=none,none,Fenster bündig mit rechtem Bildschirmrand
+Window Pack Up=none,none,Fenster bündig mit oberem Bildschirmrand
+Window Quick Tile Bottom=,none,Fenster am unteren Bildschirmrand anordnen
+Window Quick Tile Bottom Left=Meta+Down,none,Fenster am linken unteren Bildschirmrand anordnen
+Window Quick Tile Bottom Right=Meta+Shift+Down,none,Fenster am rechten unteren Bildschirmrand anordnen
+Window Quick Tile Left=Meta+Left,none,Fenster am linken Bildschirmrand anordnen
+Window Quick Tile Right=Meta+Right,none,Fenster am rechten Bildschirmrand anordnen
+Window Quick Tile Top=,none,Fenster am oberen Bildschirmrand anordnen
+Window Quick Tile Top Left=Meta+Up,none,Fenster am linken oberen Bildschirmrand anordnen
+Window Quick Tile Top Right=Meta+Shift+Up,none,Fenster am rechten oberen Bildschirmrand anordnen
+Window Raise=none,none,Fenster nach vorne
+Window Resize=none,none,Fenstergröße ändern
+Window Shade=none,none,Fensterheber betätigen
+Window Shrink Horizontal=none,none,Fenster zum rechten und linken Bildschirmrand ausdehnen
+Window Shrink Vertical=none,none,Fenster zum oberen und unteren Bildschirmrand ausdehnen
+Window to Desktop 1=none,none,Fenster auf Arbeitsfläche 1
+Window to Desktop 10=none,none,Fenster auf Arbeitsfläche 10
+Window to Desktop 11=none,none,Fenster auf Arbeitsfläche 11
+Window to Desktop 12=none,none,Fenster auf Arbeitsfläche 12
+Window to Desktop 13=none,none,Fenster auf Arbeitsfläche 13
+Window to Desktop 14=none,none,Fenster auf Arbeitsfläche 14
+Window to Desktop 15=none,none,Fenster auf Arbeitsfläche 15
+Window to Desktop 16=none,none,Fenster auf Arbeitsfläche 16
+Window to Desktop 17=none,none,Fenster auf Arbeitsfläche 17
+Window to Desktop 18=none,none,Fenster auf Arbeitsfläche 18
+Window to Desktop 19=none,none,Fenster auf Arbeitsfläche 19
+Window to Desktop 2=none,none,Fenster auf Arbeitsfläche 2
+Window to Desktop 20=none,none,Fenster auf Arbeitsfläche 20
+Window to Desktop 3=none,none,Fenster auf Arbeitsfläche 3
+Window to Desktop 4=none,none,Fenster auf Arbeitsfläche 4
+Window to Desktop 5=none,none,Fenster auf Arbeitsfläche 5
+Window to Desktop 6=none,none,Fenster auf Arbeitsfläche 6
+Window to Desktop 7=none,none,Fenster auf Arbeitsfläche 7
+Window to Desktop 8=none,none,Fenster auf Arbeitsfläche 8
+Window to Desktop 9=none,none,Fenster auf Arbeitsfläche 9
+Window to Next Desktop=none,none,Fenster auf nächste Arbeitsfläche verschieben
+Window to Next Screen=none,none,Fenster auf nächsten Bildschirm verschieben
+Window to Previous Desktop=none,none,Fenster auf vorherige Arbeitsfläche verschieben
+Window to Previous Screen=none,none,Fenster auf vorherigen Bildschirm verschieben
+Window to Screen 0=none,none,Fenster auf Bildschirm 0
+Window to Screen 1=none,none,Fenster auf Bildschirm 1
+Window to Screen 2=none,none,Fenster auf Bildschirm 2
+Window to Screen 3=none,none,Fenster auf Bildschirm 3
+Window to Screen 4=none,none,Fenster auf Bildschirm 4
+Window to Screen 5=none,none,Fenster auf Bildschirm 5
+Window to Screen 6=none,none,Fenster auf Bildschirm 6
+Window to Screen 7=none,none,Fenster auf Bildschirm 7
+WindowGeometry=Ctrl+Shift+F11,Ctrl+Shift+F11,Fenstergeometrieanzeige einschalten (nur Effekt)
+_k_friendly_name=KWin
+view_actual_size=,Meta+0,Originalgröße
+view_zoom_in=Meta++,Meta+=,Vergrößern
+view_zoom_out=Meta+-,Meta+-,Verkleinern
+
+[lattedock]
+_k_friendly_name=Latte Dock
+activate task manager entry 1=,Meta+1,Fensterleisteneintrag 1 aktivieren
+activate task manager entry 10=,Meta+0,Fensterleisteneintrag 10 aktivieren
+activate task manager entry 2=,Meta+2,Fensterleisteneintrag 2 aktivieren
+activate task manager entry 3=,Meta+3,Fensterleisteneintrag 3 aktivieren
+activate task manager entry 4=,Meta+4,Fensterleisteneintrag 4 aktivieren
+activate task manager entry 5=,Meta+5,Fensterleisteneintrag 5 aktivieren
+activate task manager entry 6=,Meta+6,Fensterleisteneintrag 6 aktivieren
+activate task manager entry 7=,Meta+7,Fensterleisteneintrag 7 aktivieren
+activate task manager entry 8=,Meta+8,Fensterleisteneintrag 8 aktivieren
+activate task manager entry 9=,Meta+9,Fensterleisteneintrag 9 aktivieren
+activate widget 61=none,none,Miniprogramm Digitale Uhr aktivieren
+activate widget 82=none,none,Miniprogramm Anwendungs-Starter aktivieren
+clear-history=none,none,Bisherigen Inhalt der Zwischenablage löschen
+clipboard_action=,Ctrl+Alt+X,Zwischenablageaktionen aktivieren
+cycleNextAction=none,none,Nächstes Element im Verlauf
+cyclePrevAction=none,none,Vorheriges Element im Verlauf
+edit_clipboard=none,none,Inhalt bearbeiten ...
+new instance for task manager entry 1=Meta+1,Meta+Ctrl+1,Neue Instanz für Eintrag 1 im Anwendungsbereich
+new instance for task manager entry 10=Meta+0,Meta+Ctrl+0,Neue Instanz für Eintrag 10 im Anwendungsbereich
+new instance for task manager entry 2=Meta+2,Meta+Ctrl+2,Neue Instanz für Eintrag 2 im Anwendungsbereich
+new instance for task manager entry 3=Meta+3,Meta+Ctrl+3,Neue Instanz für Eintrag 3 im Anwendungsbereich
+new instance for task manager entry 4=Meta+4,Meta+Ctrl+4,Neue Instanz für Eintrag 4 im Anwendungsbereich
+new instance for task manager entry 5=Meta+5,Meta+Ctrl+5,Neue Instanz für Eintrag 5 im Anwendungsbereich
+new instance for task manager entry 6=Meta+6,Meta+Ctrl+6,Neue Instanz für Eintrag 6 im Anwendungsbereich
+new instance for task manager entry 7=Meta+7,Meta+Ctrl+7,Neue Instanz für Eintrag 7 im Anwendungsbereich
+new instance for task manager entry 8=Meta+8,Meta+Ctrl+8,Neue Instanz für Eintrag 8 im Anwendungsbereich
+new instance for task manager entry 9=Meta+9,Meta+Ctrl+9,Neue Instanz für Eintrag 9 im Anwendungsbereich
+repeat_action=,Ctrl+Alt+R,Aktionen der aktuellen Zwischenablage manuell aufrufen
+show latte dock=Meta+`,Meta+`,Latte-Dock zeigen
+show-barcode=none,none,Strichcode anzeigen ...
+show-on-mouse-pos=none,none,Klipper an Mausposition öffnen
+
+[mediacontrol]
+_k_friendly_name=Mediensteuerung
+nextmedia=Media Next,Media Next,Nächstes Medium wiedergeben
+playpausemedia=Media Play,Media Play,Medienwiedergabe starten/anhalten
+previousmedia=Media Previous,Media Previous,Vorheriges Medium wiedergeben
+stopmedia=Media Stop,Media Stop,Medienwiedergabe anhalten
+
+[org.kde.dolphin.desktop]
+_k_friendly_name=Dolphin starten
+_launch=Meta+E,none,Dolphin starten
+
+[org.kde.konsole.desktop]
+NewTab=none,none,Ein neues Unterfenster öffnen
+NewWindow=none,none,Ein neues Fenster öffnen
+_k_friendly_name=Konsole starten
+_launch=Meta+C,none,Konsole starten
+
+[org_kde_powerdevil]
+Decrease Keyboard Brightness=Keyboard Brightness Down,Keyboard Brightness Down,Helligkeit der Tastatur-Hintergrundbeleuchtung verringern
+Decrease Screen Brightness=Monitor Brightness Down,Monitor Brightness Down,Bildschirmhelligkeit verringern
+Hibernate=Hibernate,Hibernate,Ruhezustand
+Increase Keyboard Brightness=Keyboard Brightness Up,Keyboard Brightness Up,Helligkeit der Tastatur-Hintergrundbeleuchtung erhöhen
+Increase Screen Brightness=Monitor Brightness Up,Monitor Brightness Up,Bildschirmhelligkeit erhöhen
+PowerOff=none,Power Off,Ausschalten
+Sleep=Sleep,Sleep,Standby-Modus
+Toggle Keyboard Backlight=Keyboard Light On/Off,Keyboard Light On/Off,Hintergrundbeleuchtung der Tastatur umschalten
+_k_friendly_name=Energieverwaltung
+
+[plasmashell]
+_k_friendly_name=Plasma
+activate task manager entry 1=,Meta+1,Fensterleisteneintrag 1 aktivieren
+activate task manager entry 10=,Meta+0,Fensterleisteneintrag 10 aktivieren
+activate task manager entry 2=,Meta+2,Fensterleisteneintrag 2 aktivieren
+activate task manager entry 3=,Meta+3,Fensterleisteneintrag 3 aktivieren
+activate task manager entry 4=,Meta+4,Fensterleisteneintrag 4 aktivieren
+activate task manager entry 5=,Meta+5,Fensterleisteneintrag 5 aktivieren
+activate task manager entry 6=,Meta+6,Fensterleisteneintrag 6 aktivieren
+activate task manager entry 7=,Meta+7,Fensterleisteneintrag 7 aktivieren
+activate task manager entry 8=,Meta+8,Fensterleisteneintrag 8 aktivieren
+activate task manager entry 9=,Meta+9,Fensterleisteneintrag 9 aktivieren
+activate widget 41=none,none,Miniprogramm Fensterleiste nur mit Symbolen aktivieren
+activate widget 56=none,none,Miniprogramm Fensterleiste nur mit Symbolen aktivieren
+activate widget 72=none,none,Miniprogramm Digitale Uhr aktivieren
+activate widget 77=none,none,Miniprogramm Aktivitäten aktivieren
+clear-history=none,none,Bisherigen Inhalt der Zwischenablage löschen
+clipboard_action=Ctrl+Alt+X,Ctrl+Alt+X,Zwischenablageaktionen aktivieren
+cycleNextAction=none,none,Nächstes Element im Verlauf
+cyclePrevAction=none,none,Vorheriges Element im Verlauf
+edit_clipboard=none,none,Inhalt bearbeiten ...
+manage activities=Meta+Q,Meta+Q,Aktivitäten ...
+next activity=Meta+Tab,none,Zwischen Aktivitäten wechseln
+previous activity=Meta+Shift+Tab,none,Zwischen Aktivitäten wechseln (Gegenrichtung)
+repeat_action=Ctrl+Alt+R,Ctrl+Alt+R,Aktionen der aktuellen Zwischenablage manuell aufrufen
+show dashboard=Ctrl+F12,Ctrl+F12,Arbeitsfläche anzeigen
+show-barcode=none,none,Strichcode anzeigen ...
+show-on-mouse-pos=none,none,Klipper an Mausposition öffnen
+stop current activity=,Meta+S,Aktuelle Aktivität anhalten
+
+[yakuake]
+_k_friendly_name=Yakuake
+toggle-window-state=F12,F12,Yakuake einfahren/ausfahren
