@@ -2,10 +2,32 @@
 # :: i3 Config :: #
 # =============== #
 # @author   Markus Re1 <markus@re1.at>
-# @version  2018-04-30.1
+# @version  2018-05-21
 #
 #
 # Visit https://i3wm.org/docs/userguide.html for a complete i3 config reference!
+
+## Base16 Material Arc Darker
+# Author: Nate Peterson
+#
+# You can use these variables anywhere in the i3 configuration file.
+
+set $base00 #2F343F
+set $base01 #383C4A
+set $base02 #505666
+set $base03 #546E7A
+set $base04 #D3DAE3
+set $base05 #D3DAE3
+set $base06 #EEFFFF
+set $base07 #E3E5E8
+set $base08 #F07178
+set $base09 #F78C6C
+set $base0A #FFCB6B
+set $base0B #C3E88D
+set $base0C #89DDFF
+set $base0D #82AAFF
+set $base0E #C792EA
+set $base0F #FF5370
 
 # set modifiers
 set $mod Mod4
@@ -48,7 +70,7 @@ mode "power" {
 bindsym $mod+Pause mode "power"
 
 # screenshots
-bindsym Print exec Spectacle
+bindsym Print exec import -window root ~/$(date '+%Y%m%d-%H%M%S').png
 
 # common apps
 bindsym $mod+Shift+f exec thunar
@@ -65,14 +87,14 @@ bindsym $mod+Control+c exec libreoffice --nologo --calc
 bindsym $mod+Control+w exec libreoffice --nologo --writer
 
 # audio control
-bindsym XF86AudioRaiseVolume    exec amixer -D pulse sset Master '5%+'
-bindsym XF86AudioLowerVolume    exec amixer -D pulse sset Master '5%-'
-bindsym XF86AudioMute           exec amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master '5%+'
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master '5%-'
+bindsym XF86AudioMute exec amixer set Master toggle
 
-bindsym XF86AudioNext exec mpc next
-bindsym XF86AudioPrev exec mpc prev
-bindsym XF86AudioPlay exec mpc toggle
-bindsym XF86AudioStop exec mpc stop
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -242,9 +264,16 @@ bar {
     position top
     height 24
     tray_padding 4
-    font pango:sans 8
+    font pango:Hack Bold 9
     colors {
-        background #2f343f
-        statusline #d8dee8
+        background $base01
+        statusline $base05
+        separator  $base08
+
+        focused_workspace   $base08 $base08 $base06
+        active_workspace    $base09 $base09 $base06
+        inactive_workspace  $base01 $base01 $base05
+        urgent_workspace    $base0F $base0F $base06
+        binding_mode        $base08 $base08 $base06
     }
 }

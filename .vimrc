@@ -36,7 +36,7 @@ set wrap                "wrap lines
 set whichwrap+=<,>,[,]  "make arrows usable
 
 "change color of line numbers
-highlight LineNr ctermfg=black
+highlight LineNr ctermfg=gray
 "highlight lines with more than 100 characters
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%101v.\+/

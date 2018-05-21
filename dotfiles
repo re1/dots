@@ -15,3 +15,5 @@ cp ~/.oh-my-zsh/custom/greeter.sh $DOTS/.oh-my-zsh/custom/greeter.sh
 cp ~/.i3blocks.conf $DOTS/.i3blocks.conf
 cp ~/.vimrc $DOTS/.vimrc
 cp ~/.zshrc $DOTS/.zshrc
+# save installed packages
+pacman -Qet > $DOTS/packages.txt
