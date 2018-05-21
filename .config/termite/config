@@ -10,9 +10,11 @@ icon_name = terminal
 mouse_autohide = true
 #scroll_on_output = false
 #scroll_on_keystroke = true
+
 # Length of the scrollback buffer, 0 disabled the scrollback buffer
 # and setting it to a negative value means "infinite scrollback"
 scrollback_lines = 5000
+
 #search_wrap = true
 #urgent_on_bell = true
 #hyperlinks = false
@@ -39,47 +41,54 @@ scrollback_lines = 5000
 scrollbar = off
 
 [colors]
-# If both of these are unset, cursor falls back to the foreground color,
-# and cursor_foreground falls back to the background color.
-#cursor = #dcdccc
-#cursor_foreground = #dcdccc
+# Base16 Material
+# Author: Nate Peterson
 
-foreground = #d3dae3
-foreground_bold = #ffffff
-#background = #3f3f3f
+foreground          = #d3dae3
+foreground_bold     = #d3dae3
+cursor              = #d3dae3
+cursor_foreground   = #263238
+background          = rgba(56, 60, 74, 0.95)
 
-# 5% background transparency (requires a compositor)
-background = rgba(47, 52, 63, 0.95)
+# 16 color space
 
-# If unset, will reverse foreground and background
-# highlight = #2f2f2f
+# Black, Gray, Silver, White
+color0  = #263238
+color8  = #546e7a
+color7  = #d3dae3
+color15 = #eeffff
 
-# Colors from color0 to color254 can be set
-# Black (dark, light)
-color0  = #4b5164
-color7  = #959dcb
-
-# White (dark, light)
-color8  = #616981
-color15 = #ffffff
-# Red (dark, light)
+# Red
 color1  = #f07178
 color9  = #f07178
-# Green (dark, light)
+
+# Green
 color2  = #c3e88d
 color10 = #c3e88d
+
 # Yellow
 color3  = #ffcb6b
 color11 = #ffcb6b
+
 # Blue
 color4  = #82aaff
 color12 = #82aaff
+
 # Purple
 color5  = #c792ea
 color13 = #c792ea
+
 # Teal
 color6  = #89ddff
 color14 = #89ddff
+
+# Extra colors
+color16 = #f78c6c
+color17 = #ff5370
+color18 = #2e3c43
+color19 = #314549
+color20 = #b2ccd6
+color21 = #eeffff
 
 [hints]
 #font = Monospace 12

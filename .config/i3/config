@@ -22,20 +22,47 @@ exec --no-startup-id feh --bg-fill ~/.background.png
 exec --no-startup-id xsettingsd &
 exec --no-startup-id compton -b
 exec --no-startup-id redshift
-exec --no-startup-id tint2
+exec --no-startup-id nm-applet
 exec --no-startup-id ~/.config/Thunar/tumblerd
 
 # lock screen
-bindsym $mod+l  exec i3lock -n -u -f -i ~/.background.png
+set $lock dm-tool lock
+bindsym $mod+l exec $lock
+
+mode "power" {
+    # sleep
+    bindsym l exec --no-startup-id $lock, mode "default"
+    bindsym s exec --no-startup-id $lock && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $lock && systemctl hibernate, mode "default"
+    # i3
+    bindsym r exec --no-startup-id restart, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    # poweroff
+    bindsym Shift+r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+    # return
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Pause mode "power"
 
 # screenshots
-bindsym Print   exec Spectacle
+bindsym Print exec Spectacle
 
 # common apps
-bindsym $mod+Shift+e  exec i3-sensible-terminal -e i3-sensible-editor
-bindsym $mod+Shift+f  exec thunar
-bindsym $mod+Shift+w  exec firefox
-bindsym $mod+Shift+p  exec okular
+bindsym $mod+Shift+f exec thunar
+bindsym $mod+Shift+j exec idea
+bindsym $mod+Shift+m exec wxmaxima
+bindsym $mod+Shift+p exec pycharm
+bindsym $mod+Shift+s exec spotify
+bindsym $mod+Shift+t exec telegram-desktop
+bindsym $mod+Shift+w exec firefox
+bindsym $mod+Shift+z exec zeal
+
+# office
+bindsym $mod+Control+c exec libreoffice --nologo --calc
+bindsym $mod+Control+w exec libreoffice --nologo --writer
 
 # audio control
 bindsym XF86AudioRaiseVolume    exec amixer -D pulse sset Master '5%+'
@@ -49,14 +76,14 @@ bindsym XF86AudioStop exec mpc stop
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec i3-sensible-terminal -e i3-sensible-editor
 
 # kill focused window
 bindsym $mod+q kill
 bindsym $alt+F4 kill
 
 # start the program launcher
-bindsym $mod+d          exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'sans 8'
-bindsym $mod+Shift+d    exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'sans:size=8'"
+bindsym $mod+d          exec rofi -show drun -sidebar-mode
 
 # change focus
 bindsym $mod+semicolon                  border pixel 4;
@@ -80,10 +107,10 @@ bindsym --release $mod+Up           border none;
 bindsym --release $mod+Right        border none;
 
 # move focused window
-bindsym $mod+Shift+Left         move left
-bindsym $mod+Shift+Down         move down
-bindsym $mod+Shift+Up           move up
-bindsym $mod+Shift+Right        move right
+bindsym $mod+Shift+Left     move left
+bindsym $mod+Shift+Down     move down
+bindsym $mod+Shift+Up       move up
+bindsym $mod+Shift+Right    move right
 
 # split (horizontal, vertical)
 bindsym $mod+h split h
@@ -174,7 +201,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # gaps
-gaps inner 8
+gaps inner 0
 gaps outer 0
 smart_gaps on
 
@@ -210,3 +237,14 @@ client.urgent			#2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.placeholder		#2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.background       #2f343f
 
+bar {
+    status_command i3blocks
+    position top
+    height 24
+    tray_padding 4
+    font pango:sans 8
+    colors {
+        background #2f343f
+        statusline #d8dee8
+    }
+}
