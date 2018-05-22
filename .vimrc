@@ -1,46 +1,65 @@
 syntax on
 
-set autoindent
-set autoread            "reload files change outside vim
-set complete+=kspell    "complete with dictionary words when spell check is on
-set encoding=utf-8      "allow all utf-8 characters
-set expandtab
-set exrc                "enable per directory vim files
-set gdefault            "add g flag to search/replace by default
-set history=500
-set hlsearch            "highlight matching search patterns
-set incsearch           "enable incremental searching
-set laststatus=2
-set lazyredraw          "do not redraw while executing macros
-set linebreak           "wrap lines a convenient points
-set magic               "use magic regex
-set matchpairs+=<:>     "match xml
-set nocompatible        "disable vi emulation
-set nojoinspaces        "single space after punctuation
-set noshiftround
-set number
-set ruler               "highlight current line
-set scrolloff=2         "show two lines before window border
-set secure              "disable unsafe commands
-set shiftwidth=4
-set showcmd             "show command while typing
-set showmode
-set smartcase           "smart casing for searching
-set smartindent
-set softtabstop=4
-set statusline+=%F
-set tabstop=4
-set title               "show filename in window titlebar
-set ttyfast             "optimize for fast terminal connections
-set wrap                "wrap lines
-set whichwrap+=<,>,[,]  "make arrows usable
 
+set autoread        "reload files change outside vim
+set encoding=utf-8              "allow all utf-8 characters
+set exrc                        "enable per directory vim files
+set lazyredraw                  "do not redraw while executing macros
+set nocompatible                "disable vi emulation
+set history=500
+set secure                      "disable unsafe commands
+
+""" Completion
+set complete+=kspell                    "complete with dictionary words when spell check is on
+set completeopt=longest,menuone,preview "complete to shared caharacters and show menu
+set matchpairs+=<:>                     "match xml
+set wildmode=longest,list,full          "complete to shared characters and show list
+set wildmenu                            "autocomplete files on tab
+
+""" Formatting
+set autoindent      "indent after indented line
+set expandtab       "convert tabs to spaces (sorry guys)
+set linebreak       "wrap lines a convenient points
+set nojoinspaces    "single space after punctuation
+set shiftround      "round indent to multiple of shiftwidth
+set shiftwidth=4    "number of spaces per indentation
+set smartindent     "indent after indentation keywords (like brackets)
+set softtabstop=4   "number of spaces a tab during editing operations (inserts)
+set tabstop=4       "number of spaces a tab counts for
+set wrap            "wrap lines too long to be displayed
+
+""" Searching
+set gdefault    "add g flag to search/replace by default
+set hlsearch    "highlight matching search patterns
+set incsearch   "enable incremental searching
+set magic       "use magic regex
+set smartcase   "smart casing for searching
+
+""" Help
+set number                      "show line numbers
+set ruler                       "highlight current line
+set laststatus=2                "always show the status line
+set showmode                    "show current mode
+set title                       "show filename in window titlebar
+
+set scrolloff=2                 "show two lines before window border
+set showcmd                     "show command while typing
+set ttyfast                     "optimize for fast terminal connections
+
+set whichwrap+=<,>,[,]          "make arrows usable
+
+""" Utility
+"statusline '{path} [{filetype}]   L{line} C{char} {lines}L'
+set statusline+=\ %f\ \%y%r%m\ 
+set statusline+=%=%l/%c%V\ 
+set statusline+=%LL%w\ 
 "change color of line numbers
-highlight LineNr ctermfg=gray
+highlight LineNr ctermfg=8
 "highlight lines with more than 100 characters
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%101v.\+/
 
+""" Keybinds
 "allow jumping between wrapped lines
 imap <silent> <Down> <C-o>gj
 imap <silent> <Up> <C-o>gk

@@ -34,6 +34,8 @@ languagetool 4.1-1
 libreoffice-extension-languagetool 4.1-1
 licenses 20171006-1
 logrotate 3.14.0-1
+lxappearance 0.6.3-1
+lxsession 1:0.5.3-1
 m4 1.4.18-1
 make 4.2.1-2
 man-db 2.8.3-1
@@ -51,6 +53,7 @@ nodejs 10.1.0-1
 openjdk8-src 8.u172-2
 opensc 0.17.0-2
 openvpn-update-systemd-resolved 1.2.7-1
+otf-fira-mono 2:3.206-2
 otf-font-awesome 5.0.13-1
 p7zip 16.02-4
 pandoc 2.2.1-5
