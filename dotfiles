@@ -8,9 +8,9 @@ mkdir -p $DOTS/.config/tint2
 mkdir -p $DOTS/.oh-my-zsh/custom
 
 # copy config files to $DOTS
-cp ~/.config/i3/config $DOTS/.config/i3/config
-cp ~/.config/termite/config $DOTS/.config/termite/config
-cp ~/.config/tint2/tint2rc $DOTS/.config/tint2/tint2rc
+cp -R ~/.config/i3 $DOTS/.config/i3
+cp -R ~/.config/termite $DOTS/.config/termite
+cp -R ~/.config/tint2/tint2rc $DOTS/.config/tint2
 cp ~/.oh-my-zsh/custom/greeter.sh $DOTS/.oh-my-zsh/custom/greeter.sh
 cp ~/.i3blocks.conf $DOTS/.i3blocks.conf
 cp ~/.vimrc $DOTS/.vimrc

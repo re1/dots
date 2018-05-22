@@ -1,0 +1,284 @@
+# =============== #
+# :: i3 Config :: #
+# =============== #
+# @author   Markus Re1 <markus@re1.at>
+# @version  2018-05-21
+#
+#
+# Visit https://i3wm.org/docs/userguide.html for a complete i3 config reference!
+
+
+## Base16 Material Coy
+# Author: Markus Re1, Nate Peterson
+#
+# You can use these variables anywhere in the i3 configuration file.
+
+set $base00 #292D3E
+set $base01 #444267
+set $base02 #32374D
+set $base03 #676E95
+set $base04 #8796B0
+set $base05 #D3DAE3
+set $base06 #EEFFFF
+set $base07 #FFFFFF
+set $base08 #F07178
+set $base09 #F78C6C
+set $base0A #FFCB6B
+set $base0B #C3E88D
+set $base0C #89DDFF
+set $base0D #82AAFF
+set $base0E #C792EA
+set $base0F #FF5370
+
+## Defaults
+set $default_gaps_inner 0
+set $default_gaps_outer 0
+
+# set modifiers
+set $mod Mod4
+set $alt Mod1
+
+# font for window titles (bar font in {} block below)
+font pango:Hack Bold, 9
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# autostart
+exec --no-startup-id feh --bg-fill ~/.background.png
+exec --no-startup-id xsettingsd &
+exec --no-startup-id compton -b
+exec --no-startup-id redshift
+exec --no-startup-id nm-applet
+exec --no-startup-id ~/.config/Thunar/tumblerd
+
+# lock screen
+set $lock dm-tool lock
+bindsym $mod+l exec $lock
+
+mode "power" {
+    # sleep
+    bindsym l exec --no-startup-id $lock, mode "default"
+    bindsym s exec --no-startup-id $lock && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $lock && systemctl hibernate, mode "default"
+    # i3
+    bindsym r exec --no-startup-id restart, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    # poweroff
+    bindsym Shift+r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+    # return
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Pause mode "power"
+
+# screenshots
+bindsym Print exec import -window root ~/$(date '+%Y%m%d-%H%M%S').png
+
+# common apps
+bindsym $mod+Shift+f exec thunar
+bindsym $mod+Shift+j exec idea
+bindsym $mod+Shift+m exec wxmaxima
+bindsym $mod+Shift+p exec charm
+bindsym $mod+Shift+s exec spotify
+bindsym $mod+Shift+t exec telegram-desktop
+bindsym $mod+Shift+w exec firefox
+bindsym $mod+Shift+z exec zeal
+
+# office
+bindsym $mod+Control+c exec libreoffice --nologo --calc
+bindsym $mod+Control+w exec libreoffice --nologo --writer
+
+# audio control
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master '5%+'
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master '5%-'
+bindsym XF86AudioMute exec amixer set Master toggle
+
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec i3-sensible-terminal -e i3-sensible-editor
+
+# kill focused window
+bindsym $mod+q kill
+bindsym $alt+F4 kill
+
+# start the program launcher
+bindsym $mod+d          exec rofi -show drun -sidebar-mode
+
+# change focus
+bindsym $mod+semicolon  border pixel 4;
+
+bindsym $alt+Tab        focus right; border pixel 4;
+bindsym $alt+Shift+Tab  focus left;  border pixel 4;
+
+bindsym $mod+Left       focus left;  border pixel 4;
+bindsym $mod+Down       focus down;  border pixel 4;
+bindsym $mod+Up         focus up;    border pixel 4;
+bindsym $mod+Right      focus right; border pixel 4;
+
+bindsym --release $mod+semicolon border none;
+
+bindsym --release $alt+Tab       border none;
+bindsym --release $alt+Shift+Tab border none;
+
+bindsym --release $mod+Left  border none;
+bindsym --release $mod+Down  border none;
+bindsym --release $mod+Up    border none;
+bindsym --release $mod+Right border none;
+
+# move focused window
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# split (horizontal, vertical)
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+Shift+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# define names for default workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+Control+Right  workspace next
+bindsym $mod+Control+Left   workspace prev
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'Sure?' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    bindsym j resize shrink width 4 px or 4 ppt
+    bindsym k resize grow height 4 px or 4 ppt
+    bindsym l resize shrink height 4 px or 4 ppt
+    bindsym odiaeresis resize grow width 4 px or 4 ppt
+
+    bindsym Left resize shrink width 4 px or 4 ppt
+    bindsym Down resize grow height 4 px or 4 ppt
+    bindsym Up resize shrink height 4 px or 4 ppt
+    bindsym Right resize grow width 4 px or 4 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# gaps
+gaps inner 0
+gaps outer 0
+smart_gaps on
+
+mode "gaps" {
+    bindsym Down    gaps inner all minus 2
+    bindsym Left    gaps outer all minus 2
+    bindsym Up      gaps inner all plus 2
+    bindsym Right   gaps outer all plus 2
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym Tab    mode "default"
+}
+
+bindsym $mod+g mode "gaps"
+
+# window rules (you can find the window class using xprop)
+default_border none
+default_floating_border none
+hide_edge_borders smart
+focus_follows_mouse no
+
+# handle floating dialogs
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+# colour of             border  base    text    index   child_border
+client.focused		    $base0F $base00 $base05 $base0F $base05
+client.focused_inactive	$base00 $base00 $base05 $base00 $base00
+client.unfocused		$base00 $base00 $base05 $base00 $base00
+client.urgent			$base00 $base00 $base05 $base00 $base00
+client.placeholder		$base00 $base00 $base05 $base00 $base00
+client.background       $base00
+
+bar {
+    status_command i3blocks
+    position top
+    height 24
+    tray_padding 4
+    font pango:Fira Mono 9
+    colors {
+        background $base00
+        statusline $base05
+        separator  $base0F
+
+        focused_workspace   $base0F $base0F $base05
+        active_workspace    $base03 $base03 $base05
+        inactive_workspace  $base00 $base00 $base05
+        urgent_workspace    $base0A $base0A $base00
+        binding_mode        $base0F $base0F $base05
+    }
+}
