@@ -4,7 +4,7 @@ set autoread        "reload files change outside vim
 set encoding=utf-8  "allow all UTF-8 characters
 set exrc            "enable per directory vim files
 set history=500     "save the last 500 changes
-set lazyredraw      "do not redraw while executing macros
+set lazyredraw      "do not redraw while executing macros (avoid lag)
 set nocompatible    "disable vi emulation
 set secure          "disable unsafe commands
 set ttyfast         "optimize for fast terminal connections
@@ -31,6 +31,7 @@ set wrap            "wrap lines too long to be displayed
 """ Searching
 set gdefault    "add g flag to search/replace by default
 set hlsearch    "highlight matching search patterns
+set ignorecase  "ignore casing for searching
 set incsearch   "enable incremental searching
 set magic       "use magic regex
 set smartcase   "smart casing for searching
@@ -40,12 +41,17 @@ set number          "show line numbers
 set ruler           "highlight current line
 set laststatus=2    "always show the status line
 set showcmd         "show command while typing
+set showmatch       "show matching brackets
 set showmode        "show current mode
 set title           "show filename in window title bar
 
 """ Usability
-set scrolloff=2         "show two lines before window border
-set whichwrap+=<,>,[,]  "allow horizontal movement between lines
+set backspace=eol,start,indent  "more backspace functionality
+set scrolloff=2                 "show two lines before window border
+set whichwrap+=<,>,[,]          "allow horizontal movement between lines
+
+""" Filetypes
+filetype plugin indent on   "allow filetypes to set indentation
 
 """ Utility
 "syntax highlighting colors
@@ -63,20 +69,23 @@ highlight LineNr ctermfg=8 ctermbg=0
 highlight OverLength ctermbg=red ctermfg=white
 match OverLength /\%101v.\+/
 
+""" Commands
+"save file using sudo
+command W w !sudo tee > /dev/null %
+
 """ Keybindings
 "allow jumping between wrapped lines
-im <silent> <Down> <C-o>gj
-im <silent> <Up> <C-o>gk
-nm <silent> <Down> gj
-nm <silent> <Up> gk
+imap <silent> <Down> <C-o>gj
+imap <silent> <Up> <C-o>gk
+nmap <silent> <Down> gj
+nmap <silent> <Up> gk
 
-"move lines by pressing CTRL
-nn  <S-Down>       :m .+1  <CR>==
-nn  <S-Up>         :m .-2  <CR>==
-ino <S-Down><Esc>  :m .+1  <CR>==gi
-ino <S-Up><Esc>    :m .-2  <CR>==gi
-vn  <S-Down>       :m '>+1 <CR>gv=gv
-vn  <S-Up>         :m '<-2 <CR>gv=gv
+"move lines by pressing Shift
+imap <S-Down> <Esc> mz:m+   <CR>`zi
+imap <S-Up>   <Esc> mz:m-2  <CR>`zi
+nmap <S-Down> mz:m+   <CR>`z
+nmap <S-Up>   mz:m-2  <CR>`z
 
 "toggle spellchecking
-nn  <F7> :setlocal spell! spelllang=en_gb spell?<CR>
+nnoremap  <F7> :setlocal spell! spelllang=en_gb spell?<CR>
+
