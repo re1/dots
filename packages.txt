@@ -1,11 +1,11 @@
 acpid 2.0.29-2
 alsa-tools 1.1.6-1
 arc-gtk-theme 20180114-1
-arch-firefox-search 0.8.2-7
-asciidoctor 1.5.6.2-1
 astah-professional 7.2.0-2
 autojump 22.5.1-1
+blender 17:2.79.b.git2.0385b33f-13
 borg 1.1.5-2
+chromium 66.0.3359.181-1
 cmark 0.28.3-1
 compton 0.1_beta2.5-11
 cups-pdf 3.0.1-4
@@ -35,12 +35,10 @@ libreoffice-extension-languagetool 4.1-1
 licenses 20171006-1
 logrotate 3.14.0-1
 lxappearance 0.6.3-1
-lxsession 1:0.5.3-1
 m4 1.4.18-1
 make 4.2.1-2
 man-db 2.8.3-1
 man-pages 4.16-1
-minecraft latest-29
 multimc5 0.6.2-1
 mythes-de 20180514-1
 mythes-en 20060306-3
@@ -49,7 +47,6 @@ neofetch 4.0.1-1
 netctl 1.16-1
 network-manager-applet 1.8.11dev+12+ga37483c1-1
 networkmanager-openvpn 1.8.2-1
-nodejs 10.1.0-1
 openjdk8-src 8.u172-2
 opensc 0.17.0-2
 openvpn-update-systemd-resolved 1.2.7-1
@@ -79,7 +76,6 @@ skypeforlinux-stable-bin 8.20.0.9-1
 snap-pac 2.1-1
 spotify 1.0.79.223-1
 system-config-printer 1.5.11-2
-systemd-swap 4.0.1-1
 teamspeak3 3.1.9-1
 telegram-desktop 1.2.20-1
 termite 13-3
@@ -94,7 +90,8 @@ tiled 1.1.5-1
 tlp 1.1-1
 trizen 1:1.49-2
 ttf-hack 3.003-1
-vim 8.0.1838-1
+vim-airline 0.9-1
+vim-supertab 2.1-2
 vlc 3.0.2-1
 wget 1.19.5-1
 which 2.21-2
@@ -102,5 +99,7 @@ wxmaxima 18.02.0-1
 x264 2:152.20171224-2
 xorg-server-xwayland 1.20.0-2
 xorg-xinit 1.4.0-3
+xsane 0.999-1
 zeal 1:0.6.0-1
+zip 3.0-7
 zsh-completions 0.27.0-1

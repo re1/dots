@@ -10,10 +10,9 @@ set secure          "disable unsafe commands
 set ttyfast         "optimize for fast terminal connections
 
 """ Completion
-set complete+=kspell                    "complete with dictionary words when spell check is on
 set completeopt=longest,menuone,preview "complete to shared characters and show menu
+set complete+=kspell                    "complete with dictionary words when spell check is on
 set matchpairs+=<:>                     "match XML
-set spell spelllang=en_gb               "enable spellchecking
 set wildmode=longest,list,full          "complete to shared characters and show list
 set wildmenu                            "autocomplete files on tab
 
@@ -49,28 +48,35 @@ set scrolloff=2         "show two lines before window border
 set whichwrap+=<,>,[,]  "allow horizontal movement between lines
 
 """ Utility
-"status line '{path} [{file type}]   L{line} C{char} {lines}L'
-set statusline+=\ %f\ \%y%r%m\ 
-set statusline+=%=%l/%c%V\ 
-set statusline+=%LL%w\ 
-"change color of line numbers
-highlight LineNr ctermfg=8
+"syntax highlighting colors
+colorscheme base16-one-dark
+"set airline StatusLine colors
+let g:airline_theme='onedark'
+"activate airline powerline plug-in
+let g:airline_powerline_fonts = 1
+"change completion menu colors
+highlight Pmenu ctermfg=7 ctermbg=0
+highlight PmenuSel ctermfg=0 ctermbg=4
+"change line number colors
+highlight LineNr ctermfg=8 ctermbg=0
 "highlight lines with more than 100 characters
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+highlight OverLength ctermbg=red ctermfg=white
 match OverLength /\%101v.\+/
 
 """ Keybindings
 "allow jumping between wrapped lines
-imap <silent> <Down> <C-o>gj
-imap <silent> <Up> <C-o>gk
-nmap <silent> <Down> gj
-nmap <silent> <Up> gk
+im <silent> <Down> <C-o>gj
+im <silent> <Up> <C-o>gk
+nm <silent> <Down> gj
+nm <silent> <Up> gk
 
 "move lines by pressing CTRL
-nnoremap <S-Down>       :m .+1  <CR>==
-nnoremap <S-Up>         :m .-2  <CR>==
-inoremap <S-Down><Esc>  :m .+1  <CR>==gi
-inoremap <S-Up><Esc>    :m .-2  <CR>==gi
-vnoremap <S-Down>       :m '>+1 <CR>gv=gv
-vnoremap <S-Up>         :m '<-2 <CR>gv=gv
+nn  <S-Down>       :m .+1  <CR>==
+nn  <S-Up>         :m .-2  <CR>==
+ino <S-Down><Esc>  :m .+1  <CR>==gi
+ino <S-Up><Esc>    :m .-2  <CR>==gi
+vn  <S-Down>       :m '>+1 <CR>gv=gv
+vn  <S-Up>         :m '<-2 <CR>gv=gv
 
+"toggle spellchecking
+nn  <F7> :setlocal spell! spelllang=en_gb spell?<CR>
