@@ -291,12 +291,12 @@ bar {
     colors {
         background $base00
         statusline $base05
-        separator  $base0F
-
-        focused_workspace   $base0F $base0F $base05
-        active_workspace    $base03 $base03 $base05
+        separator  $base0D
+        # colour of         border  base    text
+        focused_workspace   $base0D $base0D $base07
+        active_workspace    $base0B $base0B $base07
         inactive_workspace  $base00 $base00 $base05
-        urgent_workspace    $base0A $base0A $base00
-        binding_mode        $base0F $base0F $base05
+        urgent_workspace    $base08 $base08 $base07
+        binding_mode        $base0D $base0D $base07
     }
 }
