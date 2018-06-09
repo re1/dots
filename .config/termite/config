@@ -3,7 +3,7 @@ allow_bold = false
 #audible_bell = false
 clickable_url = true
 dynamic_title = true
-font = Fira Mono 9.8
+font = monospace 9.8
 #fullscreen = true
 #geometry = 640x480
 icon_name = terminal
@@ -41,54 +41,54 @@ scrollback_lines = 5000
 scrollbar = off
 
 [colors]
-# Base16 Material Coy
-# Author: Markus Re1, Nate Peterson
+# Base16 One Dark
+# Author: Lalit Magant (http://github.com/tilal6991), re1
 
-foreground          = #D3DAE3
-foreground_bold     = #EEFFFF
-cursor              = #EEFFFF
-cursor_foreground   = #292D3E
-background          = rgba(41, 45, 62, 0.95)
+foreground          = #abb2bf
+foreground_bold     = #e0e0e0
+cursor              = #e0e0e0
+cursor_foreground   = #282c34
+background          = rgba(40, 44, 52)
 
 # 16 color space
 
 # Black, Gray, Silver, White
-color0  = #292D3E
-color8  = #676E95
-color7  = #D3DAE3
-color15 = #FFFFFF
+color0  = #282c34
+color8  = #5c6370
+color7  = #abb2bf
+color15 = #ffffff
 
 # Red
-color1  = #F07178
-color9  = #F07178
+color1  = #e06c75
+color9  = #e06c75
 
 # Green
-color2  = #C3E88D
-color10 = #C3E88D
+color2  = #98c379
+color10 = #98c379
 
 # Yellow
-color3  = #FFCB6B
-color11 = #FFCB6B
+color3  = #e5c07b
+color11 = #e5c07b
 
 # Blue
-color4  = #82AAFF
-color12 = #82AAFF
+color4  = #61afef
+color12 = #61afef
 
 # Purple
-color5  = #C792EA
-color13 = #C792EA
+color5  = #c678dd
+color13 = #c678dd
 
 # Teal
-color6  = #89DDFF
-color14 = #89DDFF
+color6  = #56b6c2
+color14 = #56b6c2
 
 # Extra colors
-color16 = #F78C6C
-color17 = #FF5370
-color18 = #444267
-color19 = #32374D
-color20 = #8796B0
-color21 = #EEFFFF
+color16 = #d19a66
+color17 = #e6cc99
+color18 = #2c3039
+color19 = #3e4451
+color20 = #979FAD
+color21 = #e0e0e0
 
 [hints]
 #font = Monospace 12

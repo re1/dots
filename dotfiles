@@ -1,29 +1,27 @@
 #!/bin/sh
 DOTS=/data/re1/dotfiles
-
+# directories
 FONTSCONFIG=.config/fontconfig
-I3=.config/i3
 TERMITE=.config/termite
 TINT2=.config/tint2
 OHMYZSH=.oh-my-zsh/custom
+# files
 VIM=.vim
 
 # create config folders if they do not exist
 mkdir -p $DOTS/$FONTSCONFIG
-mkdir -p $DOTS/$I3
 mkdir -p $DOTS/$TERMITE
 mkdir -p $DOTS/$TINT2
 mkdir -p $DOTS/$OHMYZSH
 mkdir -p $DOTS/$VIM
 
+# copy config directories to $DOTS
+cp -R ~/$FONTSCONFIG/* $DOTS/$FONTSCONFIG
+cp -R ~/$TERMITE/* $DOTS/$TERMITE
+cp -R ~/$TINT2/* $DOTS/$TINT2
 # copy config files to $DOTS
-cp -R ~/$FONTSCONFIG $DOTS/$FONTSCONFIG
-cp -R ~/$I3 $DOTS/$I3
-cp -R ~/$TERMITE $DOTS/$TERMITE
-cp -R ~/$TINT2 $DOTS/$TINT
 cp -R ~/$VIM $DOTS/$VIM
 cp ~/$OHMYZSH/greeter.sh $DOTS/.oh-my-zsh/custom/greeter.sh
-cp ~/.i3blocks.conf $DOTS/.i3blocks.conf
 cp ~/.vimrc $DOTS/.vimrc
 cp ~/.zshrc $DOTS/.zshrc
 # save installed packages
