@@ -68,6 +68,19 @@ highlight LineNr ctermfg=8 ctermbg=0
 "highlight lines with more than 100 characters
 highlight OverLength ctermbg=red ctermfg=white
 match OverLength /\%101v.\+/
+"create parent directories for saved files if they do not exist
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+    autocmd!
+augroup END
 
 """ Commands
 "save file using sudo
@@ -87,19 +100,5 @@ nmap <S-Down> mz:m+   <CR>`z
 nmap <S-Up>   mz:m-2  <CR>`z
 
 "toggle spellchecking
-nnoremap  <F7> :setlocal spell! spelllang=en_gb spell?<CR>
-
-"create parent directories for saved files if they do not exist
-function s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
-    endif
-endfunction
-augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-augroup END
+nnoremap <F7> :setlocal spell! spelllang=en_gb spell?<CR>
 

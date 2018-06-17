@@ -16,7 +16,7 @@ exfat-utils 1.2.8-1
 f2fs-tools 1.10.0-1
 fakeroot 1.22-1
 filezilla 3.33.0-1
-firefox-adblock-plus 3.0.4-1
+firefox-developer-edition 61.0b5-1
 gpick 0.2.6rc1-2
 gradle 4.7-1
 grub-btrfs 3.1.1-1
@@ -76,11 +76,12 @@ samba 4.8.1-1
 skypeforlinux-stable-bin 8.20.0.9-1
 snap-pac 2.1-1
 spotify 1.0.79.223-1
-sway 0.15.2-1
+sublime-text 3176-1
 system-config-printer 1.5.11-2
 teamspeak3 3.1.9-1
 telegram-desktop 1.2.20-1
 termite 13-3
+testdisk 7.0-4
 texlive-bibtexextra 2017.46775-1
 texlive-fontsextra 2017.46787-1
 texlive-formatsextra 2017.45845-1
@@ -93,6 +94,7 @@ tlp 1.1-1
 trizen 1:1.49-2
 ttf-hack 3.003-1
 vim-airline 0.9-1
+vim-latexsuite 1:1.10.0-1
 vim-supertab 2.1-2
 vlc 3.0.2-1
 wget 1.19.5-1
@@ -100,6 +102,7 @@ which 2.21-2
 wxmaxima 18.02.0-1
 x264 2:152.20171224-2
 xf86-input-wacom 0.36.1-1
+xorg-server-xwayland 1.20.0-2
 xorg-xinit 1.4.0-3
 xorg-xinput 1.6.2-1
 xsane 0.999-1

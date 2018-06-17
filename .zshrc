@@ -90,6 +90,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias firefox=firefox-developer-edition
 
 mcd() { test -e "$1" || mkdir -p "$1" && cd "$1" }
 
