@@ -90,8 +90,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias firefox=firefox-developer-edition
+alias firefox="firefox-developer-edition"
+alias mpdir="mkdir -p"
 
-mcd() { test -e "$1" || mkdir -p "$1" && cd "$1" }
+mcdir() { test -e "$1" || mkdir -p "$1" && cd "$1" }
 
 key=key+sizeof(key);

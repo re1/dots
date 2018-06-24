@@ -1,4 +1,4 @@
-syntax on   "enable syntax highlighting
+syntax on   "enable syntax hiing
 
 set autoread        "reload files change outside vim
 set encoding=utf-8  "allow all UTF-8 characters
@@ -30,7 +30,7 @@ set wrap            "wrap lines too long to be displayed
 
 """ Searching
 set gdefault    "add g flag to search/replace by default
-set hlsearch    "highlight matching search patterns
+set hlsearch    "hi matching search patterns
 set ignorecase  "ignore casing for searching
 set incsearch   "enable incremental searching
 set magic       "use magic regex
@@ -38,7 +38,7 @@ set smartcase   "smart casing for searching
 
 """ Help
 set number          "show line numbers
-set ruler           "highlight current line
+set ruler           "hi current line
 set laststatus=2    "always show the status line
 set showcmd         "show command while typing
 set showmatch       "show matching brackets
@@ -54,19 +54,21 @@ set whichwrap+=<,>,[,]          "allow horizontal movement between lines
 filetype plugin indent on   "allow filetypes to set indentation
 
 """ Utility
-"syntax highlighting colors
+"syntax hiing colors
 colorscheme base16-one-dark
 "set airline StatusLine colors
 let g:airline_theme='onedark'
 "activate airline powerline plug-in
 let g:airline_powerline_fonts = 1
+"remove gui and terminal background for better terminal integration
+hi Normal guibg=NONE ctermbg=NONE
 "change completion menu colors
-highlight Pmenu ctermfg=7 ctermbg=0
-highlight PmenuSel ctermfg=0 ctermbg=4
+hi Pmenu ctermfg=7 ctermbg=0
+hi PmenuSel ctermfg=0 ctermbg=4
 "change line number colors
-highlight LineNr ctermfg=8 ctermbg=0
-"highlight lines with more than 100 characters
-highlight OverLength ctermbg=red ctermfg=white
+hi LineNr ctermfg=8 ctermbg=NONE
+"hi lines with more than 100 characters
+hi OverLength ctermbg=red ctermfg=white
 match OverLength /\%101v.\+/
 "create parent directories for saved files if they do not exist
 function s:MkNonExDir(file, buf)

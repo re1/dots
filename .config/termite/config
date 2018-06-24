@@ -3,7 +3,7 @@ allow_bold = false
 #audible_bell = false
 clickable_url = true
 dynamic_title = true
-font = monospace 9.8
+font = monospace 10
 #fullscreen = true
 #geometry = 640x480
 icon_name = terminal
@@ -48,7 +48,7 @@ foreground          = #abb2bf
 foreground_bold     = #e0e0e0
 cursor              = #e0e0e0
 cursor_foreground   = #282c34
-background          = rgba(40, 44, 52)
+background          = rgba(43, 46, 55, 0.9)
 
 # 16 color space
 

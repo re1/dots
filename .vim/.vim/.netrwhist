@@ -1,8 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/markus/.config/ranger'
 let g:netrw_dirhist_2='/home/markus/.config/gtk-3.0'
 let g:netrw_dirhist_3='/etc/X11/xorg.conf.d'
 let g:netrw_dirhist_4='/data/Projekte/tilehub/pm/1/21/tasks'
 let g:netrw_dirhist_5='/data/Projekte/tilehub/app'
 let g:netrw_dirhist_6='/data/re1/tex/tex'
+let g:netrw_dirhist_7='/etc/X11/xinit/xinitrc.d'
+let g:netrw_dirhist_8='/etc/X11/xorg.conf.d'
+let g:netrw_dirhist_9='/home/markus/.config/gtk-3.0'
