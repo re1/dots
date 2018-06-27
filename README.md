@@ -5,9 +5,12 @@ Mostly configuration files with some eye candy for different window managers.
 Each branch contains configuration for different window managers and or working environments. <br />
 [`master`](https://github.com/re1/dotfiles) contains all common files without any relation to a specific branch (avoids deprecation).
 
+- [`i3-xfce`](https://github.com/re1/dotfiles/tree/i3-xfce)
 - [`i3-gaps`](https://github.com/re1/dotfiles/tree/i3-gaps)
 - [`kde`](https://github.com/re1/dotfiles/tree/i3-gaps)
 - [`sway`](https://github.com/re1/dotfiles/tree/sway)
+
+I am currently working on [`i3-xfce`](https://github.com/re1/dotfiles/tree/i3-xfce)!
 
 ## Contribution
 
