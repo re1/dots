@@ -1,0 +1,20 @@
+! extended coloring
+rofi.color-enabled: true
+
+! window            BG              Border   Separator
+rofi.color-window:  argb:e62b2e37,  #2f343f, #282c34
+
+! colors            BG              FG       BG-alt         Head-BG  Head-FG
+rofi.color-normal:  argb:002f343f,  #abb2bf, argb:00353b45, #5492e2, #ffffff
+rofi.color-active:  argb:002f343f,  #5492e2, argb:00353b45, #5492e2, #ffffff
+rofi.color-urgent:  argb:002f343f,  #e06c75, argb:00353b45, #5492e2, #ffffff
+
+rofi.bw: 0
+rofi.drun-icon-theme: Papirus-Dark
+rofi.font: monospace 10
+rofi.hide-scrollbar: true
+rofi.location: 1
+rofi.yoffset: 28
+rofi.separator-style: none
+rofi.sidebar-mode: true
+rofi.width: 40

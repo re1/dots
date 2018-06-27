@@ -24,7 +24,6 @@ hunspell-de 20161207-1
 hunspell-en_GB 2017.01.22-2
 hyphen-de 20060120-3
 hyphen-en 2.8.8-1
-i3-gaps 4.15.0.1-2
 iputils 20161105.1f2bb12-2
 kotlin 1.2.40-1
 languagetool 4.1-1
@@ -59,11 +58,11 @@ ranger 1.9.1-1
 rclone 1.41-1
 redshift 1.11-5
 rmlint 2.7.0-1
+rofi 1.5.1-1
 samba 4.8.1-1
 skypeforlinux-stable-bin 8.22.0.2-1
 snap-pac 2.1-1
 spotify 1.0.79.223-1
-steam 1.0.0.54-3
 sublime-text 3176-1
 system-config-printer 1.5.11-2
 teamspeak3 3.1.9-1
@@ -92,10 +91,10 @@ xfce4-power-manager 1.6.1-1
 xfce4-pulseaudio-plugin 0.4.1-1
 xfce4-screenshooter 1.9.2-1
 xfce4-settings 4.12.3-1
-xfce4-verve-plugin 2.0.0-1
 xfce4-whiskermenu-plugin 2.1.7-1
 xorg-server-xwayland 1.20.0-2
 xorg-xinput 1.6.2-1
 xsane 0.999-1
+yarn 1.6.0-1
 zeal 1:0.6.0-1
 zsh-completions 0.27.0-1

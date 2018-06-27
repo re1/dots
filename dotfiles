@@ -1,5 +1,5 @@
 #!/bin/sh
-DOTS=/data/re1/dotfiles
+DOTS=/data/Projekte/re1/dotfiles
 # directories
 COMPTON=.config/compton.conf
 FONTSCONFIG=.config/fontconfig
@@ -10,6 +10,7 @@ OHMYZSH=.oh-my-zsh/custom
 VIM=.vim
 
 # create config folders if they do not exist
+mkdir -p $DOTS/.config
 mkdir -p $DOTS/$FONTSCONFIG
 mkdir -p $DOTS/$ROFI
 mkdir -p $DOTS/$TERMITE
