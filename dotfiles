@@ -1,7 +1,9 @@
 #!/bin/sh
 DOTS=/data/re1/dotfiles
 # directories
+COMPTON=.config/compton.conf
 FONTSCONFIG=.config/fontconfig
+ROFI=.config/rofi
 TERMITE=.config/termite
 OHMYZSH=.oh-my-zsh/custom
 # files
@@ -9,16 +11,19 @@ VIM=.vim
 
 # create config folders if they do not exist
 mkdir -p $DOTS/$FONTSCONFIG
+mkdir -p $DOTS/$ROFI
 mkdir -p $DOTS/$TERMITE
 mkdir -p $DOTS/$OHMYZSH
 mkdir -p $DOTS/$VIM
 
 # copy config directories to $DOTS
 cp -R ~/$FONTSCONFIG/* $DOTS/$FONTSCONFIG
+cp -R ~/$ROFI/* $DOTS/$ROFI
 cp -R ~/$TERMITE/* $DOTS/$TERMITE
 # copy config files to $DOTS
 cp -R ~/$VIM $DOTS/$VIM
-cp ~/$OHMYZSH/greeter.sh $DOTS/.oh-my-zsh/custom/greeter.sh
+cp ~/$COMPTON $DOTS/$COMPTON
+cp ~/$OHMYZSH/greeter.sh $DOTS/$OHMYZSH/greeter.sh
 cp ~/.vimrc $DOTS/.vimrc
 cp ~/.zshrc $DOTS/.zshrc
 # save installed packages
