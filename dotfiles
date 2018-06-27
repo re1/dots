@@ -20,8 +20,8 @@ mkdir -p $DOTS/$VIM
 cp -R ~/$FONTSCONFIG/* $DOTS/$FONTSCONFIG
 cp -R ~/$ROFI/* $DOTS/$ROFI
 cp -R ~/$TERMITE/* $DOTS/$TERMITE
+cp -R ~/$VIM/* $DOTS/$VIM
 # copy config files to $DOTS
-cp -R ~/$VIM $DOTS/$VIM
 cp ~/$COMPTON $DOTS/$COMPTON
 cp ~/$OHMYZSH/greeter.sh $DOTS/$OHMYZSH/greeter.sh
 cp ~/.vimrc $DOTS/.vimrc
