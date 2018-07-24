@@ -91,4 +91,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias dmenu="rofi -dmenu -lines 0"
+alias firefox="firefox-developer-edition"
+alias mpdir="mkdir -p"
+alias xo="xdg-open"
+
+mcdir() { test -e "$1" || mkdir -p "$1" && cd "$1" }
+
+
 key=key+sizeof(key);

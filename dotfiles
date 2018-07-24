@@ -1,31 +1,15 @@
 #!/bin/sh
 DOTS=/data/Projekte/re1/dotfiles
-# directories
-COMPTON=.config/compton.conf
-FONTSCONFIG=.config/fontconfig
-ROFI=.config/rofi
-TERMITE=.config/termite
-OHMYZSH=.oh-my-zsh/custom
-# files
-VIM=.vim
 
-# create config folders if they do not exist
-mkdir -p $DOTS/.config
-mkdir -p $DOTS/$FONTSCONFIG
-mkdir -p $DOTS/$ROFI
-mkdir -p $DOTS/$TERMITE
-mkdir -p $DOTS/$OHMYZSH
-mkdir -p $DOTS/$VIM
+targets=".config/compton.conf .config/fontconfig .config/rofi .config/termite .oh-my-zsh/custom .profile .vim .vimrc .zshrc"
 
-# copy config directories to $DOTS
-cp -R ~/$FONTSCONFIG/* $DOTS/$FONTSCONFIG
-cp -R ~/$ROFI/* $DOTS/$ROFI
-cp -R ~/$TERMITE/* $DOTS/$TERMITE
-cp -R ~/$VIM/* $DOTS/$VIM
-# copy config files to $DOTS
-cp ~/$COMPTON $DOTS/$COMPTON
-cp ~/$OHMYZSH/greeter.sh $DOTS/$OHMYZSH/greeter.sh
-cp ~/.vimrc $DOTS/.vimrc
-cp ~/.zshrc $DOTS/.zshrc
+for target in $targets
+do
+    dir=$(dirname "${target}")
+    mkdir -p $dir
+    cp -R ~/$target $DOTS/$dir
+    echo "~/$target → $DOTS/$dir"
+done
+
 # save installed packages
 pacman -Qet > $DOTS/packages.txt
