@@ -1,0 +1,11 @@
+[Unit]
+Description=Compton composite manager
+Documentation=man:compton(1)
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/compton
+ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
+
+[Install]
+WantedBy=graphical-session.target

@@ -14,7 +14,8 @@ rofi.drun-icon-theme: Papirus-Dark
 rofi.font: monospace 10
 rofi.hide-scrollbar: true
 rofi.location: 1
-rofi.yoffset: 28
+rofi.modi: window,run,ssh,drun
 rofi.separator-style: none
 rofi.sidebar-mode: true
+rofi.yoffset: 28
 rofi.width: 40
