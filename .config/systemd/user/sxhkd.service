@@ -1,14 +1,11 @@
 [Unit]
 Description=Simple X Hotkey Daemon
 Documentation=man:sxhkd(1)
-;BindsTo=xorg.service
-;After=xorg.service
-After=display-manager.service
 PartOf=graphical-session.target
 
 [Service]
 ExecStart=/usr/bin/sxhkd
-ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
+Restart=always
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=default.target

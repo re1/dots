@@ -1,5 +1,5 @@
 [Unit]
-Description=Run weekly backups using borg
+Description=Timer for weekly backups using borg
 
 [Timer]
 OnCalendar=weekly

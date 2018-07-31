@@ -5,7 +5,6 @@ PartOf=graphical-session.target
 
 [Service]
 ExecStart=/usr/bin/compton
-ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=default.target

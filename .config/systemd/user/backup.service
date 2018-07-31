@@ -1,6 +1,6 @@
 
 [Unit]
-Description=Run weekly backups using borg
+Description=Run a borg backup
 
 [Service]
 Type=simple

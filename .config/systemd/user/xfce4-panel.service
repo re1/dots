@@ -12,4 +12,4 @@ ExecStop=/usr/bin/xfce4-panel --quit
 
 [Install]
 Alias=dbus-org.xfce.Panel.service
-WantedBy=graphical-session.target
+WantedBy=default.target

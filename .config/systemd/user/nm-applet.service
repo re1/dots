@@ -5,8 +5,7 @@ PartOf=graphical-session.target
 
 [Service]
 ExecStart=/usr/bin/nm-applet
-ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=default.target
 

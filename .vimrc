@@ -64,8 +64,25 @@ filetype plugin indent on   "allow filetypes to set indentation
 colorscheme base16-one-dark
 "set airline StatusLine colors
 let g:airline_theme='onedark'
-"activate airline powerline plug-in
+"adjust powerline icons to work with urxvt
+let g:airline_symbols = {}
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
+let g:airline_symbols.crypt = ''
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'x'
+let g:airline_symbols.whitespace = 'Ξ'
+" powerline symbols
 let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.maxlinenr = ''
 "remove gui and terminal background for better terminal integration
 hi Normal guibg=NONE ctermbg=NONE
 "change completion menu colors

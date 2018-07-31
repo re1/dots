@@ -1,4 +1,0 @@
-[Unit]
-Description=Bspwm session running
-BindsTo=graphical-session.target
-

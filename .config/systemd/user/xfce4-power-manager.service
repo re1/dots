@@ -11,5 +11,5 @@ ExecReload=/usr/bin/xfce4-power-manager --restart
 ExecStop=/usr/bin/xfce4-power-manager --quit
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=default.target
 Alias=dbus-org.xfce.PowerManager.service

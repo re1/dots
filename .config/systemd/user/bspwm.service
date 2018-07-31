@@ -1,0 +1,8 @@
+[Unit]
+Description=Bspwm
+BindsTo=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/bspwm
+ExecStop=/usr/bin/bspc quit
+

@@ -1,0 +1,58 @@
+*foreground:    #abb2bf
+#ifdef background_opacity
+*background:    [background_opacity]#2b2e37
+#else
+*background:    #2b2e37
+#endif
+*cursorColor:   #e0e0e0
+! black, gray, silver, white
+*color0:        #282c34
+*color8:        #545862
+*color7:        #abb2bf
+*color15:       #ffffff
+! red
+*color1:        #e06c75
+*color9:        #e06c75
+! green
+*color2:        #98c379
+*color10:       #98c379
+! yellow
+*color3:        #e5c07b
+*color11:       #e5c07b
+! blue
+*color4:        #61afef
+*color12:       #61afef
+! purple
+*color5:        #c678dd
+*color13:       #c678dd
+! teal
+*color6:        #56b6c2
+*color14:       #56b6c2
+! extra
+*color16:       #d19a66
+*color17:       #e6cc99
+*color18:       #2c3039
+*color19:       #3e4451
+*color20:       #979fad
+*color21:       #e0e0e0
+
+URxvt*internalBorder: 12
+! font configuration
+URxvt*font: xft:monospace:size=10,xft:Fira Mono Patched:size=10
+URxvt*skipBuiltinGlyphs: true
+URxvt*letterSpace: -1
+URxvt*linespace: 0
+! disable scrollbar
+URxvt*scrollBar: false
+! disable perl extension to improve security and speed
+URxvt.perl-ext:
+URxvt.perl-ext-common:
+! fixed number of saved lines improves performance
+URxvt.saveLines: 2000
+! clipboard configuration
+URxvt.copyCommand:  xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+
+URxvt.url-launcher:     /usr/bin/xdg-open
+URxvt.matcher.button:   1
+
