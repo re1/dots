@@ -1,0 +1,3 @@
+#!/bin/sh
+# -nolisten local ← https://tstarling.com/blog/2016/06/x11-security-isolation/
+exec /usr/bin/X -nolisten tcp -nolisten local "$@"
