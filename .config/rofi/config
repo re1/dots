@@ -17,5 +17,6 @@ rofi.location: 1
 rofi.modi: window,run,ssh,drun
 rofi.separator-style: none
 rofi.sidebar-mode: true
+rofi.xoffset: 0
 rofi.yoffset: 28
 rofi.width: 40

@@ -36,6 +36,7 @@
 *color20:       #979fad
 *color21:       #e0e0e0
 
+! URxvt
 URxvt*internalBorder: 12
 ! font configuration
 URxvt*font: xft:monospace:size=10,xft:Fira Mono Patched:size=10
