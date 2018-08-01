@@ -1,3 +1,4 @@
+accountsservice 0.6.50-1
 arc-gtk-theme 20180715-1
 astah-professional 7.2.0-2
 autoconf 2.69-4
@@ -7,7 +8,7 @@ autorandr 1.6-2
 blender 17:2.79.b.git3.32432d91-1
 borg 1.1.6-2
 bspwm 0.9.5-1
-chromium 68.0.3440.75-1
+chromium 68.0.3440.84-1
 compton 0.1_beta2.5-11
 cups-pdf 3.0.1-4
 discord 0.0.5-4
@@ -16,7 +17,7 @@ dunst 1.3.2-1
 exfat-utils 1.2.8-1
 fakeroot 1.23-1
 filezilla 3.35.1-1
-firefox-developer-edition 62.0b12-1
+firefox-developer-edition 62.0b13-1
 gpick 0.2.6rc1-3
 gradle 4.9-1
 grub-btrfs 3.2-1
@@ -26,6 +27,7 @@ hunspell-de 20161207-1
 hunspell-en_GB 2018.04.16-1
 hyphen-de 20060120-4
 hyphen-en 2.8.8-2
+i3lock 2.10-1
 iputils 20180629.f6aac8d-2
 kotlin 1.2.51-1
 languagetool 4.1-1
@@ -90,8 +92,8 @@ xfce4-pulseaudio-plugin 0.4.1-1
 xfce4-screenshooter 1.9.2-1
 xorg-server-xwayland 1.20.0-9
 xorg-xev 1.2.2-2
+xorg-xinit 1.4.0-3
 xorg-xinput 1.6.2-2
-xorg-xrdb 1.1.1-1
 xsane 0.999-2
 yarn 1.9.2-1
 zeal 1:0.6.0-1
