@@ -5,7 +5,7 @@ Requires=urxvtd.socket
 [Service]
 ExecStart=/usr/bin/urxvtd -o -q
 # Environment=RXVT_SOCKET=%t/urxvtd-%H
-Restart=Always
+Restart=always
 RestartSec=2
 
 [Install]
