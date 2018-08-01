@@ -2,7 +2,7 @@
 DOTS=/data/Projekte/re1/dotfiles
 
 targets=".config/compton.conf .config/dunst .config/fontconfig .config/rofi .config/systemd/user 
-.local/share/fonts .oh-my-zsh/custom .profile .vim/colors .vimrc .zshrc .Xresources .xsessionrc"
+.local/share/fonts .oh-my-zsh/custom .zprofile .vim/colors .vimrc .zshrc .Xresources"
 
 rm -rf $DOTS/.config
 
