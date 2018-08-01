@@ -10,7 +10,7 @@ Each branch contains configuration for different window managers and or working 
 - [`kde`](https://github.com/re1/dotfiles/tree/i3-gaps)
 - [`sway`](https://github.com/re1/dotfiles/tree/sway)
 
-I am currently working on [`i3-xfce`](https://github.com/re1/dotfiles/tree/i3-xfce)!
+I am currently working on [`bspwm`](https://github.com/re1/dotfiles/tree/bspwm)!
 
 ## Contribution
 
