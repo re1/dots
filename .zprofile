@@ -1,10 +1,3 @@
-export BROWSER=firefox-developer-edition
-export QT_QPA_PLATFORMTHEME=gtk2
-export VISUAL=vim
-export XDG_CONFIG_HOME="$HOME/.config"
-
-export _JAVA_AWT_WM_NONREPARENTING=1
-
 alias dmenu="rofi -dmenu -lines 0"
 alias firefox="firefox-developer-edition"
 alias mpdir="mkdir -p"

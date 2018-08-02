@@ -1,4 +1,14 @@
 #!/bin/sh
+QT_QPA_PLATFORMTHEME=gtk2
+XDG_CONFIG_HOME="$HOME/.config"
+# fix java awt apps in bspwm
+_JAVA_AWT_WM_NONREPARENTING=1
+
+export QT_QPA_PLATFORMTHEME
+export XDG_CONFIG_HOME
+
+export _JAVA_AWT_WM_NONREPARENTING
+
 xrdb $HOME/.Xresources
 
 # start some nice programs
