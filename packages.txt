@@ -21,6 +21,7 @@ firefox-developer-edition 62.0b13-1
 gpick 0.2.6rc1-3
 gradle 4.9-1
 grub-btrfs 3.2-1
+gutenprint 5.2.14-1
 htop 2.2.0-2
 hugo 0.45.1-1
 hunspell-de 20161207-1
