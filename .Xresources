@@ -1,8 +1,8 @@
 *foreground:    #abb2bf
 #ifdef background_opacity
-*background:    [background_opacity]#2b2e37
+*background:    [background_opacity]#2f343f
 #else
-*background:    #2b2e37
+*background:    #2f343f
 #endif
 *cursorColor:   #e0e0e0
 ! black, gray, silver, white
