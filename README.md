@@ -15,3 +15,7 @@ I am currently working on [`bspwm`](https://github.com/re1/dotfiles/tree/bspwm)!
 ## Contribution
 
 If you like my dotfiles (and also if you hate them) you can create a pull request for specific files.
+
+## Credits
+
+Thanks to [@addy-dclxvi](https://github.com/addy-dclxvi) for his incredible [Fantome](https://github.com/addy-dclxvi/gtk-theme-collections) GTK theme!
