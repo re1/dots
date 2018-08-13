@@ -11,6 +11,7 @@ cups-pdf 3.0.1-4
 discord 0.0.5-4
 docker-compose 1.22.0-2
 dunst 1.3.2-1
+envypn-font 1.7.1-3
 exfat-utils 1.2.8-1
 fakeroot 1.23-1
 filezilla 3.35.2-1
@@ -47,6 +48,7 @@ networkmanager-openvpn 1.8.4-1
 openjdk8-src 8.u172-2
 opensc 0.18.0-1
 otf-fira-mono 2:3.206-2
+otf-font-awesome 5.2.0-1
 paper-icon-theme-git 803.4bf8666e-1
 pass 1.7.3-1
 patch 2.7.6-1
@@ -88,6 +90,8 @@ xfce4-pulseaudio-plugin 0.4.1-1
 xfce4-screenshooter 1.9.3-1
 xorg-server-xwayland 1.20.0-9
 xorg-xev 1.2.2-2
+xorg-xfd 1.1.2-2
+xorg-xfontsel 1.0.6-1
 xorg-xinit 1.4.0-3
 xorg-xinput 1.6.2-2
 yarn 1.9.4-1

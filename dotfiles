@@ -6,7 +6,7 @@ targets=".config/compton.conf .config/dunst .config/environment.d .config/fontco
 .local/share/fonts .oh-my-zsh/custom .themes .vim/colors .vimrc .zprofile .zshrc .xinitrc .Xresources 
 .xserverrc"
 
-rm -rf $DOTS/.config
+rm -rf $DOTS/.config $DOTS/.local
 
 for target in $targets
 do

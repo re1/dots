@@ -39,7 +39,7 @@
 ! URxvt
 URxvt*internalBorder: 12
 ! font configuration
-URxvt*font: xft:monospace:size=10,xft:Fira Mono Patched:size=10
+URxvt*font: xft:monospace:size=10,xft:patched:size=10
 URxvt*skipBuiltinGlyphs: true
 URxvt*letterSpace: -1
 URxvt*linespace: 0
