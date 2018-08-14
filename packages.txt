@@ -53,6 +53,7 @@ otf-font-awesome 5.2.0-1
 paper-icon-theme-git 803.4bf8666e-1
 pass 1.7.3-1
 patch 2.7.6-1
+pkgconf 1.5.3-1
 python-pylint 2.0.1-1
 python-virtualenv 15.1.0-4
 qt5-styleplugins 5.0.0.20170311-7
