@@ -18,4 +18,6 @@ If you like my dotfiles (and also if you hate them) you can create a pull reques
 
 ## Credits
 
-Thanks to [@addy-dclxvi](https://github.com/addy-dclxvi) for his incredible [Fantome](https://github.com/addy-dclxvi/gtk-theme-collections) GTK theme!
+Thanks to [@addy-dclxvi](https://github.com/addy-dclxvi) for his amazing [Fantome](https://github.com/addy-dclxvi/gtk-theme-collections) GTK theme!
+
+The artwork used for both [.background.png](https://github.com/re1/dotfiles/blob/master/.background.png) and [.lock.png](https://github.com/re1/dotfiles/blob/master/.lock.png) belongs to the incredible [NanoMortis](https://www.deviantart.com/nanomortis).

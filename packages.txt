@@ -38,6 +38,7 @@ logrotate 3.14.0-1
 make 4.2.1-2
 man-db 2.8.4-1
 man-pages 4.16-1
+mediainfo 18.05-2
 multimc5 0.6.2-2
 mythes-de 20180514-1
 mythes-en 20060306-4
@@ -58,7 +59,6 @@ python-pylint 2.0.1-1
 python-virtualenv 15.1.0-4
 qt5-styleplugins 5.0.0.20170311-7
 qt5-wayland 5.11.1-1
-ranger 1.9.1-2
 rclone 1.42-1
 redshift 1.12-2
 rmlint 2.7.0-2
@@ -67,6 +67,7 @@ rxvt-unicode 9.22-7
 samba 4.8.3-2
 snap-pac 2.1-1
 spotify 1.0.79.223-1
+sudo 1.8.23-2
 system-config-printer 1.5.11-3
 teamspeak3 3.1.10-1
 telegram-desktop 1.3.10-2
@@ -82,6 +83,7 @@ viewnior 1.6-3
 vim-airline 0.9-1
 vim-latexsuite 1:1.10.0-1
 vim-supertab 2.1-2
+vim-surround 2.1-3
 vlc 3.0.3-3
 wget 1.19.5-1
 which 2.21-2

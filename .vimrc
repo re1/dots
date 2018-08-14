@@ -60,7 +60,7 @@ set whichwrap+=<,>,h,l,[,]      "allow horizontal movement between lines
 filetype plugin indent on   "allow filetypes to set indentation
 
 """ Utility
-"syntax hiing colors
+"syntax highlighting colors
 colorscheme base16-one-dark
 "set airline StatusLine colors
 let g:airline_theme='onedark'
@@ -150,10 +150,12 @@ nmap <silent> <Down> gj
 nmap <silent> <Up> gk
 
 "move lines by pressing Shift
-nmap <S-Down> mz:m+<cr>`z
-nmap <S-Up> mz:m-2<cr>`z
-vmap <S-Down> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <S-Up> :m'<-2<cr>`>my`<mzgv`yo`z
+nnoremap <S-Down> :m .+1<CR>==
+nnoremap <S-Up> :m .-2<CR>==
+inoremap <S-Down> <Esc>:m .+1<CR>==gi
+inoremap <S-Up> <Esc>:m .-2<CR>==gi
+vnoremap <S-Down> :m '>+1<CR>gv=gv
+vnoremap <S-Up> :m '<-2<CR>gv=gv
 
 "toggle spellchecking
 nnoremap <F7> :setlocal spell! spelllang=en_gb spell?<CR>
