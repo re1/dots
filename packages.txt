@@ -7,6 +7,7 @@ borg 1.1.6-3
 bspwm 0.9.5-1
 chromium 68.0.3440.106-1
 compton 0.1_beta2.5-11
+conky 1.10.8-2
 cups-pdf 3.0.1-4
 discord 0.0.5-4
 docker-compose 1.22.0-2

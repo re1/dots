@@ -1,0 +1,60 @@
+conky.config = {
+    own_window = true,
+    own_window_type = 'desktop',
+    own_window_transparent = true,
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    own_window_colour = '#000000',
+    own_window_class = 'Conky',
+    own_window_title = 'Conky Right',
+
+    minimum_width = 270,
+    minimum_height = 440,
+
+    gap_x = 1924,
+    gap_y = 108,
+
+    alignment = 'top_right',
+    use_xft = true,
+    font = 'monospace:style=bold:size=11',
+    xftalpha = 1,
+    override_utf8_locale = true,
+
+    uppercase = false,
+    draw_shades = false,
+    default_shade_color = 'black',
+
+    draw_outline = false,
+
+    default_outline_color = 'black',
+    default_color = '#ffffff',
+
+    color0 = '#2f343f',
+    color1 = '#bf616a',
+    color2 = '#98c379',
+    color3 = '#e5c07b',
+    color4 = '#61afef',
+    color7 = '#abb2bf',
+
+    no_buffers = true,
+
+    short_units = true,
+    pad_percents = 2,
+
+    double_buffer = true,
+    update_interval = 1
+};
+
+conky.text = [[
+    ${goto 76}${voffset 42}${color2}$user_names\
+    ${goto 174}${color4}${nodename}
+    ${goto 36}${voffset 72}${color}${uptime}
+    ${goto 0}${voffset 6}${font monospace:style=bold:size=30}${time %H:%M}${font}
+    ${goto 172}${voffset -14}T °C
+    ${goto 172}${color3}${acpitemp}°C
+    ${goto 32}${voffset 42}${color}CPU0|1${goto 118}CPU2|3
+    ${goto 32}${color3} ${cpu cpu1}|${cpu cpu0}%${goto 118} ${cpu cpu3}|${cpu cpu4}%
+    ${goto 86}${voffset 28}${color}RAM
+    ${goto 86}${color3}${memperc}%
+
+    ${image ~/.config/conky/lsd.png -p 6,0}
+]];

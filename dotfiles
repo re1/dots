@@ -1,7 +1,8 @@
 #!/bin/sh
-DOTS=/data/Projekte/re1/dotfiles
+DOTS=/data/Projects/re1/dotfiles
 
-targets=".config/compton.conf .config/dunst .config/environment.d .config/fontconfig 
+targets=".background.png .config/compton.conf .config/conky .config/dunst .config/environment.d 
+.config/fontconfig 
 .config/gtk-2.0 .config/gtk-3.0 .config/neofetch .config/rofi .config/systemd/user 
 .local/share/fonts .oh-my-zsh/custom .themes .vim/colors .vimrc .zprofile .zshrc .xinitrc .Xresources 
 .xserverrc"

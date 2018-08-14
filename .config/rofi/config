@@ -13,10 +13,10 @@ rofi.bw: 0
 rofi.drun-icon-theme: Papirus-Dark
 rofi.font: monospace 10
 rofi.hide-scrollbar: true
-rofi.location: 1
+rofi.location: 2
 rofi.modi: window,run,ssh,drun
 rofi.separator-style: none
 rofi.sidebar-mode: true
 rofi.xoffset: 0
-rofi.yoffset: 28
-rofi.width: 40
+rofi.yoffset: 0
+rofi.width: 42
