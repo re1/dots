@@ -78,7 +78,6 @@ texlive-latexextra 2018.47410-1
 texlive-science 2018.47412-1
 texstudio 2.12.10-2
 tlp 1.1-1
-vbam-wx 2.1.0-2
 viewnior 1.6-3
 vim-airline 0.9-1
 vim-latexsuite 1:1.10.0-1
