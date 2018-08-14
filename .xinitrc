@@ -26,5 +26,7 @@ systemctl --user restart dunst
 systemctl --user restart xfce4-panel
 systemctl --user restart xfce4-power-manager
 systemctl --user restart nm-applet
+systemctl --user restart conky@left.service
+systemctl --user restart conky@right.service
 
 exec bspwm

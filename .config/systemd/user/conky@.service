@@ -1,0 +1,10 @@
+[Unit]
+Description=Conky System Monitor
+Documentation=man:conky(1)
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/conky -c %h/.config/conky/%i.conkyrc
+
+[Install]
+WantedBy=default.target
