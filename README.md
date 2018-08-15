@@ -1,5 +1,4 @@
-Hello there<br />
-and thank You for visting my dot-files!
+Thank You for visting my dot-files!
 
 My current working environment is [[bspwm] **ατελής** (ateles)](https://github.com/re1/dotfiles/releases/tag/bspwm-ateles-1.0) which looks something like this:
 
