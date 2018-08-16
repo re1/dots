@@ -45,15 +45,23 @@ URxvt*letterSpace: -1
 URxvt*linespace: 0
 ! disable scrollbar
 URxvt*scrollBar: false
+! Disable printing the terminal contents when pressing PrintScreen.
+URxvt*print-pipe: "cat > /dev/null"
 ! disable perl extension to improve security and speed
-URxvt.perl-ext:
-URxvt.perl-ext-common: default,matcher,selection-to-clipboard
+URxvt*perl-ext:
+URxvt*perl-ext-common: default,matcher,selection-to-clipboard
 ! fixed number of saved lines improves performance
-URxvt.saveLines: 2000
+URxvt*saveLines: 2000
 ! clipboard configuration
-URxvt.copyCommand:  xclip -i -selection clipboard
-URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt*copyCommand:  xclip -i -selection clipboard
+URxvt*pasteCommand: xclip -o -selection clipboard
 ! highlight and open URLs
-URxvt.url-launcher:     /usr/bin/xdg-open
-URxvt.matcher.button:   1
-
+URxvt*url-launcher:     /usr/bin/xdg-open
+URxvt*matcher.button:   1
+! set icon theme name
+URxvt*iconName: "utilities-terminal"
+! adjust some keys to xterm for better integration
+URxvt*keysym.S-Up:            \033[1;2A
+URxvt*keysym.S-Down:          \033[1;2B
+URxvt*keysym.S-Right:         \033[1;2C
+URxvt*keysym.S-Left:          \033[1;2D
