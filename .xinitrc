@@ -4,11 +4,14 @@ QT_QPA_PLATFORMTHEME=gtk2
 XDG_CONFIG_HOME="$HOME/.config"
 # fix java awt apps in bspwm
 _JAVA_AWT_WM_NONREPARENTING=1
+# run java proxies over tor
+JAVA_OPTIONS="$JAVA_OPTIONS -DsocksProxyHost=localhost -DsocksProxyPort=9050"
 
 export QT_QPA_PLATFORMTHEME
 export XDG_CONFIG_HOME
 
 export _JAVA_AWT_WM_NONREPARENTING
+export JAVA_OPTIONS
 
 xrdb $HOME/.Xresources
 
