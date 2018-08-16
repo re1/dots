@@ -3,6 +3,7 @@ autoconf 2.69-4
 autojump 22.5.1-1
 automake 1.15.1-1
 autorandr 1.6-3
+bbswitch 0.8-157
 borg 1.1.6-3
 bspwm 0.9.5-1
 chromium 68.0.3440.106-1
