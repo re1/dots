@@ -17,7 +17,7 @@ envypn-font 1.7.1-3
 exfat-utils 1.2.8-1
 fakeroot 1.23-1
 filezilla 3.35.2-1
-firefox-developer-edition 62.0b16-1
+firefox-developer-edition 62.0b17-1
 gnuplot 5.2.4-1
 gpick 0.2.6rc1-3
 gradle 4.9-1
@@ -45,10 +45,10 @@ mythes-de 20180514-1
 mythes-en 20060306-4
 nano 2.9.8-1
 neofetch 5.0.0-1
-netctl 1.17-1
+netctl 1.18-1
 network-manager-applet 1.8.16-1
 networkmanager-openvpn 1.8.4-1
-openjdk8-src 8.u172-2
+openjdk8-src 8.u181-1
 opensc 0.18.0-1
 otf-fira-mono 2:3.206-2
 otf-font-awesome 5.2.0-1
@@ -56,7 +56,7 @@ paper-icon-theme-git 803.4bf8666e-1
 pass 1.7.3-1
 patch 2.7.6-1
 pkgconf 1.5.3-1
-python-pylint 2.0.1-1
+python-pylint 2.1.1-1
 python-virtualenv 15.1.0-4
 qt5-styleplugins 5.0.0.20170311-7
 qt5-wayland 5.11.1-1
@@ -70,7 +70,7 @@ snap-pac 2.1-1
 spotify 1.0.79.223-1
 sudo 1.8.23-2
 system-config-printer 1.5.11-3
-teamspeak3 3.1.10-1
+teamspeak3 3.2.1-1
 telegram-desktop 1.3.10-2
 texlive-bibtexextra 2018.47418-1
 texlive-fontsextra 2018.47288-1
@@ -84,10 +84,9 @@ vim-airline 0.9-1
 vim-latexsuite 1:1.10.0-1
 vim-supertab 2.1-2
 vim-surround 2.1-3
-vlc 3.0.3-3
+vlc 3.0.3-4
 wget 1.19.5-1
 which 2.21-2
-x264 2:152.20171224-2
 xf86-input-wacom 0.36.1-1
 xfce4-power-manager 1.6.1-1
 xfce4-pulseaudio-plugin 0.4.1-1
