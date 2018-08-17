@@ -47,7 +47,6 @@ nano 2.9.8-1
 neofetch 5.0.0-1
 netctl 1.18-1
 network-manager-applet 1.8.16-1
-networkmanager-openvpn 1.8.4-1
 openjdk8-src 8.u181-1
 opensc 0.18.0-1
 otf-fira-mono 2:3.206-2

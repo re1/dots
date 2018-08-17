@@ -17,6 +17,7 @@ set novisualbell        "no visual notification for error sounds
 set completeopt=longest,menuone,preview "complete to shared characters and show menu
 set complete+=kspell                    "complete with dictionary words when spell check is on
 set matchpairs+=<:>                     "match XML
+set path+=**                            "look into subfolders when looking for files
 set wildmode=longest,list,full          "complete to shared characters and show list
 set wildmenu                            "autocomplete files on tab
 set wildignore=*.o,*~,*.pyc             "wildmenu ignores compiled files
@@ -93,19 +94,6 @@ hi LineNr ctermfg=8 ctermbg=NONE
 "hi lines with more than 100 characters
 hi OverLength ctermbg=red ctermfg=white
 match OverLength /\%101v.\+/
-"create parent directories for saved files if they do not exist
-function s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
-    endif
-endfunction
-augroup BWCCreateDir
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-    autocmd!
-augroup END
 " delete trailing white space on save, useful for some filetypes ;)
 fun! CleanExtraSpaces()
     let save_cursor = getpos(".")
@@ -114,7 +102,6 @@ fun! CleanExtraSpaces()
     call setpos('.', save_cursor)
     call setreg('/', old_query)
 endfun
-
 "persistant undo
 try
     set undodir=~/.vim/tmp/undo

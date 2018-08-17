@@ -1,16 +1,18 @@
 #!/bin/sh
-
+# change default editor
+VISUAL=nvim
+EDITOR=nvim
+# configure qt using gtk
 QT_QPA_PLATFORMTHEME=gtk2
+export QT_QPA_PLATFORMTHEME
+# set config directory
 XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CONFIG_HOME
 # fix java awt apps in bspwm
 _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_AWT_WM_NONREPARENTING
 # run java proxies over tor
 JAVA_OPTIONS="$JAVA_OPTIONS -DsocksProxyHost=localhost -DsocksProxyPort=9050"
-
-export QT_QPA_PLATFORMTHEME
-export XDG_CONFIG_HOME
-
-export _JAVA_AWT_WM_NONREPARENTING
 export JAVA_OPTIONS
 
 xrdb $HOME/.Xresources
