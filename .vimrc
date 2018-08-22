@@ -42,19 +42,36 @@ let g:airline_symbols.maxlinenr = ''
 
 """ Neovim
 if has('nvim')
-    
+
+""" vim
 else
-    set nocompatible            "disable vi emulation
-    set ttyfast                 "optimize for fast terminal connections
+    syntax on
+    
+    set nocompatible                "disable vi emulation
+    set ttyfast                     "optimize for fast terminal connections
+    
+    set autoindent                  "indent after indented line
+    set autoread                    "reload files change outside vim
+    set backspace=eol,start,indent  "more backspace functionality
+    set encoding=utf-8              "allow UTF-8 characters
+    set hlsearch                    "highlight matching search patterns
+    set incsearch                   "enable incremental searching
+    set laststatus=2                "always show the status line
+    set ruler                       "highlight current line
+    set showcmd                     "show command while typing
+    set wildmenu                    "autocomplete files on tab
+    "persistant undo
+    try
+        set undodir=~/.vim/tmp/undo
+        set undofile
+    catch
+    endtry
 endif
 
 
-""" vim
-syntax on                   "enable syntax highlighting
+""" General
 filetype plugin indent on   "allow plugins to handle indentation
 
-set autoread                "reload files change outside vim
-set encoding=utf-8          "allow all UTF-8 characters
 set exrc                    "enable per directory vim files
 set ffs=unix,dos,mac        "use unix as default file type
 set hid                     "hide inactive buffers
@@ -70,11 +87,9 @@ set complete+=kspell                    "complete with dictionary words when spe
 set matchpairs+=<:>                     "match XML
 set path+=**                            "look into subfolders when looking for files
 set wildmode=longest,list,full          "complete to shared characters and show list
-set wildmenu                            "autocomplete files on tab
 set wildignore=*.o,*~,*.pyc             "wildmenu ignores compiled files
 
 """ Formatting
-set ai              "indent after indented line
 set expandtab       "convert tabs to spaces (sorry guys)
 set linebreak       "wrap lines a convenient points
 set nojoinspaces    "single space after punctuation
@@ -87,24 +102,18 @@ set wrap            "wrap lines too long to be displayed
 
 """ Searching
 set gdefault    "add g flag to search/replace by default
-set hlsearch    "hi matching search patterns
 set ignorecase  "ignore casing for searching
-set incsearch   "enable incremental searching
 set magic       "use magic regex
 set smartcase   "smart casing for searching
 
 """ Help
 set number          "show line numbers
-set ruler           "hi current line
-set laststatus=2    "always show the status line
-set showcmd         "show command while typing
 set showmatch       "show matching brackets
 set mat=2           "seconds to blink when matching brackets
 set showmode        "show current mode
 set title           "show filename in window title bar
 
 """ Usability
-set backspace=eol,start,indent  "more backspace functionality
 set so=6                        "show two lines before window border
 set whichwrap+=<,>,h,l,[,]      "allow horizontal movement between lines
 
@@ -130,12 +139,6 @@ fun! CleanExtraSpaces()
     call setpos('.', save_cursor)
     call setreg('/', old_query)
 endfun
-"persistant undo
-try
-    set undodir=~/.vim/tmp/undo
-    set undofile
-catch
-endtry
 
 """ Commands
 "automatic commands
@@ -159,10 +162,10 @@ map <c-space> ?
 map 0 ^
 
 "allow jumping between wrapped lines
-imap <silent> <Down> <C-o>gj
-imap <silent> <Up> <C-o>gk
-nmap <silent> <Down> gj
-nmap <silent> <Up> gk
+"imap <silent> <Down> <C-o>gj
+"imap <silent> <Up> <C-o>gk
+"nmap <silent> <Down> gj
+"nmap <silent> <Up> gk
 
 "move lines by pressing Shift
 nnoremap <S-Down> :m .+1<CR>==
