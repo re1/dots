@@ -1,19 +1,68 @@
+""" Plug
+call plug#begin('~/.vim/plugged')       "set plugin path
+
+Plug 'vim-airline/vim-airline'          "lightweight powerline
+Plug 'vim-airline/vim-airline-themes'   "themes for airline including onedark
+
+if has('nvim')                          "check for nvim
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'              "for deoplate.nvim
+    Plug 'roxma/vim-hug-neovim-rpc'     "for deoplate.nvim
+endif
+
+call plug#end()                         "init plugin system
+
+
+""" Plugins
+let g:deoplete#enable_at_startup = 1
+"set airline StatusLine colors
+let g:airline_theme='onedark'
+"adjust powerline icons to work with urxvt
+let g:airline_symbols = {}
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
+let g:airline_symbols.crypt = ''
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'x'
+let g:airline_symbols.whitespace = 'Ξ'
+" powerline symbols
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.maxlinenr = ''
+
+
+""" Neovim
+if has('nvim')
+    
+else
+    set nocompatible            "disable vi emulation
+    set ttyfast                 "optimize for fast terminal connections
+endif
+
+
+""" vim
 syntax on                   "enable syntax highlighting
 filetype plugin indent on   "allow plugins to handle indentation
 
-""" vim
-set autoread            "reload files change outside vim
-set encoding=utf-8      "allow all UTF-8 characters
-set exrc                "enable per directory vim files
-set ffs=unix,dos,mac    "use unix as default file type
-set hid                 "hide inactive buffers
-set history=500         "save the last 500 changes
-set lazyredraw          "do not redraw while executing macros (avoid lag)
-set nocompatible        "disable vi emulation
-set secure              "disable unsafe commands
-set ttyfast             "optimize for fast terminal connections
-set noerrorbells        "no error sound
-set novisualbell        "no visual notification for error sounds
+set autoread                "reload files change outside vim
+set encoding=utf-8          "allow all UTF-8 characters
+set exrc                    "enable per directory vim files
+set ffs=unix,dos,mac        "use unix as default file type
+set hid                     "hide inactive buffers
+set history=500             "save the last 500 changes
+set lazyredraw              "do not redraw while executing macros (avoid lag)
+set secure                  "disable unsafe commands
+set noerrorbells            "no error sound
+set novisualbell            "no visual notification for error sounds
 
 """ Completion
 set completeopt=longest,menuone,preview "complete to shared characters and show menu
@@ -59,30 +108,10 @@ set backspace=eol,start,indent  "more backspace functionality
 set so=6                        "show two lines before window border
 set whichwrap+=<,>,h,l,[,]      "allow horizontal movement between lines
 
+
 """ Utility
 "syntax highlighting colors
 colorscheme base16-one-dark
-"set airline StatusLine colors
-let g:airline_theme='onedark'
-"adjust powerline icons to work with urxvt
-let g:airline_symbols = {}
-let g:airline_left_sep = '»'
-let g:airline_right_sep = '«'
-let g:airline_symbols.crypt = ''
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = 'x'
-let g:airline_symbols.whitespace = 'Ξ'
-" powerline symbols
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.maxlinenr = ''
 "remove gui and terminal background for better terminal integration
 hi Normal guibg=NONE ctermbg=NONE
 "change completion menu colors
