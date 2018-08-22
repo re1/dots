@@ -1,5 +1,7 @@
-syntax on               "enable syntax highlighting
+syntax on                   "enable syntax highlighting
+filetype plugin indent on   "allow plugins to handle indentation
 
+""" vim
 set autoread            "reload files change outside vim
 set encoding=utf-8      "allow all UTF-8 characters
 set exrc                "enable per directory vim files
@@ -56,9 +58,6 @@ set title           "show filename in window title bar
 set backspace=eol,start,indent  "more backspace functionality
 set so=6                        "show two lines before window border
 set whichwrap+=<,>,h,l,[,]      "allow horizontal movement between lines
-
-""" Filetypes
-filetype plugin indent on   "allow filetypes to set indentation
 
 """ Utility
 "syntax highlighting colors

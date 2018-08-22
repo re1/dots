@@ -45,7 +45,7 @@ URxvt*letterSpace: -1
 URxvt*linespace: 0
 ! disable scrollbar
 URxvt*scrollBar: false
-! Disable printing the terminal contents when pressing PrintScreen.
+! disable printing the terminal contents when pressing PrintScreen.
 URxvt*print-pipe: "cat > /dev/null"
 ! disable perl extension to improve security and speed
 URxvt*perl-ext:
@@ -60,8 +60,26 @@ URxvt*url-launcher:     /usr/bin/xdg-open
 URxvt*matcher.button:   1
 ! set icon theme name
 URxvt*iconName: "utilities-terminal"
-! adjust some keys to xterm for better integration
+
+! adjust some keys to match xterm for better integration
+! shift
 URxvt*keysym.S-Up:            \033[1;2A
 URxvt*keysym.S-Down:          \033[1;2B
 URxvt*keysym.S-Right:         \033[1;2C
 URxvt*keysym.S-Left:          \033[1;2D
+URxvt*keysym.S-M-Page_Up:     \033[5;4~
+URxvt*keysym.S-M-Page_Down:   \033[6;4~
+! control
+URxvt*keysym.C-Up:            \033[1;5A
+URxvt*keysym.C-Down:          \033[1;5B
+URxvt*keysym.C-Right:         \033[1;5C
+URxvt*keysym.C-Left:          \033[1;5D
+URxvt*keysym.C-Page_Up:       \033[5;5~
+URxvt*keysym.C-Page_Down:     \033[6;5~
+! shift + control
+URxvt*keysym.S-C-Up:          \033[1;6A
+URxvt*keysym.S-C-Down:        \033[1;6B
+URxvt*keysym.S-C-Right:       \033[1;6C
+URxvt*keysym.S-C-Left:        \033[1;6D
+URxvt*keysym.S-C-Page_Up:     \033[5;6~
+URxvt*keysym.S-C-Page_Down:   \033[6;6~

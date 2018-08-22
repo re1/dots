@@ -90,6 +90,7 @@ xf86-input-wacom 0.36.1-1
 xfce4-power-manager 1.6.1-1
 xfce4-pulseaudio-plugin 0.4.1-1
 xfce4-screenshooter 1.9.3-1
+xorg-server 1.20.0-9
 xorg-server-xwayland 1.20.0-9
 xorg-xev 1.2.2-2
 xorg-xfd 1.1.2-2
