@@ -1,6 +1,7 @@
 """ Plug
 call plug#begin('~/.vim/plugged')       "set plugin path
 
+Plug 'trotter/autojump.vim'             "autojump support for vim
 Plug 'vim-airline/vim-airline'          "lightweight powerline
 Plug 'vim-airline/vim-airline-themes'   "themes for airline including onedark
 
