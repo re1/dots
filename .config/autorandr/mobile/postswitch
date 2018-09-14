@@ -1,0 +1,2 @@
+#!/bin/sh
+bspc monitor -o I II III IV V VI

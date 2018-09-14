@@ -1,6 +1,7 @@
 """ Plug
 call plug#begin('~/.vim/plugged')       "set plugin path
 
+Plug 'prettier/vim-prettier'            "vim wrapper for prettier
 Plug 'trotter/autojump.vim'             "autojump support for vim
 Plug 'vim-airline/vim-airline'          "lightweight powerline
 Plug 'vim-airline/vim-airline-themes'   "themes for airline including onedark
@@ -127,6 +128,8 @@ hi Normal guibg=NONE ctermbg=NONE
 "change completion menu colors
 hi Pmenu ctermfg=7 ctermbg=0
 hi PmenuSel ctermfg=0 ctermbg=4
+"change search mathing colors
+hi Search ctermfg=8 ctermbg=3
 "change line number colors
 hi LineNr ctermfg=8 ctermbg=NONE
 "change tab line colors

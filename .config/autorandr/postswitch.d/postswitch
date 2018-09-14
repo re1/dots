@@ -1,0 +1,5 @@
+#!/bin/sh
+bspc config top_padding 0   # reset top padding
+bspc config -m primary top_padding 28
+# restart conky to realign system monitors
+systemctl --user restart conky@left.service conky@right.service
