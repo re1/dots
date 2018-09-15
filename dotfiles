@@ -1,10 +1,11 @@
 #!/bin/sh
 DOTS=/data/Projects/re1/dotfiles
 
-targets=".background.png .config/autorandr .config/compton.conf .config/conky .config/dunst .config/environment.d 
-.config/fontconfig .config/gtk-2.0 .config/gtk-3.0 .config/neofetch .config/nvim .config/rofi 
-.config/systemd/user .local/share/fonts .lock.png .oh-my-zsh/custom .themes .vim/colors 
-.vimrc .zprofile .zshrc .xinitrc .Xresources .xserverrc"
+targets=".background.png .config/autorandr .config/compton.conf .config/dunst 
+.config/environment.d .config/fontconfig .config/gtk-2.0 .config/gtk-3.0 .config/neofetch 
+.config/nvim .config/polybar .config/rofi .config/systemd/user .local/share/fonts .lock.png 
+.oh-my-zsh/custom .themes .vim/colors .vimrc .zprofile .zshrc .xinitrc .Xresources 
+.xserverrc"
 
 rm -rf $DOTS/.config $DOTS/.local
 

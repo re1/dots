@@ -1,0 +1,11 @@
+[Unit]
+Description=Polybar Status Bar
+Documentation=man:polybar(1)
+After=pulseaudio.service
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=polybar %i
+
+[Install]
+WantedBy=default.target

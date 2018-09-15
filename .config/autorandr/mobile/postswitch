@@ -1,2 +1,4 @@
 #!/bin/sh
-bspc monitor -o I II III IV V VI
+bspc monitor -o 1 2 3 4 5 6
+
+systemctl --user stop polybar@secondary.service

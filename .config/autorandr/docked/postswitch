@@ -8,6 +8,7 @@ bspc desktop ^2:^1 -m ^1
 # remove default desktop before reset
 bspc desktop ^1:^1 -r
 # rename, add or remove desktops
-bspc monitor ^1 -d I II III IV  # primary monitor
-bspc monitor ^2 -d V VI         # secondary monitor
+bspc monitor ^1 -d 1 2 3 4  # primary monitor
+bspc monitor ^2 -d 5 6      # secondary monitor
 
+systemctl --user restart polybar@secondary.service

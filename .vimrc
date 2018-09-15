@@ -1,6 +1,7 @@
 """ Plug
 call plug#begin('~/.vim/plugged')       "set plugin path
 
+Plug 'arcticicestudio/nord-vim'         "nord colorscheme
 Plug 'prettier/vim-prettier'            "vim wrapper for prettier
 Plug 'trotter/autojump.vim'             "autojump support for vim
 Plug 'vim-airline/vim-airline'          "lightweight powerline
@@ -20,14 +21,12 @@ call plug#end()                         "init plugin system
 """ Plugins
 let g:deoplete#enable_at_startup = 1
 "set airline StatusLine colors
-let g:airline_theme='onedark'
+let g:airline_theme='nord'
 "adjust powerline icons to work with urxvt
 let g:airline_symbols = {}
-let g:airline_left_sep = '»'
-let g:airline_right_sep = '«'
 let g:airline_symbols.crypt = ''
 let g:airline_symbols.linenr = ''
-let g:airline_symbols.paste = '∥'
+let g:airline_symbols.paste = 'p'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = 'x'
 let g:airline_symbols.whitespace = 'Ξ'
@@ -122,7 +121,7 @@ set whichwrap+=<,>,h,l,[,]      "allow horizontal movement between lines
 
 """ Utility
 "syntax highlighting colors
-colorscheme base16-one-dark
+colorscheme nord
 "remove gui and terminal background for better terminal integration
 hi Normal guibg=NONE ctermbg=NONE
 "change completion menu colors
