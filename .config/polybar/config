@@ -29,9 +29,9 @@ warning = #d08770
 alert = ${xrdb:color1:#bf616a}
 
 [bar/base]
-width = 100%:-24
+width = 100%
 height = 30
-offset-x = 12
+offset-x = 0
 offset-y = 0
 radius = 0
 fixed-center = true
@@ -48,6 +48,7 @@ font-2 = "patched:pixelsize:10;0"
 
 modules-left = bspwm xwindow 
 
+override-redirect = true
 wm-restack = bspwm
 
 scroll-up = bspwm-desknext

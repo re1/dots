@@ -74,7 +74,7 @@ hide_duplicates_count = yes
 # The width can be negative.  In this case the actual width is the
 # screen width minus the width defined in within the geometry option.
 #geometry = "250x50-40+40"
-geometry = "416x52-12+40"
+geometry = "416x52-0+30"
 
 # Define the corner radius of the notification window in pixel size. 
 # If the radius is 0, you have no rounded corners. The radius will be automatically lowered if it exceeds half of the notification height to avoid clipping text and/or icons.
@@ -172,7 +172,7 @@ max_icon_size = 48
 icon_path = /usr/share/icons/Papirus-Dark/32x32/actions/:/usr/share/icons/Papirus-Dark/32x32/devices/:/usr/share/icons/Papirus-Dark/32x32/mimetypes/:/usr/share/icons/Papirus-Dark/32x32/status/:/usr/share/icons/Papirus-Dark/32x32/apps/:/usr/share/icons/Papirus-Dark/32x32/emblems/:/usr/share/icons/Papirus-Dark/32x32/panel/:/usr/share/icons/Papirus-Dark/32x32/categories/:/usr/share/icons/Papirus-Dark/32x32/extra/:/usr/share/icons/Papirus-Dark/32x32/places/
 
 frame_width = 2
-frame_color = "#61afef"
+frame_color = "#BF616A"
 
 [shortcuts]
 
@@ -198,23 +198,23 @@ context = mod4+shift+Prior
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
-frame_color = "#61afef"
-foreground = "#61afef"
-background = "#282c34"
+frame_color = "#81A1C1"
+foreground = "#81A1C1"
+background = "#2E3440"
 timeout = 4
 #icon = /path/to/icon
 
 [urgency_normal]
-frame_color = "#98c379"
-foreground = "#98c379"
-background = "#282c34"
+frame_color = "#EBCB8B"
+foreground = "#EBCB8B"
+background = "#2E3440"
 timeout = 6
 #icon = /path/to/icon
 
 [urgency_critical]
-frame_color = "#e06c75"
-foreground = "#e06c75"
-background = "#282c34"
+frame_color = "#BF616A"
+foreground = "#BF616A"
+background = "#2E3440"
 timeout = 8
 #icon = /path/to/icon
 
