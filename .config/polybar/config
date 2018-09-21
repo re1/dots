@@ -18,15 +18,15 @@
 
 [colors]
 background = ${xrdb:background:#282a3a}
-background-alt = ${xrdb:color0:#3b4252}
-foreground = ${xrdb:foreground:#d8dee9}
-foreground-alt = ${xrdb:color7:#eceff4}
-primary = ${xrdb:color4:#81a1c1}
-secondary = #88c0d0
-success = #a3be8c
-status = #ebcb8b
-warning = #d08770
-alert = ${xrdb:color1:#bf616a}
+background-alt = ${xrdb:color0:#1e1f2b}
+foreground = ${xrdb:foreground:#eaf2f1}
+foreground-alt = ${xrdb:color15:#eaf2f1}
+primary = ${xrdb:color4:#ffd76d}
+secondary = #bad761
+success = #bad761
+status = #ffd76d
+warning = #ff9b5e
+alert = ${xrdb:color1:#ff657a}
 
 [bar/base]
 width = 100%
@@ -227,9 +227,9 @@ type = internal/network
 interface = enp1s0
 interval = 4
 
-format-connected-prefix = "◎"
+format-connected-prefix = "◎ "
 format-connected-background = ${colors.background}
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix-foreground = ${colors.success}
 format-connected-padding = 2
 label-connected = %local_ip%
 
@@ -267,11 +267,11 @@ label-muted-padding = 2
 
 bar-volume-width = 10
 bar-volume-foreground-0 = ${colors.alert}
-bar-volume-foreground-1 = ${colors.warning}
-bar-volume-foreground-2 = ${colors.status}
+bar-volume-foreground-1 = ${colors.status}
+bar-volume-foreground-2 = ${colors.success}
 bar-volume-foreground-3 = ${colors.success}
-bar-volume-foreground-4 = ${colors.status}
-bar-volume-foreground-5 = ${colors.warning}
+bar-volume-foreground-4 = ${colors.success}
+bar-volume-foreground-5 = ${colors.status}
 bar-volume-foreground-6 = ${colors.alert}
 bar-volume-gradient = false
 bar-volume-indicator = |

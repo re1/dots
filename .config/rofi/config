@@ -2,12 +2,12 @@
 rofi.color-enabled: true
 
 ! window            BG              Border   Separator
-rofi.color-window:  argb:ff2e3440,  #2e3440, #4c566a
+rofi.color-window:  argb:f2282a3a,  #282a3a, #1e1f2b
 
-! colors            BG              FG       BG-alt         Head-BG  Head-FG
-rofi.color-normal:  argb:002e3440,  #d8dee9, argb:00353b45, #81a1c1, #ffffff
-rofi.color-active:  argb:002e3440,  #81a1c1, argb:00353b45, #81a1c1, #ffffff
-rofi.color-urgent:  argb:002e3440,  #bf616a, argb:00353b45, #81a1c1, #ffffff
+! colors            BG              FG       BG-alt         Head-BG         Head-FG
+rofi.color-normal:  argb:00282a3a,  #eaf2f1, argb:001e1f2b, argb:001e1f2b,  #ffd76d
+rofi.color-active:  argb:00282a3a,  #bad761, argb:001e1f2b, argb:001e1f2b,  #bad761
+rofi.color-urgent:  argb:00282a3a,  #ff657a, argb:001e1f2b, argb:001e1f2b,  #ff657a
 
 rofi.bw: 0
 rofi.drun-icon-theme: Papirus-Dark

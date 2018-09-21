@@ -1,12 +1,12 @@
 [Desktop Entry]
 Type=X-GNOME-Metatheme
-Name=Light
-Comment=May you find enlightment
+Name=oomox-Light
+Comment=May you one day find enlightment
 Encoding=UTF-8
 
 [X-GNOME-Metatheme]
-GtkTheme=Light
-MetacityTheme=Light
+GtkTheme=Arc-Darker
+MetacityTheme=Arc-Darker
 IconTheme=gnome
 CursorTheme=DMZ-Black
 ButtonLayout=menu:minimize,maximize,close
