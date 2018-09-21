@@ -29,10 +29,14 @@ systemctl --user restart sxhkd
 systemctl --user restart compton
 systemctl --user restart redshift
 systemctl --user restart dunst
+
 systemctl --user restart polybar@primary.service
-systemctl --user restart polybar@secondary.service
-systemctl --user restart conky@left.service
-systemctl --user restart conky@right.service
+
+if [ "$(autorandr --current)" = 'docked' ]
+then
+    systemctl --user restart polybar@secondary.service
+fi
+
 
 exec bspwm
 
