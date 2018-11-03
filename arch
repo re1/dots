@@ -4,23 +4,23 @@
 #   Arch Linux   #
 # ============== #
 #
-# Short install guide for Arch Linux with LUKS encryption and BTRFS partitions
-# The script still requires some user interaction but I am working on it
+# Short install guide / script for Arch Linux with LUKS encryption and BTRFS partitions
+# The script still requires some user interaction but I am working on it!
 #
 # @author Markus @re1
-# @version 2018-08-16
+# @version 2018-11-03
 
 host=re1
 user=markus
 disk=sda
-part=sda5                       # using windows for art
-boot=sda2
-lang=en_GB.UTF-8                # character langauge
-language=en_GB:en:de_AT:de      # interface langauges
-keymap=de-latin1-nodeadkeys     # keymap for keyboard input
-zone=Region/City                # timezone
+part=sda2
+boot=sda1
+lang=de_AT.UTF-8                    # character langauge
+language=de_AT:de:en_GB:en_US:en    # interface langauges
+keymap=de-latin1-nodeadkeys         # keymap for keyboard input
+zone=Region/City                    # timezone
 
-#loadkeys $keymap               # set keymap for further interaction
+loadkeys $keymap                    # set keymap for further interaction
 
 
 # ---------------- #
@@ -37,7 +37,7 @@ mkfs.ext4 -L boot /dev/$boot                        # format boot partition with
 mkfs.btrfs -L arch /dev/mapper/root                 # format mapped partition with btrfs
 
 ##  BTRFS
-mount /dev/mapper/root /mnt                         # mount mapped partition to /mnt
+mount /dev/mapper/root /mnt                         # mount mapped partition
 
 btrfs sub create /mnt/@                             # create subvol for root
 btrfs sub create /mnt/@home                         # create subvol for home
@@ -45,12 +45,12 @@ btrfs sub create /mnt/@pkg                          # create subvol for pacman p
 btrfs sub create /mnt/@snapshots                    # create subvol for snapshots
 
 umount /mnt                                         # unmount mapped partition
-mount /dev/mapper/root -o subvol=@ /mnt             # mount root subvol from mapped partition to /mnt
+mount /dev/mapper/root -o subvol=@ /mnt             # mount root subvol from mapped partition
 
 # create mount points for subvols
+mkdir /mnt/.snapshots
 mkdir /mnt/home
 mkdir -p /mnt/var/cache/pacman/pkg
-mkdir /mnt/.snapshots
 
 # mount subvols
 mount /dev/mapper/root -o subvol=@home /mnt/home
@@ -67,73 +67,146 @@ mount /dev/$boot /mnt/boot                          # mount boot to /mnt/boot
 # ---------------- #
 #   Installation   #
 # ---------------- #
-#wifi-menu                                              # establish a wifi connection without ethernet
+pacstrap /mnt base base-devel btrfs-progs               # install arch base and btrfs tools
 
-pacstrap /mnt base base-devel btrfs-progs zsh vim       # install arch base, btrfs, zsh and vim  to /mnt
-
-genfstab -Lp /mnt >> /mnt/etc/fstab                     # generate fstab entries for /mnt into /mnt/etc/fstab
-
-arch-chroot /mnt                                        # change root to /mnt
-
-passwd                                                  # set password for root
-
-pacman -Suy                                             # update packages
+genfstab -Lp /mnt >> /mnt/etc/fstab                     # generate fstab entries for /mnt → /mnt/etc/fstab
 
 ##  Boot
-pacman -S grub                                          # install grub
-# mark partition with UUID "device" as encrypted
-set GRUB_CMDLINE_LINUX="cryptdevice=UUID=device:cryptroot"    
-nano /etc/default/grub
-nano /etc/mkinitcpio.conf                               # add "encrypt" to HOOKS
+pacstrap /mnt pacman -S grub efibootmgr os-prober       # install grub and tools for other OSs
 
-grub-mkconfig -o /boot/grub/grub.cfg                    # generate grub config into /boot/grub/grub.cfg
-grub-install /dev/sda --efi-directory=/boot/EFI         # install grub to /dev/sda
+# add "encrypt" to mkinitcpio HOOKS
+hooks=${$(grep HOOKS /mnt/etc/mkinitcpio.conf | tail -1)%)}
+sed -i "s/$hooks/$hooks encrypt/g" /mnt/etc/mkinitcpio.conf
+arch-chroot /mnt mkinitcpio -p linux                    # regenerate the initramfs
+
+# mark partition with UUID "device" as encrypted
+uuid=$(blkid -s UUID -o value /dev/$part)               # get device uuid for future references
+GRUB_CMDLINE_LINUX="cryptdevice=UUID=$uuid:cryptroot"   # set GRUB_CMDLINE_LINUX variable for grub
+sed -i "s/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"$GRUB_CMDLINE_LINUX\"/g" /mnt/etc/default/grub
+sed -i "s/#GRUB_ENABLE_CRYPTDISK=y/GRUB_ENABLE_CRYPTDISK=y/g" /mnt/etc/default/grub
+# generate grub config and install to $boot
+arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
+arch-chroot /mnt grub-install /dev/$boot --efi-directory=/boot
 
 
 # ----------------- #
 #   Configuration   #
 # ----------------- #
-echo $host > /etc/hostname                              # set hostname
+arch-chroot passwd                                      # set password for root
+echo $host > /mnt/etc/hostname                          # set hostname
 
 ##  Language
-echo LANG=$lang > /etc/locale.conf                      # use austrian keys
-echo LANGUAGE=$language >> /etc/locale.conf             # use languages ordered by priority
+echo LANG=$lang > /mnt/etc/locale.conf                  # set default keyboard layout
+echo LANGUAGE=$language >> /mnt/etc/locale.conf         # set languages to use
 # uncomment languages for locale generation
 IFS=':' read -rA langs <<< "$language"
-for l in $langs; do; sed -i "s/\#$l\./$l\./g" /etc/locale.gen; done
+for l in $langs; do; sed -i "s/\#$l\./$l\./g" /mnt/etc/locale.gen; done
 
-locale-gen                                              # update locale.conf
+arch-chroot /mnt locale-gen                             # update locale.conf
 
-echo KEYMAP=$keymap > /etc/vconsole.conf                # save keys to virtual terminal config
+echo KEYMAP=$keymap > /mnt/etc/vconsole.conf            # save keys to virtual terminal config
 
-##  Time
-# link local time to specified timezone
-ln -sf /usr/share/zoneinfo/$zone /etc/localtime
 
 ##  User
 # add new user with wheel, audio and video privileges
-useradd -mg users -G wheel,audio,video -s /bin/zsh $user   
-passwd $user                                            # set password for user markus
+arch-chroot useradd -mg users -G wheel,audio,video -s /bin/zsh $user   
+arch-chroot passwd $user                                # set password for user markus
 
-EDITOR=nano visudo                                      # find "group sudo" and uncomment %sudo ALL(ALL) ALL
+# allow members of group wheel to execute any command
+cp -v /mnt/etc/sudoers /mnt/etc/sudoers.aui
+sed -i '/%wheel ALL=(ALL) ALL/s/^#//' /mnt/etc/sudoers
 
-##  Tools
-pacman -S acpid avahi cups                              # power management, DNS discovery, print server
-# enable installed packages
-systemctl enable acpid avahi-daemon org.cups.cupsd.service
+## Time
+ln -sf /mnt/usr/share/zoneinfo/$zone /mnt/etc/localtime # link local time to specified timezone
+arch-chroot /mnt systemctl enable systemd-timesyncd     # enable automatic time settings
+arch-chroot /mnt hwclock -w                             # adjust hardware clock
 
-systemctl enable systemd-timesyncd.service              # enable automatic time settings
-hwclock -w                                              # adjust hardware clock
 
-### NVIDIA
-#pacman -S bumblebee mesa nvidia bbswitch primus
-#gpasswd -a $user bumblebee
-#systemctl enable bumblebeed.service
+# ------------ #
+#   Software   #
+# ------------ #
 
-### VPN
-#pacman -S openvpn
+## Essentials
+pacstrap /mnt       \
+    acpid           \   # basic power management
+    autojump        \   # adds the autojump command (https://github.com/wting/autojump)
+    avahi           \   # DNS discovery
+    cups            \   # print server
+    curl            \   # catch URLs
+    git             \   # version control
+    htop            \   # monitor your hardware
+    lsof            \   # show opened files in htop
+    neovim          \   # best text editor
+    ntfs-3g         \   # support NTFS volumes
+    openssh         \   # support SSH
+    python-neovim   \   # required by many neovim plugins
+    wget            \   # get web content
+    zsh             \   # better shell
 
-### Tor
-#pacman -S tor torsocks
-#pacman -S arm                                          # for monitoring bandwidth and connection details
-#systemctl enable tor
+# enable services provided by essential software
+arch-chroot systemctl enable acpid avahi-daemon org.cups.cupsd
+
+## Extended
+echo "Add NVIDIA drivers?"
+select yn in "Yes" "No"; do
+    [[ $yn == "Yes" ]] && pacstrap /mnt nvidia
+    break
+done
+
+echo "Add Bumblebee?"
+select yn in "Yes" "No"; do
+    if [[ $yn == "Yes" ]]; then
+        pacstrap /mnt bumblebee mesa bbswitch primus
+        arch-chroot /mnt gpasswd -a $user bumblebee
+        arch-chroot /mnt systemctl enable bumblebeed
+    fi
+    break
+done
+
+echo "Add openVPN?"
+select yn in "Yes" "No"; do
+    [[ $yn == "Yes" ]] && pacstrap /mnt openvpn
+    break
+done
+
+echo "Add tor?"
+select yn in "Yes" "No"; do
+    if [[ $yn == "Yes" ]]; then
+        pacstrap /mnt tor torsocks
+        arch-chroot /mnt systemctl enable tor
+    fi
+    break
+done
+
+echo "Add docker?"
+select yn in "Yes" "No"; do
+    if [[ $yn == "Yes" ]]; then
+        pacstrap /mnt docker
+        arch-chroot /mnt gpasswd -a $user docker
+    fi
+    break
+done
+
+echo "Add Firefox?"
+select yn in "Yes" "No"; do
+    [[ $yn == "Yes" ]] && pacstrap /mnt firefox
+    break
+done
+
+echo "Add Arc GTK theme?"
+select yn in "Yes" "No"; do
+    [[ $yn == "Yes" ]] && pacstrap /mnt arc-gtk-theme
+    break
+done
+
+echo "Add Arc KDE theme?"
+select yn in "Yes" "No"; do
+    [[ $yn == "Yes" ]] && pacstrap /mnt arc-kde
+    break
+done
+
+echo "Add Papirus icon theme?"
+select yn in "Yes" "No"; do
+    [[ $yn == "Yes" ]] && pacstrap /mnt papirus-icon-theme
+    break
+done

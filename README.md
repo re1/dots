@@ -7,7 +7,8 @@ As You can see I am working on [Arch Linux](http://archlinux.org/) with [KDE](ht
 - **Editor**: [Neovim](https://www.vim.org/) with [Airline](https://github.com/vim-airline/vim-airline) using the [Nord](https://github.com/arcticicestudio/nord-vim) color scheme
 - **Theme**: [Arc Dark](https://github.com/NicoHood/arc-theme)
 - **Fonts**: [Noto](https://www.google.com/get/noto/) and [Fira](https://mozilla.github.io/Fira/)
-- **Icons**: [Paper](https://github.com/snwh/paper-icon-theme) with [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) as fallback
+- **Icons**: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) or on light
+  themes [Paper](https://github.com/snwh/paper-icon-theme)
 
 I would love to get some feedback so please do not be shy to leave a comment or even a pull request!
 
