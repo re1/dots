@@ -1,0 +1,16 @@
+[Desktop Entry]
+DefaultProfile=Profil 1.profile
+
+[Favorite Profiles]
+Favorites=
+
+[KonsoleWindow]
+ShowWindowTitleOnTitleBar=true
+UseSingleInstance=true
+
+[MainWindow]
+Height 1080=668
+Height 1200=668
+State=AAAA/wAAAAD9AAAAAAAAA7oAAAP/AAAABAAAAAQAAAAIAAAACPwAAAAA
+ToolBarsMovable=Disabled
+Width 1920=712

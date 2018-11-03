@@ -1,0 +1,22 @@
+#!/bin/sh
+DOTS=$HOME/Projects/re1/dots
+
+declare -a targets=(
+    '.config/autostart' '.config/Code - OSS/User/settings.json' '.config/fontconfig' 
+    '.config/dolphinrc' '.config/gtkrc-2.0' '.config/gtk-3.0' '.config/kdeglobals' 
+    '.config/konsolerc' '.config/latte' '.config/lattedockrc' '.config/nvim' '.config/systemd/user' 
+    '.vimrc' '.zshrc'
+)
+
+rm -rf $DOTS/.config $DOTS/.local
+
+for target in "${targets[@]}"
+do
+    dir="$(dirname "${target}")"
+    mkdir -p "$dir"
+    cp -R "$HOME/$target" "$DOTS/$dir"
+    echo "$HOME/$target → $DOTS/$dir"
+done
+
+# save installed packages
+pacman -Qet > $DOTS/packages.txt

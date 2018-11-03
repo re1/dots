@@ -92,3 +92,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 key=key+sizeof(key);
+
+# Add yarn global binaries to PATH
+export PATH="$(yarn global bin):$PATH"
+
+# Add user's local binaries to PATH
+export PATH="$HOME/.local/bin:$PATH"
+

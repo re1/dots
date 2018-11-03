@@ -1,3 +1,0 @@
-#!/bin/sh
-# restart polybar to realign it
-systemctl --user restart polybar@primary.service

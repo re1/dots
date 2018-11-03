@@ -1,11 +1,11 @@
 """ Plug
 call plug#begin('~/.vim/plugged')       "set plugin path
 
-Plug 'arcticicestudio/nord-vim'         "nord colorscheme
 Plug 'prettier/vim-prettier'            "vim wrapper for prettier
 Plug 'trotter/autojump.vim'             "autojump support for vim
+Plug 'tpope/vim-surround'               "useful for surrounding texts
 Plug 'vim-airline/vim-airline'          "lightweight powerline
-Plug 'vim-airline/vim-airline-themes'   "themes for airline including onedark
+Plug 'arcticicestudio/nord-vim' 	    "nord colors and airline
 
 if has('nvim')                          "check for nvim
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -30,7 +30,7 @@ let g:airline_symbols.paste = 'p'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = 'x'
 let g:airline_symbols.whitespace = 'Ξ'
-" powerline symbols
+"powerline symbols
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -39,6 +39,15 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.maxlinenr = ''
+"prettier use custom autoformat
+let g:prettier#autoformat = 0
+"automatic commands
+if has("autocmd")
+    "run prettier on save
+    autocmd BufWritePre,InsertLeave *.css,*.graphql,*.js,*.json,*.jsx,*.less,*.md,*.mjs,*.scss,*.ts,*.tsx,*.vue,*.yaml,*yml Prettier
+    "omni-complete functions
+    autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+endif
 
 
 """ Neovim
@@ -108,15 +117,15 @@ set magic       "use magic regex
 set smartcase   "smart casing for searching
 
 """ Help
-set number          "show line numbers
-set showmatch       "show matching brackets
-set mat=2           "seconds to blink when matching brackets
-set showmode        "show current mode
-set title           "show filename in window title bar
+set number      "show line numbers
+set showmatch   "show matching brackets
+set mat=2       "seconds to blink when matching brackets
+set showmode    "show current mode
+set title       "show filename in window title bar
 
 """ Usability
-set so=6                        "show two lines before window border
-set whichwrap+=<,>,h,l,[,]      "allow horizontal movement between lines
+set so=6                    "show two lines before window border
+set whichwrap+=<,>,h,l,[,]  "allow horizontal movement between lines
 
 
 """ Utility
@@ -137,24 +146,8 @@ hi TabLineSel ctermfg=8 ctermbg=3
 "hi lines with more than 100 characters
 hi OverLength ctermbg=red ctermfg=white
 match OverLength /\%101v.\+/
-" delete trailing white space on save, useful for some filetypes ;)
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    silent! %s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
 
 """ Commands
-"automatic commands
-if has("autocmd")
-    "clean extra spaces for some files
-    autocmd BufWritePre *.md,*.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
-    "omni-complete functions
-    autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-endif
-
 "save file using sudo
 command W w !sudo tee > /dev/null %
 

@@ -1,0 +1,8 @@
+[Unit]
+Description=Synchronize backups using rsync
+
+[Service]
+Type=simple
+ExecStartPre=notify-send "Backup Synchronization" "Synchronizing backups using rsync"
+ExecStart=/home/markus/.local/bin/backup
+ExecStartPost=notify-send "Backup Synchronization" "Synchronization complete!"

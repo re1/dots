@@ -1,8 +1,8 @@
 [Unit]
-Description=Timer for weekly backups using borg
+Description=Timer for daily backups using borg
 
 [Timer]
-OnCalendar=weekly
+OnCalendar=daily
 Persistent=true
 
 [Install]

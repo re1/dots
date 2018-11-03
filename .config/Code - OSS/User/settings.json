@@ -1,0 +1,22 @@
+{
+    "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
+    "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
+    "editor.fontSize": 13,
+    "editor.fontFamily": "'Fira Code', 'Fira Mono', 'monospace', monospace",
+    "prettier.singleQuote": true,
+    "prettier.tabWidth": 4,
+    "prettier.jsxBracketSameLine": true,
+    "editor.formatOnSave": true,
+    "files.autoSave": "onFocusChange",
+    "files.trimTrailingWhitespace": true,
+    "editor.formatOnPaste": true,
+    "html.format.endWithNewline": true,
+    "html.format.indentHandlebars": true,
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "markdown.preview.scrollEditorWithPreview": false,
+    "markdown.preview.scrollPreviewWithEditor": false,
+    "markdown-preview-enhanced.breakOnSingleNewLine": false,
+    "markdown-preview-enhanced.mathRenderingOption": "MathJax",
+    "markdown-preview-enhanced.previewTheme": "one-light.css"
+}
