@@ -21,5 +21,7 @@ Each branch contains configuration for different window managers and or working 
 
 If you like my dotfiles (and also if you hate them) you can create a pull request for specific files.
 
-- [1]: Integrates really well into the KDE desktop environment and offers daemonization.
-  For different DEs I use [RXVT-unicode](http://software.schmorp.de/pkg/rxvt-unicode.html).
+---
+
+- [1]: Integrates well with the KDE desktop environment and offers daemonization.
+  For other DEs I use [RXVT-unicode](http://software.schmorp.de/pkg/rxvt-unicode.html).
