@@ -4,7 +4,7 @@ As You can see below I am working on [Arch Linux](http://archlinux.org/) with [K
 
 - **Terminal**: [Konsole](https://konsole.kde.org/) [1]
 - **Shell**: [Zsh](https://www.zsh.org/) with [Oh My ZSH](https://ohmyz.sh/) using the [Spaceship](https://github.com/denysdovhan/spaceship-prompt) prompt
-- **Editor**: [Neovim](https://www.vim.org/) with [Airline](https://github.com/vim-airline/vim-airline) using the [Nord](https://github.com/arcticicestudio/nord-vim) color scheme
+- **Editor**: [Neovim](https://www.vim.org/) with [Airline](https://github.com/vim-airline/vim-airline) using the [Ayu](https://github.com/ayu-theme/ayu-vim) color scheme
 - **Theme**: [Arc Dark](https://github.com/NicoHood/arc-theme)
 - **Fonts**: [Noto](https://www.google.com/get/noto/) and [Fira](https://mozilla.github.io/Fira/)
 - **Icons**: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) or on light
