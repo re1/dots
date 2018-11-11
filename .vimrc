@@ -6,6 +6,7 @@ Plug 'trotter/autojump.vim'             "autojump support for vim
 Plug 'tpope/vim-surround'               "useful for surrounding texts
 Plug 'vim-airline/vim-airline'          "lightweight powerline
 Plug 'arcticicestudio/nord-vim' 	    "nord colors and airline
+Plug 'ayu-theme/ayu-vim'                "ayu colors and airline
 
 if has('nvim')                          "check for nvim
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -21,7 +22,7 @@ call plug#end()                         "init plugin system
 """ Plugins
 let g:deoplete#enable_at_startup = 1
 "set airline StatusLine colors
-let g:airline_theme='nord'
+let g:airline_theme='ayu'
 "adjust powerline icons to work with urxvt
 let g:airline_symbols = {}
 let g:airline_symbols.crypt = ''
@@ -90,6 +91,7 @@ set lazyredraw              "do not redraw while executing macros (avoid lag)
 set secure                  "disable unsafe commands
 set noerrorbells            "no error sound
 set novisualbell            "no visual notification for error sounds
+set termguicolors           "enable true colors support
 
 """ Completion
 set completeopt=longest,menuone,preview "complete to shared characters and show menu
@@ -130,7 +132,8 @@ set whichwrap+=<,>,h,l,[,]  "allow horizontal movement between lines
 
 """ Utility
 "syntax highlighting colors
-colorscheme nord
+let ayucolor='mirage'
+colorscheme ayu
 "remove gui and terminal background for better terminal integration
 hi Normal guibg=NONE ctermbg=NONE
 "change completion menu colors

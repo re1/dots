@@ -1,6 +1,5 @@
 {
-    "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
-    "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
+    "workbench.iconTheme": "eq-material-theme-icons-darker",
     "editor.fontSize": 13,
     "editor.fontFamily": "'Fira Code', 'Fira Mono', 'monospace', monospace",
     "prettier.singleQuote": true,
@@ -15,8 +14,20 @@
     "git.enableSmartCommit": true,
     "git.autofetch": true,
     "markdown.preview.scrollEditorWithPreview": false,
-    "markdown.preview.scrollPreviewWithEditor": false,
     "markdown-preview-enhanced.breakOnSingleNewLine": false,
     "markdown-preview-enhanced.mathRenderingOption": "MathJax",
-    "markdown-preview-enhanced.previewTheme": "one-light.css"
+    "markdown-preview-enhanced.previewTheme": "one-light.css",
+    "cSpell.language": "de,en-GB",
+    "terminal.external.linuxExec": "konsole",
+    "terminal.explorerKind": "external",
+    "files.associations": {
+        "*.config": "yaml"
+    },
+    "cSpell.userWords": [
+        "admin",
+        "mojito"
+    ],
+    "workbench.colorTheme": "Ayu Mirage",
+    "editor.fontLigatures": true,
+    "latex-workshop.message.update.show": false
 }

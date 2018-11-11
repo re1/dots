@@ -1,6 +1,6 @@
 Thank You for visting my dot-files!
 
-As You can see I am working on [Arch Linux](http://archlinux.org/) with [KDE](https://www.kde.org/) as my window manager and desktop environment. Have a short list of the most important components:
+As You can see below I am working on [Arch Linux](http://archlinux.org/) with [KDE](https://www.kde.org/) as my window manager and desktop environment. Have a short list of the most important components:
 
 - **Terminal**: [Konsole](https://konsole.kde.org/) [1]
 - **Shell**: [Zsh](https://www.zsh.org/) with [Oh My ZSH](https://ohmyz.sh/) using the [Spaceship](https://github.com/denysdovhan/spaceship-prompt) prompt
@@ -9,6 +9,10 @@ As You can see I am working on [Arch Linux](http://archlinux.org/) with [KDE](ht
 - **Fonts**: [Noto](https://www.google.com/get/noto/) and [Fira](https://mozilla.github.io/Fira/)
 - **Icons**: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) or on light
   themes [Paper](https://github.com/snwh/paper-icon-theme)
+
+My current set-up looks something like this:
+
+![screen-shot](screenshot.png)
 
 I would love to get some feedback so please do not be shy to leave a comment or even a pull request!
 
