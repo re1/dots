@@ -1,5 +1,5 @@
 {
-    "workbench.iconTheme": "eq-material-theme-icons-darker",
+    "workbench.iconTheme": "ayu",
     "editor.fontSize": 13,
     "editor.fontFamily": "'Fira Code', 'Fira Mono', 'monospace', monospace",
     "prettier.singleQuote": true,
@@ -25,7 +25,10 @@
     },
     "cSpell.userWords": [
         "admin",
-        "mojito"
+        "math",
+        "mojito",
+        "versionierung",
+        "wysiwyg"
     ],
     "workbench.colorTheme": "Ayu Mirage",
     "editor.fontLigatures": true,

@@ -36,14 +36,14 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux autoenv.plugin autojump docker npm pass pyenv python)
+plugins=(archlinux autoenv.plugin autojump docker yarn pass bd)
 
 source $ZSH/oh-my-zsh.sh
 
-# export MANPATH="/usr/local/man:$MANPATH"
-# export LANG=en_US.UTF-8               # Set language environment manually
-export ARCHFLAGS="-arch x86_64"         # Compilation flags
-export SSH_KEY_PATH="~/.ssh/id_rsa"     # SSH
+# export MANPATH="/usr/local/man:$MANPATH"  # Set path for man pages
+# export LANG=en_US.UTF-8                   # Set language environment manually
+export ARCHFLAGS="-arch x86_64"             # Compilation flags
+export SSH_KEY_PATH="~/.ssh/id_rsa"         # SSH
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs, 
 # plugins, and themes.  Aliases can be placed here, though oh-my-zsh 
@@ -52,27 +52,22 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"     # SSH
 
 key=key+sizeof(key);
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+[[ $- != *i* ]] && return   # If not running interactively, don't do anything
 
-gi () {
-    for arg in "$@"; do
-        curl "https://www.gitignore.io/api/$arg" >> '$PWD/.gitignore'
-    done
+# Download gitignore for arguments from gitignore.io
+gi () {     
+    old="$IFS"; IFS=','
+    curl "https://www.gitignore.io/api/$*" >> "$PWD/.gitignore"
+    IFS=$old
 }
 
+alias ga='git add .; git status'
 alias ls='ls --color=auto'
-
-if [ -e ~/.bashrc.aliases ] ; then
-   source ~/.bashrc.aliases
-fi
+alias t='tree'
 
 BROWSER=/usr/bin/firefox
 EDITOR=/usr/bin/nvim
 
-# Add yarn global binaries to PATH
-export PATH="$(yarn global bin):$PATH"
-
-# Add user's local binaries to PATH
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$(yarn global bin):$PATH"  # Add yarn global binaries to PATH
+export PATH="$HOME/.local/bin:$PATH"    # Add user's local binaries to PATH
 

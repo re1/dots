@@ -3,6 +3,8 @@ Description=Run a borg backup
 
 [Service]
 Type=simple
+Restart=on-failure
+RestartSec=7200
 ExecStartPre=notify-send "Backup" "Starting daily borg backup"
 ExecStart=/home/markus/.local/bin/backup
-ExecStartPost=notify-send "Backup" "Daily borg backup done!"
+ExecStop=notify-send "Backup" "Daily borg backup done!"
