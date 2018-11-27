@@ -25,6 +25,7 @@
     },
     "cSpell.userWords": [
         "admin",
+        "isnumeric",
         "math",
         "mojito",
         "versionierung",
@@ -32,5 +33,13 @@
     ],
     "workbench.colorTheme": "Ayu Mirage",
     "editor.fontLigatures": true,
-    "latex-workshop.message.update.show": false
+    "latex-workshop.message.update.show": false,
+    "window.zoomLevel": 0,
+    "git.confirmSync": false,
+    "git.promptToSaveFilesBeforeCommit": true,
+    "git.showPushSuccessNotification": true,
+    "explorer.confirmDragAndDrop": false,
+    "python.jediEnabled": false,
+    "terminal.integrated.rendererType": "dom",
+    "explorer.confirmDelete": false
 }

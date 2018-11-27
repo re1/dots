@@ -62,8 +62,11 @@ gi () {
 }
 
 alias ga='git add .; git status'
+alias gc='git add .; git status; git commit -e'
+alias gp='git push'
+alias gcp='git add .; git status; git commit -e; git push'
 alias ls='ls --color=auto'
-alias t='tree'
+alias t ='tree'
 
 BROWSER=/usr/bin/firefox
 EDITOR=/usr/bin/nvim
