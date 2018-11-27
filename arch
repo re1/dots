@@ -26,26 +26,9 @@ loadkeys $keymap                    # set keymap for further interaction
 # ---------------- #
 #   Partitioning   #
 # ---------------- #
-# fdisk g (new GPT scheme), n (new partition), w (write and quit), t (change partition type)
-# Create partitions from bash as in https://superuser.com/a/984637
-sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk /dev/$disk
-  o # clear the in memory partition table
-  n # new partition
-  p # primary partition
-  1 # partition number 1
-    # default - start at beginning of disk 
-  +100M # 100 MB boot parttion
-  n # new partition
-  p # primary partition
-  2 # partion number 2
-    # default, start immediately after preceding partition
-    # default, extend partition to end of disk
-  a # make a partition bootable
-  1 # bootable partition is partition 1 -- /dev/sda1
-  p # print the in-memory partition table
-  w # write the partition table
-  q # and we're done
-EOF
+# Create partitions from sfdisk
+echo "/dev/$boot : size=+100M, bootable" | sfdisk /dev/$disk
+echo "/dev/$part" | sfdisk /dev/$disk
 
 ##  Encryption
 cryptsetup luksFormat -M luks2 /dev/$part           # encrypt partition with LUKS
