@@ -27,8 +27,9 @@ loadkeys $keymap                    # set keymap for further interaction
 #   Partitioning   #
 # ---------------- #
 # Create partitions from sfdisk
-echo "/dev/$boot : size=+100M, bootable" | sfdisk /dev/$disk
-echo "/dev/$part" | sfdisk /dev/$disk
+echo "/dev/$boot : type=83, size=+100M, bootable" >> tmp.sfdisk
+echo "/dev/$part : type=83" >> tmp.sfdisk
+sfdisk /dev/$disk < tmp.sfdisk
 
 ##  Encryption
 cryptsetup luksFormat -M luks2 /dev/$part           # encrypt partition with LUKS
