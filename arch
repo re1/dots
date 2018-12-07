@@ -13,8 +13,9 @@
 host=re1
 user=markus
 disk=sda
-part=sda2
 boot=sda1
+root=sda2
+swap=sda3
 lang=de_AT.UTF-8                    # character langauge
 language=de_AT:de:en_GB:en_US:en    # interface langauges
 keymap=de-latin1-nodeadkeys         # keymap for keyboard input
@@ -26,28 +27,30 @@ loadkeys $keymap                    # set keymap for further interaction
 # ---------------- #
 #   Partitioning   #
 # ---------------- #
-# Create partitions from sfdisk
-echo "/dev/$boot : type=83, size=+100M, bootable" >> tmp.sfdisk
-echo "/dev/$part : type=83" >> tmp.sfdisk
-sfdisk /dev/$disk < tmp.sfdisk
+# Create partitions from sfdisk (start,size,type,bootable)
+sfdisk /dev/$disk << EOF
+,550M,U,*
+,2G,S
+;
+EOF
 
 ##  Encryption
-cryptsetup luksFormat -M luks2 /dev/$part           # encrypt partition with LUKS
-cryptsetup open /dev/$part root                     # map decrypted partition to /dev/mapper/root
+cryptsetup luksFormat -M luks2 /dev/$part   # encrypt partition with LUKS
+cryptsetup open /dev/$part root             # map decrypted partition to /dev/mapper/root
 
-mkfs.ext4 -L boot /dev/$boot                        # format boot partition with ext4
-mkfs.btrfs -L arch /dev/mapper/root                 # format mapped partition with btrfs
+mkfs.ext4 -L boot /dev/$boot                # format boot partition with ext4
+mkfs.btrfs -L arch /dev/mapper/root         # format mapped partition with btrfs
 
-##  BTRFS
-mount /dev/mapper/root /mnt                         # mount mapped partition
+mount /dev/mapper/root /mnt                 # mount mapped partition
 
-btrfs sub create /mnt/@                             # create subvol for root
-btrfs sub create /mnt/@home                         # create subvol for home
-btrfs sub create /mnt/@pkg                          # create subvol for pacman package cache
-btrfs sub create /mnt/@snapshots                    # create subvol for snapshots
+btrfs sub create /mnt/@                     # create subvol for root
+btrfs sub create /mnt/@home                 # create subvol for home
+btrfs sub create /mnt/@pkg                  # create subvol for pacman package cache
+btrfs sub create /mnt/@snapshots            # create subvol for snapshots
 
-umount /mnt                                         # unmount mapped partition
-mount /dev/mapper/root -o subvol=@ /mnt             # mount root subvol from mapped partition
+umount /mnt                                 # unmount mapped partition
+# mount root subvol with lzo compression from mapped partition
+mount /dev/mapper/root -o compress=lzo,subvol=@ /mnt
 
 # create mount points for subvols
 mkdir /mnt/.snapshots
@@ -69,12 +72,11 @@ mount /dev/$boot /mnt/boot                          # mount boot to /mnt/boot
 # ---------------- #
 #   Installation   #
 # ---------------- #
-pacstrap /mnt base base-devel btrfs-progs               # install arch base and btrfs tools
-
-genfstab -Lp /mnt >> /mnt/etc/fstab                     # generate fstab entries for /mnt → /mnt/etc/fstab
+pacstrap /mnt base base-devel btrfs-progs   # install arch base and btrfs tools
+genfstab -Lp /mnt >> /mnt/etc/fstab         # generate fstab entries for /mnt → /mnt/etc/fstab
 
 ##  Boot
-pacstrap /mnt pacman -S grub efibootmgr os-prober       # install grub and tools for other OSs
+pacstrap /mnt grub efibootmgr os-prober     # install grub and tools for other OSs
 
 # add "encrypt" to mkinitcpio HOOKS
 hooks=${$(grep HOOKS /mnt/etc/mkinitcpio.conf | tail -1)%)}
@@ -82,11 +84,12 @@ sed -i "s/$hooks/$hooks encrypt/g" /mnt/etc/mkinitcpio.conf
 arch-chroot /mnt mkinitcpio -p linux                    # regenerate the initramfs
 
 # mark partition with UUID "device" as encrypted
-uuid=$(blkid -s UUID -o value /dev/$part)               # get device uuid for future references
+uuid=$(blkid -s UUID -o value /dev/$root)               # get device uuid for future references
 GRUB_CMDLINE_LINUX="cryptdevice=UUID=$uuid:cryptroot"   # set GRUB_CMDLINE_LINUX variable for grub
 sed -i "s/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"$GRUB_CMDLINE_LINUX\"/g" /mnt/etc/default/grub
 sed -i "s/#GRUB_ENABLE_CRYPTDISK=y/GRUB_ENABLE_CRYPTDISK=y/g" /mnt/etc/default/grub
 # generate grub config and install to $boot
+mkdir /mnt/boot/grub
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 arch-chroot /mnt grub-install /dev/$boot --efi-directory=/boot
 
