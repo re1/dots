@@ -38,7 +38,7 @@ EOF
 cryptsetup luksFormat -M luks2 /dev/$part   # encrypt partition with LUKS
 cryptsetup open /dev/$part root             # map decrypted partition to /dev/mapper/root
 
-mkfs.ext4 -L boot /dev/$boot                # format boot partition with ext4
+mkfs.fat -F32 /dev/$boot                    # format boot partition with ext4
 mkfs.btrfs -L arch /dev/mapper/root         # format mapped partition with btrfs
 
 mount /dev/mapper/root /mnt                 # mount mapped partition
@@ -81,7 +81,7 @@ pacstrap /mnt grub efibootmgr os-prober     # install grub and tools for other O
 # add "encrypt" to mkinitcpio HOOKS
 hooks=${$(grep HOOKS /mnt/etc/mkinitcpio.conf | tail -1)%)}
 sed -i "s/$hooks/$hooks encrypt/g" /mnt/etc/mkinitcpio.conf
-arch-chroot /mnt mkinitcpio -p linux                    # regenerate the initramfs
+arch-chroot /mnt mkinitcpio -p linux        # regenerate the initramfs
 
 # mark partition with UUID "device" as encrypted
 uuid=$(blkid -s UUID -o value /dev/$root)               # get device uuid for future references
@@ -89,15 +89,14 @@ GRUB_CMDLINE_LINUX="cryptdevice=UUID=$uuid:cryptroot"   # set GRUB_CMDLINE_LINUX
 sed -i "s/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"$GRUB_CMDLINE_LINUX\"/g" /mnt/etc/default/grub
 sed -i "s/#GRUB_ENABLE_CRYPTDISK=y/GRUB_ENABLE_CRYPTDISK=y/g" /mnt/etc/default/grub
 # generate grub config and install to $boot
-mkdir /mnt/boot/grub
+arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
-arch-chroot /mnt grub-install /dev/$boot --efi-directory=/boot
 
 
 # ----------------- #
 #   Configuration   #
 # ----------------- #
-arch-chroot passwd                                      # set password for root
+arch-chroot /mnt passwd                                 # set password for root
 echo $host > /mnt/etc/hostname                          # set hostname
 
 ##  Language
@@ -114,8 +113,8 @@ echo KEYMAP=$keymap > /mnt/etc/vconsole.conf            # save keys to virtual t
 
 ##  User
 # add new user with wheel, audio and video privileges
-arch-chroot useradd -mg users -G wheel,audio,video -s /bin/zsh $user   
-arch-chroot passwd $user                                # set password for user markus
+arch-chroot /mnt useradd -mg users -G wheel,audio,video -s /bin/zsh $user   
+arch-chroot /mnt passwd $user                           # set password for user markus
 
 # allow members of group wheel to execute any command
 cp -v /mnt/etc/sudoers /mnt/etc/sudoers.aui
@@ -149,7 +148,7 @@ pacstrap /mnt       \
     zsh             \   # better shell
 
 # enable services provided by essential software
-arch-chroot systemctl enable acpid avahi-daemon org.cups.cupsd
+arch-chroot /mnt systemctl enable acpid avahi-daemon org.cups.cupsd
 
 ## Extended
 echo "Add NVIDIA drivers?"
