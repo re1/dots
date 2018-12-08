@@ -12,10 +12,6 @@
 
 host=re1
 user=markus
-disk=sda
-boot=sda1
-root=sda2
-swap=sda3
 lang=de_AT.UTF-8                    # character langauge
 language=de_AT:de:en_GB:en_US:en    # interface langauges
 keymap=de-latin1-nodeadkeys         # keymap for keyboard input
@@ -28,18 +24,23 @@ loadkeys $keymap                    # set keymap for further interaction
 #   Partitioning   #
 # ---------------- #
 # Create partitions from sfdisk (start,size,type,bootable)
-sfdisk /dev/$disk << EOF
+sfdisk /dev/sda << EOF
 ,550M,U,*
 ,2G,S
 ;
 EOF
 
-##  Encryption
-cryptsetup luksFormat -M luks2 /dev/$part   # encrypt partition with LUKS
-cryptsetup open /dev/$part root             # map decrypted partition to /dev/mapper/root
+mkfs.vfat -F32 -n EFI /dev/sda1     # format boot partition with ext4
+mkswap -L SWAP /dev/sda2            # format swap partition
+swapon /dev/sda2                    # activate swap
 
-mkfs.fat -F32 /dev/$boot                    # format boot partition with ext4
-mkfs.btrfs -L arch /dev/mapper/root         # format mapped partition with btrfs
+##  Encryption
+cryptsetup luksFormat -M luks2 /dev/sda2            # encrypt partition with LUKS
+dd if=/dev/random of=/tmp/key bs=512 count=4        # create random key
+cryptsetup luksAddKey /dev/sda2 /tmp/key            # add key to encrypted partition
+cryptsetup open /dev/sda3 cryptArch -d /tmp/key     # map decrypted partition to /dev/mapper/cryptArch
+
+mkfs.btrfs -L ARCH /dev/mapper/cryptArch    # format mapped partition with btrfs
 
 mount /dev/mapper/root /mnt                 # mount mapped partition
 
@@ -50,33 +51,30 @@ btrfs sub create /mnt/@snapshots            # create subvol for snapshots
 
 umount /mnt                                 # unmount mapped partition
 # mount root subvol with lzo compression from mapped partition
-mount /dev/mapper/root -o compress=lzo,subvol=@ /mnt
+mount /dev/mapper/cryptArch -o compress=lzo,subvol=@ /mnt
 
-# create mount points for subvols
-mkdir /mnt/.snapshots
-mkdir /mnt/home
-mkdir -p /mnt/var/cache/pacman/pkg
+# create mount points for subvolumes
+mkdir -p /mnt/.snapshots /mnt/home /mnt/var/cache/pacman/pkg
+mount /dev/mapper/cryptArch -o subvol=@home /mnt/home
+mount /dev/mapper/cryptArch -o subvol=@pkg /mnt/var/cache/pacman/pkg
+mount /dev/mapper/cryptArch -o subvol=@snapshots /mnt/.snapshots
 
-# mount subvols
-mount /dev/mapper/root -o subvol=@home /mnt/home
-mount /dev/mapper/root -o subvol=@pkg /mnt/var/cache/pacman/pkg
-mount /dev/mapper/root -o subvol=@snapshots /mnt/.snapshots
+mkdir /mnt/btrfs    # create mount point for btrfs root
+mount /dev/mapper/cryptArch -o subvolid=5 /mnt/btrfs
 
-mkdir /mnt/btrfs                                    # create mount point for btrfs root
-mount /dev/mapper/root -o subvolid=5 /mnt/btrfs     # mount btrfs root to /mnt/btrfs
-
-mkdir /mnt/boot                                     # create mount point for boot partition
-mount /dev/$boot /mnt/boot                          # mount boot to /mnt/boot
+mkdir /mnt/boot     # create mount point for boot partition
+mount /dev/sda1 /mnt/boot
 
 
 # ---------------- #
 #   Installation   #
 # ---------------- #
-pacstrap /mnt base base-devel btrfs-progs   # install arch base and btrfs tools
+# install system base and btrfs utility
+pacstrap /mnt base base-devel btrfs-probs
 genfstab -Lp /mnt >> /mnt/etc/fstab         # generate fstab entries for /mnt → /mnt/etc/fstab
 
-##  Boot
-pacstrap /mnt grub efibootmgr os-prober     # install grub and tools for other OSs
+## Boot
+pacstrap /mnt grub efibootmgr os-prober     # install boot manager and utility for other OSs
 
 # add "encrypt" to mkinitcpio HOOKS
 hooks=${$(grep HOOKS /mnt/etc/mkinitcpio.conf | tail -1)%)}
@@ -84,12 +82,12 @@ sed -i "s/$hooks/$hooks encrypt/g" /mnt/etc/mkinitcpio.conf
 arch-chroot /mnt mkinitcpio -p linux        # regenerate the initramfs
 
 # mark partition with UUID "device" as encrypted
-uuid=$(blkid -s UUID -o value /dev/$root)               # get device uuid for future references
-GRUB_CMDLINE_LINUX="cryptdevice=UUID=$uuid:cryptroot"   # set GRUB_CMDLINE_LINUX variable for grub
+uuid=$(blkid -s UUID -o value /dev/sda3)                # get device uuid for future references
+GRUB_CMDLINE_LINUX="cryptdevice=UUID=$uuid\:cryptArch"  # set GRUB_CMDLINE_LINUX variable for grub
 sed -i "s/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"$GRUB_CMDLINE_LINUX\"/g" /mnt/etc/default/grub
-sed -i "s/#GRUB_ENABLE_CRYPTDISK=y/GRUB_ENABLE_CRYPTDISK=y/g" /mnt/etc/default/grub
+sed -i '/GRUB_ENABLE_CRYPTODISK=y/s/^#//' /mnt/etc/default/grub
 # generate grub config and install to $boot
-arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
 
