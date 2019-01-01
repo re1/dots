@@ -1,0 +1,7 @@
+#!/bin/sh
+pacstrap /mnt           \
+    arc-gtk-theme       \   # Arc GTK theme
+    arc-kde             \   # Qt version of the Arc GTK theme
+    kvantum-qt5         \   # SVG based theme engine for Qt5
+    kvantum-theme-arc   \   # Kvantum version of the Arc GTK theme
+    papirus-icon-theme  \   # Papirus icon theme (matches best with Arc)

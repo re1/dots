@@ -66,11 +66,15 @@ alias gc='git add .; git status; git commit -e'
 alias gp='git push'
 alias gcp='git add .; git status; git commit -e; git push'
 alias ls='ls --color=auto'
-alias t ='tree'
+alias p='pass'
+alias t='tree'
+alias ta='tree -a -I .git'
+alias td='tree -d'
 
 BROWSER=/usr/bin/firefox
 EDITOR=/usr/bin/nvim
 
-export PATH="$(yarn global bin):$PATH"  # Add yarn global binaries to PATH
-export PATH="$HOME/.local/bin:$PATH"    # Add user's local binaries to PATH
+export PATH="$HOME/.local/bin:$PATH"                        # Add user's local binaries to PATH
+export PATH="$(yarn global bin):$PATH"                      # Add yarn global binaries to PATH
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"     # Add ruby gems to PATH
 

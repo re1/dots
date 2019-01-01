@@ -69,8 +69,8 @@ mount /dev/sda1 /mnt/boot
 # ---------------- #
 #   Installation   #
 # ---------------- #
-# install system base and btrfs utility
-pacstrap /mnt base base-devel btrfs-probs
+# install system base, btrfs utility and a better shell
+pacstrap /mnt base base-devel btrfs-probs zsh
 genfstab -Lp /mnt >> /mnt/etc/fstab         # generate fstab entries for /mnt → /mnt/etc/fstab
 
 ## Boot
@@ -143,12 +143,12 @@ pacstrap /mnt       \
     openssh         \   # support SSH
     python-neovim   \   # required by many neovim plugins
     wget            \   # get web content
-    zsh             \   # better shell
 
 # enable services provided by essential software
 arch-chroot /mnt systemctl enable acpid avahi-daemon org.cups.cupsd
 
 ## Extended
+# TODO: Add automatic graphics card detection
 echo "Add NVIDIA drivers?"
 select yn in "Yes" "No"; do
     [[ $yn == "Yes" ]] && pacstrap /mnt nvidia
@@ -165,50 +165,5 @@ select yn in "Yes" "No"; do
     break
 done
 
-echo "Add openVPN?"
-select yn in "Yes" "No"; do
-    [[ $yn == "Yes" ]] && pacstrap /mnt openvpn
-    break
-done
+pacstrap /mnt firefox       # privacy friendly web browser
 
-echo "Add tor?"
-select yn in "Yes" "No"; do
-    if [[ $yn == "Yes" ]]; then
-        pacstrap /mnt tor torsocks
-        arch-chroot /mnt systemctl enable tor
-    fi
-    break
-done
-
-echo "Add docker?"
-select yn in "Yes" "No"; do
-    if [[ $yn == "Yes" ]]; then
-        pacstrap /mnt docker
-        arch-chroot /mnt gpasswd -a $user docker
-    fi
-    break
-done
-
-echo "Add Firefox?"
-select yn in "Yes" "No"; do
-    [[ $yn == "Yes" ]] && pacstrap /mnt firefox
-    break
-done
-
-echo "Add Arc GTK theme?"
-select yn in "Yes" "No"; do
-    [[ $yn == "Yes" ]] && pacstrap /mnt arc-gtk-theme
-    break
-done
-
-echo "Add Arc KDE theme?"
-select yn in "Yes" "No"; do
-    [[ $yn == "Yes" ]] && pacstrap /mnt arc-kde
-    break
-done
-
-echo "Add Papirus icon theme?"
-select yn in "Yes" "No"; do
-    [[ $yn == "Yes" ]] && pacstrap /mnt papirus-icon-theme
-    break
-done

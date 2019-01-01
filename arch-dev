@@ -1,0 +1,3 @@
+#!/bin/sh
+pacstrap /mnt docker    # container virtualization
+arch-chroot /mnt gpasswd -a $user docker
