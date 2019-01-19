@@ -46,6 +46,8 @@ let g:prettier#autoformat = 0
 if has("autocmd")
     "run prettier on save
     autocmd BufWritePre,InsertLeave *.css,*.graphql,*.js,*.json,*.jsx,*.less,*.md,*.mjs,*.scss,*.ts,*.tsx,*.vue,*.yaml,*yml Prettier
+    "delete trailing whitespace on save
+    autocmd BufWritePre * %s/\s\+$//e
     "omni-complete functions
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 endif
@@ -71,12 +73,6 @@ else
     set ruler                       "highlight current line
     set showcmd                     "show command while typing
     set wildmenu                    "autocomplete files on tab
-    "persistant undo
-    try
-        set undodir=~/.vim/tmp/undo
-        set undofile
-    catch
-    endtry
 endif
 
 
@@ -119,15 +115,23 @@ set magic       "use magic regex
 set smartcase   "smart casing for searching
 
 """ Help
-set number      "show line numbers
-set showmatch   "show matching brackets
-set mat=2       "seconds to blink when matching brackets
-set showmode    "show current mode
-set title       "show filename in window title bar
+set number          "show line numbers
+set relativenumber  "show line numbers relative to current position
+set showmatch       "show matching brackets
+set mat=2           "seconds to blink when matching brackets
+set showmode        "show current mode
+set title           "show filename in window title bar
 
 """ Usability
 set so=6                    "show two lines before window border
 set whichwrap+=<,>,h,l,[,]  "allow horizontal movement between lines
+
+"persistant undo
+try
+    set undodir=~/.vim/tmp/undo
+    set undofile
+catch
+endtry
 
 
 """ Utility
@@ -168,6 +172,10 @@ map 0 ^
 "imap <silent> <Up> <C-o>gk
 "nmap <silent> <Down> gj
 "nmap <silent> <Up> gk
+
+"copy to and paste from clipboard
+vnoremap <C-c> "+y
+map <C-v> "+P
 
 "move lines by pressing alt
 nnoremap <A-Down> :m .+1<CR>==
