@@ -1,6 +1,6 @@
-Thank You for visting my dot-files!
+Thank you for visting my dot-files!
 
-As You can see below I am working on [Arch Linux](http://archlinux.org/) with [KDE](https://www.kde.org/) as my window manager and desktop environment. Have a short list of the most important components:
+As you can see below I am working on [Arch Linux](http://archlinux.org/) with [KDE](https://www.kde.org/) as my window manager and desktop environment. Have a short list of the most important components:
 
 - **Terminal**: [Konsole](https://konsole.kde.org/) [1]
 - **Shell**: [Zsh](https://www.zsh.org/) with [Oh My ZSH](https://ohmyz.sh/) using the [Spaceship](https://github.com/denysdovhan/spaceship-prompt) prompt
@@ -15,6 +15,15 @@ My current set-up looks something like this:
 ![screen-shot](screenshot.png)
 
 I would love to get some feedback so please do not be shy to leave a comment or even a pull request!
+
+## Usage
+
+Files are managed using [GNU Stow](https://www.gnu.org/software/stow/) (`pacman -S stow`).
+
+```sh
+git clone https://github.com/re1/dots
+stow -d dots -t ~
+```
 
 ## Branches
 

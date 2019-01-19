@@ -31,16 +31,16 @@ sfdisk /dev/sda << EOF
 EOF
 
 mkfs.vfat -F32 -n EFI /dev/sda1     # format boot partition with ext4
-mkswap -L SWAP /dev/sda2            # format swap partition
+mkswap -L Swap /dev/sda2            # format swap partition
 swapon /dev/sda2                    # activate swap
 
 ##  Encryption
 cryptsetup luksFormat -M luks2 /dev/sda2            # encrypt partition with LUKS
 dd if=/dev/random of=/tmp/key bs=512 count=4        # create random key
 cryptsetup luksAddKey /dev/sda2 /tmp/key            # add key to encrypted partition
-cryptsetup open /dev/sda3 cryptArch -d /tmp/key     # map decrypted partition to /dev/mapper/cryptArch
+cryptsetup open /dev/sda3 crypt_arch -d /tmp/key     # map decrypted partition to /dev/mapper/crypt_arch
 
-mkfs.btrfs -L ARCH /dev/mapper/cryptArch    # format mapped partition with btrfs
+mkfs.btrfs -L Arch /dev/mapper/crypt_arch    # format mapped partition with btrfs
 
 mount /dev/mapper/root /mnt                 # mount mapped partition
 
@@ -51,16 +51,16 @@ btrfs sub create /mnt/@snapshots            # create subvol for snapshots
 
 umount /mnt                                 # unmount mapped partition
 # mount root subvol with lzo compression from mapped partition
-mount /dev/mapper/cryptArch -o compress=lzo,subvol=@ /mnt
+mount /dev/mapper/crypt_arch -o compress=lzo,subvol=@ /mnt
 
 # create mount points for subvolumes
 mkdir -p /mnt/.snapshots /mnt/home /mnt/var/cache/pacman/pkg
-mount /dev/mapper/cryptArch -o subvol=@home /mnt/home
-mount /dev/mapper/cryptArch -o subvol=@pkg /mnt/var/cache/pacman/pkg
-mount /dev/mapper/cryptArch -o subvol=@snapshots /mnt/.snapshots
+mount /dev/mapper/crypt_arch -o subvol=@home /mnt/home
+mount /dev/mapper/crypt_arch -o subvol=@pkg /mnt/var/cache/pacman/pkg
+mount /dev/mapper/crypt_arch -o subvol=@snapshots /mnt/.snapshots
 
 mkdir /mnt/btrfs    # create mount point for btrfs root
-mount /dev/mapper/cryptArch -o subvolid=5 /mnt/btrfs
+mount /dev/mapper/crypt_arch -o subvolid=5 /mnt/btrfs
 
 mkdir /mnt/boot     # create mount point for boot partition
 mount /dev/sda1 /mnt/boot
@@ -83,7 +83,7 @@ arch-chroot /mnt mkinitcpio -p linux        # regenerate the initramfs
 
 # mark partition with UUID "device" as encrypted
 uuid=$(blkid -s UUID -o value /dev/sda3)                # get device uuid for future references
-GRUB_CMDLINE_LINUX="cryptdevice=UUID=$uuid\:cryptArch"  # set GRUB_CMDLINE_LINUX variable for grub
+GRUB_CMDLINE_LINUX="cryptdevice=UUID=$uuid\:crypt_arch"  # set GRUB_CMDLINE_LINUX variable for grub
 sed -i "s/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"$GRUB_CMDLINE_LINUX\"/g" /mnt/etc/default/grub
 sed -i '/GRUB_ENABLE_CRYPTODISK=y/s/^#//' /mnt/etc/default/grub
 # generate grub config and install to $boot
