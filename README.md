@@ -22,7 +22,7 @@ Files are managed using [GNU Stow](https://www.gnu.org/software/stow/) (`pacman 
 
 ```sh
 git clone https://github.com/re1/dots
-stow -d dots -t ~
+stow -d dots -t ~ {PACKAGES}
 ```
 
 ## Branches
