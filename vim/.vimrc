@@ -5,7 +5,6 @@ Plug 'prettier/vim-prettier'            "vim wrapper for prettier
 Plug 'trotter/autojump.vim'             "autojump support for vim
 Plug 'tpope/vim-surround'               "useful for surrounding texts
 Plug 'vim-airline/vim-airline'          "lightweight powerline
-Plug 'arcticicestudio/nord-vim' 	    "nord colors and airline
 Plug 'ayu-theme/ayu-vim'                "ayu colors and airline
 
 if has('nvim')                          "check for nvim
@@ -59,10 +58,10 @@ if has('nvim')
 """ vim
 else
     syntax on
-    
+
     set nocompatible                "disable vi emulation
     set ttyfast                     "optimize for fast terminal connections
-    
+
     set autoindent                  "indent after indented line
     set autoread                    "reload files change outside vim
     set backspace=eol,start,indent  "more backspace functionality
