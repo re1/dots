@@ -1,0 +1,32 @@
+[General]
+Number of Actions=0
+
+[KPropertiesDialog]
+Height 1200=339
+Width 1920=433
+
+[PlasmaRunnerManager]
+LaunchCounts=
+pluginWhiteList=services,places,desktopsessions,PowerDevil,shell,bookmarks,recentdocuments,locations,baloosearch
+
+[PlasmaTransientsConfig]
+PreloadWeight=42
+
+[ScreenConnectors]
+10=HDMI1
+11=LVDS1
+
+[UniversalSettings]
+canDisableBorders=false
+currentLayout=re1
+downloadWindowSize=800,550
+lastNonAssignedLayout=re1
+launchers=
+layoutsColumnWidths=86,72,65,0
+layoutsWindowSize=700,450
+memoryUsage=0
+mouseSensitivity=2
+screenTrackerInterval=2500
+showInfoWindow=true
+unifiedGlobalShortcuts=true
+version=2
