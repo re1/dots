@@ -8,7 +8,7 @@ ZSH_THEME="spaceship"           # Set name of the theme to load
 
 # CASE_SENSITIVE="true"         # Use case-sensitive completion
 
-# Uncomment the following line to use hyphen-insensitive completion. 
+# Uncomment the following line to use hyphen-insensitive completion.
 # Case sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
@@ -21,7 +21,7 @@ ZSH_THEME="spaceship"           # Set name of the theme to load
 ENABLE_CORRECTION="true"        # Enable command auto-correction.
 COMPLETION_WAITING_DOTS="true"  # Display red dots whilst waiting for completion.
 
-# Disable marking untracked files under VCS as dirty. 
+# Disable marking untracked files under VCS as dirty.
 # This makes repository status check for large repositories much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
@@ -45,8 +45,8 @@ source $ZSH/oh-my-zsh.sh
 export ARCHFLAGS="-arch x86_64"             # Compilation flags
 export SSH_KEY_PATH="~/.ssh/id_rsa"         # SSH
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs, 
-# plugins, and themes.  Aliases can be placed here, though oh-my-zsh 
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes.  Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
@@ -55,12 +55,13 @@ key=key+sizeof(key);
 [[ $- != *i* ]] && return   # If not running interactively, don't do anything
 
 # Download gitignore for arguments from gitignore.io
-gi () {     
+gi () {
     old="$IFS"; IFS=','
     curl "https://www.gitignore.io/api/$*" >> "$PWD/.gitignore"
     IFS=$old
 }
 
+alias c='cat'
 alias ga='git add .; git status'
 alias gc='git add .; git status; git commit -e'
 alias gp='git push'
