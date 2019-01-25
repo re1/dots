@@ -167,14 +167,17 @@ map <c-space> ?
 map 0 ^
 
 "allow jumping between wrapped lines
-"imap <silent> <Down> <C-o>gj
-"imap <silent> <Up> <C-o>gk
+"imap <silent> <Down> <c-o>gj
+"imap <silent> <Up> <c-o>gk
 "nmap <silent> <Down> gj
 "nmap <silent> <Up> gk
 
 "copy to and paste from clipboard
-vnoremap <C-c> "+y
-map <C-v> "+P
+vnoremap <c-c> "+y
+map <c-v> "+P
+
+"save file using control-s as in most other editors
+map <c-s> :w<CR>
 
 "move lines by pressing alt
 nnoremap <A-Down> :m .+1<CR>==
@@ -189,6 +192,6 @@ nnoremap <F7> :setlocal spell! spelllang=en_gb spell?<CR>
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+vnoremap <silent> * :<c-u>call VisualSelection('', '')<CR>/<c-R>=@/<CR><CR>
+vnoremap <silent> # :<c-u>call VisualSelection('', '')<CR>?<c-R>=@/<CR><CR>
 
