@@ -1,81 +1,99 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH=/home/markus/.oh-my-zsh
-
-ZSH_THEME="spaceship"           # Set name of the theme to load
-
-# CASE_SENSITIVE="true"         # Use case-sensitive completion
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# DISABLE_AUTO_UPDATE="true"    # Disable bi-weekly auto-update checks
-# export UPDATE_ZSH_DAYS=13     # Change how often to auto-update (in days)
-
-# DISABLE_LS_COLORS="true"      # Disable colors in ls
-# DISABLE_AUTO_TITLE="true"     # Disable auto-setting terminal title
-
-ENABLE_CORRECTION="true"        # Enable command auto-correction.
-COMPLETION_WAITING_DOTS="true"  # Display red dots whilst waiting for completion.
-
-# Disable marking untracked files under VCS as dirty.
-# This makes repository status check for large repositories much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Change the command execution time stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-HIST_STAMPS="yyyy-mm-dd"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux autoenv.plugin autojump docker yarn pass bd)
-
-source $ZSH/oh-my-zsh.sh
-
-# export MANPATH="/usr/local/man:$MANPATH"  # Set path for man pages
-# export LANG=en_US.UTF-8                   # Set language environment manually
-export ARCHFLAGS="-arch x86_64"             # Compilation flags
-export SSH_KEY_PATH="~/.ssh/id_rsa"         # SSH
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes.  Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-
-key=key+sizeof(key);
+#   re1's      _
+#      _______| |__  _ __ ___
+#     |_  / __| '_ \| '__/ __|
+#    _ / /\__ \ | | | | | (__
+#   (_)___|___/_| |_|_|  \___|
 
 [[ $- != *i* ]] && return   # If not running interactively, don't do anything
+source ~/.zsh_plugins.sh    # load compiled plugins
 
-# Download gitignore for arguments from gitignore.io
+# load and initialize autocompletion
+autoload -Uz compinit
+compinit
+# initialize fasd
+eval "$(fasd --init posix-alias zsh-hook)"
+# change directory without cd
+setopt autocd
+
+# save command history to file
+HISTFILE=.zsh_history
+# list only needed spaceship prompts
+SPACESHIP_PROMPT_ORDER=(
+    time          # Time stamps section
+    user          # Username section
+    dir           # Current directory section
+    host          # Hostname section
+    git           # Git section (git_branch + git_status)
+    package       # Package version
+    node          # Node.js section
+    ruby          # Ruby section
+    golang        # Go section
+    php           # PHP section
+    rust          # Rust section
+    docker        # Docker section
+    venv          # virtualenv section
+    pyenv         # Pyenv section
+    dotnet        # .NET section
+    ember         # Ember.js section
+    exec_time     # Execution time
+    line_sep      # Line break
+    battery       # Battery level and status
+    vi_mode       # Vi-mode indicator
+    jobs          # Background jobs indicator
+    exit_code     # Exit code section
+    char          # Prompt character
+)
+
+# default applications
+export BROWSER=/usr/bin/firefox
+export EDITOR=/usr/bin/nvim
+# PATH extensions
+export PATH="$HOME/.local/bin:$PATH"                        # Add user's local binaries to PATH
+export PATH="$(yarn global bin):$PATH"                      # Add yarn global binaries to PATH
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"     # Add ruby gems to PATH
+
+
+# ----------------------- #
+#   Aliases & Functions   #
+# ----------------------- #
+alias c='cat'
+alias p='pass'
+
+# Antibody bundle plugins and compile them to ~/.zsh_plugins.sh
+alias ab='antibody bundle < ~/.zsh_plugins > ~/.zsh_plugins.sh'
+
+# Fasd
+alias j='fasd_cd -d'
+alias o='a -e xdg-open'
+alias v='f -e nvim'
+
+# Files and directories
+alias ls='ls --color=auto'
+alias l='ls'
+alias la='ls -a'
+alias t='tree'
+alias ta='tree -aC -I .git'
+alias td='tree -dC'
+
+# Git
+alias ga='git add .; git status'
+alias gc='git add .; git status; git commit -e'
+alias gp='git push'
+alias gcp='git add .; git status; git commit -e; git push'
+# download gitignore for arguments from gitignore.io
 gi () {
     old="$IFS"; IFS=','
     curl "https://www.gitignore.io/api/$*" >> "$PWD/.gitignore"
     IFS=$old
 }
 
-alias c='cat'
-alias ga='git add .; git status'
-alias gc='git add .; git status; git commit -e'
-alias gp='git push'
-alias gcp='git add .; git status; git commit -e; git push'
-alias ls='ls --color=auto'
-alias p='pass'
-alias t='tree'
-alias ta='tree -a -I .git'
-alias td='tree -d'
-
-BROWSER=/usr/bin/firefox
-EDITOR=/usr/bin/nvim
-
-export PATH="$HOME/.local/bin:$PATH"                        # Add user's local binaries to PATH
-export PATH="$(yarn global bin):$PATH"                      # Add yarn global binaries to PATH
-export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"     # Add ruby gems to PATH
-
+# Pacman as in https://wiki.archlinux.org/index.php/Pacman_Tips)
+alias pacupg='sudo pacman -Syu'
+alias pacin='sudo pacman -S'
+alias pacrem='sudo pacman -Rns'
+alias pacrmorphans='sudo pacman -Rs $(pacman -Qtdq)'
+# list packages as in https://bbs.archlinux.org/viewtopic.php?id=93683
+function paclist() {
+  LC_ALL=C pacman -Qei $(pacman -Qu | cut -d " " -f 1) | \
+    awk 'BEGIN {FS=":"} /^Name/{printf("\033[1;36m%s\033[1;37m", $2)} /^Description/{print $2}'
+}

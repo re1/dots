@@ -2,7 +2,6 @@
 call plug#begin('~/.vim/plugged')       "set plugin path
 
 Plug 'prettier/vim-prettier'            "vim wrapper for prettier
-Plug 'trotter/autojump.vim'             "autojump support for vim
 Plug 'tpope/vim-surround'               "useful for surrounding texts
 Plug 'vim-airline/vim-airline'          "lightweight powerline
 Plug 'ayu-theme/ayu-vim'                "ayu colors and airline
