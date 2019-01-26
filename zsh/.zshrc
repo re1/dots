@@ -4,12 +4,11 @@
 #    _ / /\__ \ | | | | | (__
 #   (_)___|___/_| |_|_|  \___|
 
-[[ $- != *i* ]] && return   # If not running interactively, don't do anything
+[[ $- != *i* ]] && return   # if not running interactively, don't do anything
 source ~/.zsh_plugins.sh    # load compiled plugins
 
 # load and initialize autocompletion
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 # initialize fasd
 eval "$(fasd --init posix-alias zsh-hook)"
 # change directory without cd
