@@ -1,4 +1,11 @@
 """ Plug
+"automate Plug install for new homes
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')       "set plugin path
 
 Plug 'prettier/vim-prettier'            "vim wrapper for prettier
@@ -171,10 +178,10 @@ map 0 ^
 "nmap <silent> <Down> gj
 "nmap <silent> <Up> gk
 
-"copy to and paste from clipboard
+"copy to, cut to and paste from clipboard
 vnoremap <c-c> "+y
+vnoremap <c-x> "+d
 map <c-v> "+P
-
 "save file using control-s as in most other editors
 map <c-s> :w<CR>
 
