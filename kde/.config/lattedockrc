@@ -22,9 +22,9 @@ pluginWhiteList=services,places,desktopsessions,PowerDevil,shell,bookmarks,recen
 
 [UniversalSettings]
 canDisableBorders=true
-currentLayout=Dock
+currentLayout=Default
 downloadWindowSize=800,550
-lastNonAssignedLayout=Dock
+lastNonAssignedLayout=Default
 launchers=
 layoutsColumnWidths=86,72,65,41
 layoutsWindowSize=700,450
