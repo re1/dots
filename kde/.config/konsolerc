@@ -14,6 +14,7 @@ Height 1200=1146
 State=AAAA/wAAAAD9AAAAAAAAA7oAAAJ+AAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
 Width 1920=954
+Window-Maximized 1080x1920=true
 
 [Notification Messages]
 CloseAllEmptyTabs=true
