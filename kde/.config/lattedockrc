@@ -1,3 +1,10 @@
+[ActionsWidget]
+ColumnState=AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAikAAAACAQAAAQAAAAAAAAAAAAAAAGT/////AAAAgQAAAAAAAAACAAAA+gAAAAEAAAAAAAABLwAAAAEAAAAAAAAD6AAAAABk
+
+[ConfigDialog]
+Height 1080=461
+Width 1920=679
+
 [General]
 Number of Actions=0
 
@@ -9,20 +16,17 @@ Width 1920=433
 LaunchCounts=
 pluginWhiteList=services,places,desktopsessions,PowerDevil,shell,bookmarks,recentdocuments,locations,baloosearch
 
-[PlasmaTransientsConfig]
-PreloadWeight=42
-
 [ScreenConnectors]
 10=HDMI1
 11=LVDS1
 
 [UniversalSettings]
-canDisableBorders=false
-currentLayout=re1
+canDisableBorders=true
+currentLayout=Dock
 downloadWindowSize=800,550
-lastNonAssignedLayout=re1
+lastNonAssignedLayout=Dock
 launchers=
-layoutsColumnWidths=86,72,65,0
+layoutsColumnWidths=86,72,65,41
 layoutsWindowSize=700,450
 memoryUsage=0
 mouseSensitivity=2
