@@ -15,7 +15,10 @@ eval "$(fasd --init posix-alias zsh-hook)"
 setopt autocd
 
 # save command history to file
-HISTFILE=.zsh_history
+HISTFILE=~/.zsh_history
+HISTSIZE=2000
+SAVEHIST=$HISTSIZE
+
 # list only needed spaceship prompts
 SPACESHIP_PROMPT_ORDER=(
     time          # Time stamps section
@@ -78,6 +81,7 @@ alias td='tree -dC'
 alias ga='git add .; git status'
 alias gc='git add .; git status; git commit -e'
 alias gp='git push'
+alias gl='git pull'
 alias gcp='git add .; git status; git commit -e; git push'
 # download gitignore for arguments from gitignore.io
 gi () {
