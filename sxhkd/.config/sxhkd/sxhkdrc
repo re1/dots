@@ -3,8 +3,8 @@
 # ---------------------------- #
 
 # terminal emulator
-super + {_,alt +} {_,control +} {_,shift +} Return
-	urxvt{c,_} {_,-e nvim} {_,&& bspc node --swap last}
+super + {_,control +} {_,shift +} Return
+	st {_,-e nvim} {_,&& bspc node --swap last}
 
 # program launcher
 super + {d,w,shift + d}
@@ -14,16 +14,16 @@ super + {d,w,shift + d}
 Print
     main -s | xclip -selection clipboard -t image/png
 
-# common
-super + shift + {f,j,p,s,t,w,z}
-    {thunar,idea,charm,spotify,telegram-desktop,firefox-developer-edition,zeal}
+# common (code, files, java, python, media, telegram, web, zeal)
+super + shift + {c,f,j,p,m,t,w,z}
+    {code,thunar,idea,charm,spotify,telegram-desktop,firefox,zeal}
 
 # office
 super + control + {c,t,w}
     {libreoffice --nologo --calc, texstudio, libreoffice --nologo --writer}
 
 # screen lock and power management
-super + {_,shift +} l
+super + {_,shift +} s
     i3lock -i ~/.lock.png --24 -l "#2f343f" -o "#61afef" -w "e06c75" {_,&& systemctl suspend}
 
 # audio control

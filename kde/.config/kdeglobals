@@ -114,15 +114,15 @@ History Items[$e]=file:$HOME/.local/share/Zeal/
 [General]
 ColorScheme=Arc Dark
 Name=Arc Dark
-XftHintStyle=hintslight
-XftSubPixel=rgb
-dbfile=/home/markus/.mozilla/firefox/pret0nw4.default/places.sqlite
-fixed=Fira Code,9,-1,5,50,0,0,0,0,0,Regular
-font=Noto Sans,10,-1,5,50,0,0,0,0,0,Regular
-menuFont=Noto Sans,10,-1,5,50,0,0,0,0,0,Regular
+XftHintStyle=hintnone
+XftSubPixel=
+dbfile=/home/markus/.mozilla/firefox/bre0wxd5.default/places.sqlite
+fixed=Hack,13,-1,5,50,0,0,0,0,0,Regular
+font=Noto Sans,13,-1,5,50,0,0,0,0,0,Regular
+menuFont=Noto Sans,13,-1,5,50,0,0,0,0,0,Regular
 shadeSortColumn=true
-smallestReadableFont=Noto Sans,10,-1,5,50,0,0,0,0,0,Regular
-toolBarFont=Noto Sans,10,-1,5,50,0,0,0,0,0,Regular
+smallestReadableFont=Noto Sans,13,-1,5,50,0,0,0,0,0,Regular
+toolBarFont=Noto Sans,13,-1,5,50,0,0,0,0,0,Regular
 widgetStyle=Breeze
 
 [Icons]
@@ -169,7 +169,7 @@ ToolButtonStyleOtherToolbars=TextBesideIcon
 [WM]
 activeBackground=47,52,63
 activeBlend=47,52,63
-activeFont=Noto Sans,10,-1,5,50,0,0,0,0,0,Regular
+activeFont=Noto Sans,13,-1,5,50,0,0,0,0,0,Regular
 activeForeground=211,218,227
 inactiveBackground=47,52,63
 inactiveBlend=47,52,63

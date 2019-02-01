@@ -23,8 +23,13 @@ endif
 
 call plug#end()                         "init plugin system
 
+""" Variables
+let mapleader = ' '
 
 """ Plugins
+"syntax highlighting colors
+let ayucolor='mirage'
+"enable autocompletion on startup
 let g:deoplete#enable_at_startup = 1
 "set airline StatusLine colors
 let g:airline_theme='ayu'
@@ -140,8 +145,6 @@ endtry
 
 
 """ Utility
-"syntax highlighting colors
-let ayucolor='mirage'
 colorscheme ayu
 "remove gui and terminal background for better terminal integration
 hi Normal guibg=NONE ctermbg=NONE
@@ -164,10 +167,6 @@ match OverLength /\%101v.\+/
 command W w !sudo tee > /dev/null %
 
 """ Keybindings
-
-"map Space to search and Ctrl-Space to backward search
-map <space> /
-map <c-space> ?
 
 "remap 0 to first non-blank character
 map 0 ^

@@ -1,63 +1,205 @@
-# =============== #
-# :: i3 Config :: #
-# =============== #
-# @author   Markus Re1 <markus@re1.at>
-# @version  2018-05-21
+# re1's  _ _____
+#       (_)___ /
+#       | | |_ \
+#       | |___) |
+#       |_|____/    config file (v4)
 #
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
 #
-# Visit https://i3wm.org/docs/userguide.html for a complete i3 config reference!
-
-## Base16 One Dark
-# Author: Lalit Magant (http://github.com/tilal6991), re1
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
 #
-# You can use these variables anywhere in the i3 configuration file.
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
 
-set $base00 #282c34
-set $base01 #2c3039
-set $base02 #3e4451
-set $base03 #5c6370
-set $base04 #979FAD
-set $base05 #abb2bf
-set $base06 #e0e0e0
-set $base07 #ffffff
-set $base08 #e06c75
-set $base09 #d19a66
-set $base0A #e5c07b
-set $base0B #98c379
-set $base0C #56b6c2
-set $base0D #61afef
-set $base0E #c678dd
-set $base0F #e6cc99
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 12
 
-# set defaults
-set $gaps_inner 12
-set $gaps_outer 0
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $left   h
+set $down   j
+set $up     k
+set $right  l
 
 # set modifiers
-set $mod Mod4
-set $alt Mod1
-
-# font for window titles (bar font in {} block below)
-font pango:monospace 10
+set $mod    Mod4
+set $alt    Mod1
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# autostart (now handled by systemd user units)
-# exec --no-startup-id xfce4-power-manager --sm-client-disable
-# exec --no-startup-id xfce4-panel -d --sm-client-disable
-# exec --no-startup-id feh --bg-fill ~/.background.png
-# exec --no-startup-id compton -b
-# exec --no-startup-id nm-applet
-# exec --no-startup-id redshift
-# exec --no-startup-id ~/.config/Thunar/tumblerd
+# start a terminal
+bindsym $mod+Return         exec i3-sensible-terminal
+bindsym $mod+Shift+Return   exec i3-sensible-terminal -e i3-sensible-editor
+
+# kill focused window
+bindsym $mod+q  kill
+bindsym Mod1+F4 kill
+
+# start a program launcher
+bindsym $mod+d              exec rofi -show drun -columns 2
+bindsym $mod+w              exec rofi -show window
+bindsym $mod+Shift+d        exec rofi -show run
+
+# change focus
+bindsym $mod+$left          focus left
+bindsym $mod+$down          focus down
+bindsym $mod+$up            focus up
+bindsym $mod+$right         focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left           focus left
+bindsym $mod+Down           focus down
+bindsym $mod+Up             focus up
+bindsym $mod+Right          focus right
+
+# move focused window
+bindsym $mod+Shift+$left    move left
+bindsym $mod+Shift+$down    move down
+bindsym $mod+Shift+$up      move up
+bindsym $mod+Shift+$right   move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left     move left
+bindsym $mod+Shift+Down     move down
+bindsym $mod+Shift+Up       move up
+bindsym $mod+Shift+Right    move right
+
+# split (horizontal, vertical)
+# bindsym $mod+h split h
+# bindsym $mod+v split v
+bindsym $mod+t split toggle
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+Shift+t layout toggle split tabbed
+bindsym $mod+s layout toggle split stacking
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+c focus child
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# switch to workspace
+bindsym $mod+Tab        workspace next
+bindsym $mod+Shift+Tab  workspace prev
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# move focused workspace to output
+bindsym $mod+Control+comma  move workspace to output left
+bindsym $mod+Control+period move workspace to output right
+bindsym $mod+Control+minus  move workspace to output primary
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym $left           resize shrink width 8 px or 8 ppt
+    bindsym $down           resize grow height 8 px or 8 ppt
+    bindsym $up             resize shrink height 8 px or 8 ppt
+    bindsym $right          resize grow width 8 px or 8 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left            resize shrink width 8 px or 8 ppt
+    bindsym Down            resize grow height 8 px or 8 ppt
+    bindsym Up              resize shrink height 8 px or 8 ppt
+    bindsym Right           resize grow width 8 px or 8 ppt
+
+    # same bindings, but faster
+    bindsym Shift+$left     resize shrink width 16 px or 16 ppt
+    bindsym Shift+$down     resize grow height 16 px or 16 ppt
+    bindsym Shift+$up       resize shrink height 16 px or 16 ppt
+    bindsym Shift+$right    resize grow width 16 px or 16 ppt
+
+    # same bindings, but faster, but for the arrow keys
+    bindsym Shift+Left      resize shrink width 16 px or 16 ppt
+    bindsym Shift+Down      resize grow height 16 px or 16 ppt
+    bindsym Shift+Up        resize shrink height 16 px or 16 ppt
+    bindsym Shift+Right     resize grow width 16 px or 16 ppt
+
+    # back to normal: Enter or Escape or Mod1+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# set title format for all windows
+for_window [class=".*"] title_format " ~ %title"
 
 # lock screen
-set $lock dm-tool lock
+set $lock slock
 set $suspend systemctl suspend
 set $hibernate systemctl hibernate
-bindsym $mod+l exec --no-startup-id $lock
-bindsym $mod+Shift+l exec --no-startup-id $lock, exec --no-startup-id $suspend
 
 mode "power" {
     # sleep
@@ -79,215 +221,86 @@ bindsym $mod+Pause mode "power"
 bindsym $mod+Escape mode "power"
 
 # screenshots
-bindsym Print exec xfce4-screenshooter
+bindsym Print exec import image.png
 
 # common apps
 bindsym $mod+Shift+f exec thunar
-bindsym $mod+Shift+j exec idea
 bindsym $mod+Shift+m exec wxmaxima
 bindsym $mod+Shift+p exec charm
-bindsym $mod+Shift+s exec spotify
-bindsym $mod+Shift+t exec telegram-desktop
-bindsym $mod+Shift+w exec firefox-developer-edition
+bindsym $mod+Shift+w exec firefox
 bindsym $mod+Shift+z exec zeal
 
-# office
 bindsym $mod+Control+c exec libreoffice --nologo --calc
-bindsym $mod+Control+t exec texstudio
+bindsym $mod+Control+s exec spotify
+bindsym $mod+Control+t exec telegram-desktop
 bindsym $mod+Control+w exec libreoffice --nologo --writer
 
-# audio control (currently handled by xfce4-pulseaudio-plugin)
-# 
-# bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master '5%+'
-# bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master '5%-'
-# bindsym XF86AudioMute exec amixer set Master toggle
-#
-# bindsym XF86AudioNext exec playerctl next
-# bindsym XF86AudioPrev exec playerctl previous
-# bindsym XF86AudioPlay exec playerctl play-pause
-# bindsym XF86AudioStop exec playerctl stop
-
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Shift+Return exec i3-sensible-terminal -e i3-sensible-editor
-
-# kill focused window
-bindsym $mod+q kill
-bindsym $alt+F4 kill
-
-# start the program launcher
-bindsym $mod+d exec rofi -show drun -columns 2
-bindsym $mod+w exec rofi -show window
-bindsym $mod+Shift+d exec rofi -show run
-
-# change focus
-bindsym $mod+semicolon  border pixel 4;
-
-bindsym $alt+Tab        focus right; border pixel 4;
-bindsym $alt+Shift+Tab  focus left;  border pixel 4;
-
-bindsym $mod+Left       focus left;  border pixel 4;
-bindsym $mod+Down       focus down;  border pixel 4;
-bindsym $mod+Up         focus up;    border pixel 4;
-bindsym $mod+Right      focus right; border pixel 4;
-
-bindsym --release $mod+semicolon border none;
-
-bindsym --release $alt+Tab       border none;
-bindsym --release $alt+Shift+Tab border none;
-
-bindsym --release $mod+Left  border none;
-bindsym --release $mod+Down  border none;
-bindsym --release $mod+Up    border none;
-bindsym --release $mod+Right border none;
-
-# move focused window
-bindsym $mod+Shift+Left  move left
-bindsym $mod+Shift+Down  move down
-bindsym $mod+Shift+Up    move up
-bindsym $mod+Shift+Right move right
-
-# split (horizontal, vertical)
-bindsym $mod+h split h
-bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+Shift+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
+# bind audio keys for volume control
+bindsym XF86AudioRaiseVolume exec pactl set-sink-mute 0 false; pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-mute 0 false; pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+# bind audio keys for player control
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
 
 # multihead settings
 bindsym $mod+p exec xfce4-display-settings -m
 
-# define names for default workspaces
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+# wide-screen monitors get horizontal, rotated monitors vertical orientation
+default_orientation auto
 
-# switch to workspace
-bindsym $mod+Control+Right  workspace next
-bindsym $mod+Control+Left   workspace prev
-
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
-bindsym $mod+Tab workspace back_and_forth
-
-# move focused workspace to output
-bindsym $mod+Control+comma  move workspace to output left
-bindsym $mod+Control+period move workspace to output right
-bindsym $mod+Control+minus  move workspace to output primary
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+Escape exit
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-    bindsym Left resize shrink width 8 px or 8 ppt
-    bindsym Down resize grow height 8 px or 8 ppt
-    bindsym Up resize shrink height 8 px or 8 ppt
-    bindsym Right resize grow width 8 px or 8 ppt
-
-    bindsym Shift+Left resize shrink width 16 px or 16 ppt
-    bindsym Shift+Down resize grow height 16 px or 16 ppt
-    bindsym Shift+Up resize shrink height 16 px or 16 ppt
-    bindsym Shift+Right resize grow width 16 px or 16 ppt
-
-    bindsym 1 mode "default", resize set 800 500
-    bindsym 2 mode "default", resize set 1200 750
-    bindsym 3 mode "default", resize set 1600 1000
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-# gaps
-gaps inner $gaps_inner
-gaps outer $gaps_outer
-smart_gaps on
-
-mode "gaps" {
-    bindsym Left    gaps outer all minus 4
-    bindsym Down    gaps inner all minus 4
-    bindsym Up      gaps inner all plus 4
-    bindsym Right   gaps outer all plus 4
-
-    bindsym Shift+Left  gaps outer all minus 8
-    bindsym Shift+Left  gaps inner all minus 8 
-    bindsym Shift+Left  gaps inner all plus 8 
-    bindsym Shift+Left  gaps outer all plus 8 
-
-    bindsym d mode "default", gaps inner current set $gaps_inner; gaps outer current set $gaps_outer
-    bindsym 0 mode "default", gaps inner current set 0; gaps outer current set 0
-    
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-bindsym $mod+g mode "gaps"
-bindsym $mod+Shift+g gaps inner $gaps
+# make focus follow mouse movement
+focus_follows_mouse yes
 
 # window rules (you can find the window class using xprop)
-default_border none
-default_floating_border none
-hide_edge_borders smart
-focus_follows_mouse no
+default_border          normal 0 px
+default_floating_border normal 0 px
+hide_edge_borders both
 
 # handle floating dialogs
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [class="feh"] floating enable
+for_window [window_role="pop-up"] 		floating enable
+for_window [window_role="task_dialog"] 	floating enable
 
-# colour of             border  base    text    index   child_border
-client.focused		    $base0F $base00 $base05 $base0F $base05
-client.focused_inactive	$base00 $base00 $base05 $base00 $base00
-client.unfocused		$base00 $base00 $base05 $base00 $base00
-client.urgent			$base00 $base00 $base05 $base00 $base00
-client.placeholder		$base00 $base00 $base05 $base00 $base00
-client.background       $base00
+# colorclass            border      background  text        indicator   child_border
+client.focused		    #f29e74     #f29e74     #2f343f     #ff0000     #2f343f
+client.focused_inactive	#ffe6b3     #ffe6b3     #2f343f     #2f343f     #2f343f
+client.unfocused		#1f2430     #1f2430     #cbccc6     #2f343f     #2f343f
+client.urgent			#2f343f     #ff3333     #cbccc6     #2f343f     #2f343f
+client.placeholder		#2f343f     #2f343f     #cbccc6     #2f343f     #2f343f
+client.background       #2f343f
+
+
+# =========== #
+#   i3-gaps   #
+# =========== #
+#
+# Them gaps for you ricers
+# set $gaps_inner 12
+# set $gaps_outer 0
+
+# gaps inner $gaps_inner
+# gaps outer $gaps_outer
+# smart_gaps on
+
+# mode "gaps" {
+#     bindsym Left    gaps outer all minus 4
+#     bindsym Down    gaps inner all minus 4
+#     bindsym Up      gaps inner all plus 4
+#     bindsym Right   gaps outer all plus 4
+#
+#     bindsym Shift+Left  gaps outer all minus 8
+#     bindsym Shift+Left  gaps inner all minus 8
+#     bindsym Shift+Left  gaps inner all plus 8
+#     bindsym Shift+Left  gaps outer all plus 8
+#
+#     bindsym d mode "default", gaps inner current set $gaps_inner; gaps outer current set $gaps_outer
+#     bindsym 0 mode "default", gaps inner current set 0; gaps outer current set 0
+#
+#     bindsym Return mode "default"
+#     bindsym Esfocus follow mouse movement}
+
+# bindsym $mod+g mode "gaps"
+# bindsym $mod+Shift+g gaps inner $gaps
+

@@ -1,6 +1,6 @@
 [Appearance]
 ColorScheme=Ayu Mirage Arc Darker
-Font=Fira Code,10,-1,0,50,0,0,0,0,0,Regular
+Font=Fira Code,12,-1,0,50,0,0,0,0,0,Regular
 UseFontLineChararacters=true
 
 [General]
