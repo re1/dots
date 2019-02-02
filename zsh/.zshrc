@@ -64,9 +64,9 @@ alias p='pass'
 alias ab='antibody bundle < ~/.zsh_plugins > ~/.zsh_plugins.sh'
 
 # Fasd
+alias e='f -e nvim'
 alias j='fasd_cd -d'
 alias o='a -e xdg-open'
-alias v='f -e nvim'
 
 # Files and directories
 alias ls='ls --color=auto'

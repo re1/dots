@@ -15,7 +15,7 @@
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 12
+font pango:Noto Sans, Font Awesome 5 Free 8
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -25,8 +25,8 @@ set $up     k
 set $right  l
 
 # set modifiers
-set $mod    Mod4
-set $alt    Mod1
+set $mod Mod4
+set $alt Mod1
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -68,17 +68,18 @@ bindsym $mod+Shift+Down     move down
 bindsym $mod+Shift+Up       move up
 bindsym $mod+Shift+Right    move right
 
-# split (horizontal, vertical)
+# split (horizontal, vertical, toggle)
 # bindsym $mod+h split h
-# bindsym $mod+v split v
-bindsym $mod+t split toggle
+bindsym $mod+v split v
+bindsym $mod+s split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+Shift+t layout toggle split tabbed
-bindsym $mod+s layout toggle split stacking
+# change container layout
+bindsym $mod+e          layout default
+bindsym $mod+t          layout toggle tabbed split
+bindsym $mod+Shift+t    layout toggle stacking split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -193,9 +194,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# set title format for all windows
-for_window [class=".*"] title_format " ~ %title"
-
 # lock screen
 set $lock slock
 set $suspend systemctl suspend
@@ -236,8 +234,8 @@ bindsym $mod+Control+t exec telegram-desktop
 bindsym $mod+Control+w exec libreoffice --nologo --writer
 
 # bind audio keys for volume control
-bindsym XF86AudioRaiseVolume exec pactl set-sink-mute 0 false; pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-mute 0 false; pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-mute 0 false, pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-mute 0 false, pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 # bind audio keys for player control
 bindsym XF86AudioNext exec playerctl next
@@ -259,17 +257,30 @@ default_border          normal 0 px
 default_floating_border normal 0 px
 hide_edge_borders both
 
+# disable window title for split layout
+# new_window none
+
 # handle floating dialogs
 for_window [window_role="pop-up"] 		floating enable
 for_window [window_role="task_dialog"] 	floating enable
 
-# colorclass            border      background  text        indicator   child_border
-client.focused		    #f29e74     #f29e74     #2f343f     #ff0000     #2f343f
-client.focused_inactive	#ffe6b3     #ffe6b3     #2f343f     #2f343f     #2f343f
-client.unfocused		#1f2430     #1f2430     #cbccc6     #2f343f     #2f343f
-client.urgent			#2f343f     #ff3333     #cbccc6     #2f343f     #2f343f
-client.placeholder		#2f343f     #2f343f     #cbccc6     #2f343f     #2f343f
-client.background       #2f343f
+# set title format for all windows
+for_window [class=".*"] title_format "  %title"
+
+# colors
+set $bg         #1f2430
+set $fg         #cbccc6
+set $primary    #bae67e
+set $secondary  #73d0ff
+set $alert      #f28799
+
+# colorclass            border  bg      text        indicator   child_border
+client.focused		    $bg     $bg     $primary    $primary    $bg
+client.focused_inactive	$bg     $bg     $secondary  $secondary  $bg
+client.unfocused		$bg     $bg     $fg         $fg         $bg
+client.urgent			$bg     $bg     $alert      $alert      $bg
+client.placeholder		$bg     $bg     $fg         $bg         $bg
+client.background       $bg
 
 
 # =========== #
