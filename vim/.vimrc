@@ -8,10 +8,11 @@ endif
 
 call plug#begin('~/.vim/plugged')       "set plugin path
 
+Plug 'ayu-theme/ayu-vim'                "ayu colors and airline
+Plug 'junegunn/goyo.vim'                "distraction-free writing
 Plug 'prettier/vim-prettier'            "vim wrapper for prettier
 Plug 'tpope/vim-surround'               "useful for surrounding texts
 Plug 'vim-airline/vim-airline'          "lightweight powerline
-Plug 'ayu-theme/ayu-vim'                "ayu colors and airline
 
 if has('nvim')                          "check for nvim
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -194,6 +195,7 @@ vnoremap <A-Up> :m '<-2<CR>gv=gv
 
 "toggle spellchecking
 nnoremap <F7> :setlocal spell! spelllang=en_gb spell?<CR>
+nnoremap <F8> :setlocal spell! spelllang=de_at spell?<CR>
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann

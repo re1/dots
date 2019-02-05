@@ -20,6 +20,7 @@ pluginWhiteList=services,places,desktopsessions,PowerDevil,shell,bookmarks,recen
 10=HDMI1
 11=LVDS1
 12=eDP-1
+13=HDMI-2
 
 [UniversalSettings]
 canDisableBorders=true
