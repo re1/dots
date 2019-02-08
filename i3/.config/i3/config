@@ -257,8 +257,11 @@ hide_edge_borders both
 # new_window none
 
 # handle floating dialogs
-for_window [window_role="pop-up"] 		floating enable
+for_window [window_role="pop-up"] 	    floating enable
 for_window [window_role="task_dialog"] 	floating enable
+
+# special window rules
+for_window [class="qemu-system-x86_64"] border pixel 0
 
 # set title format for all windows
 for_window [class=".*"] title_format " <small>  %title</small>"
