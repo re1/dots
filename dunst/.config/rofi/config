@@ -11,7 +11,7 @@ rofi.color-urgent:  argb:001f2430,  #e06c75, argb:005c6773, #cbcccc, #1f2430
 
 rofi.bw: 0
 rofi.drun-icon-theme: Papirus-Dark
-rofi.font: sans-serif 14
+rofi.font: sans-serif 10
 rofi.hide-scrollbar: true
 rofi.location: 2
 rofi.modi: window,run,ssh,drun

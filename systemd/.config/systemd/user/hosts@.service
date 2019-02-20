@@ -1,0 +1,8 @@
+[Unit]
+Description=Update hosts file with given argument to @suffix
+
+[Service]
+Type=simple
+Restart=no
+ExecStart=/usr/bin/cp /etc/hosts@%i /etc/hosts
+ExecStop=notify-send "systemd" "Hosts were updated for %i"

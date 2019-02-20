@@ -114,10 +114,10 @@ History Items[$e]=file:$HOME/.local/share/Zeal/
 [General]
 ColorScheme=Arc Dark
 Name=Arc Dark
-XftHintStyle=hintnone
+XftHintStyle=
 XftSubPixel=
 dbfile=/home/markus/.mozilla/firefox/bre0wxd5.default/places.sqlite
-fixed=Hack,13,-1,5,50,0,0,0,0,0,Regular
+fixed=Fira Code,13,-1,5,50,0,0,0,0,0,Regular
 font=Noto Sans,13,-1,5,50,0,0,0,0,0,Regular
 menuFont=Noto Sans,13,-1,5,50,0,0,0,0,0,Regular
 shadeSortColumn=true
@@ -155,6 +155,10 @@ Sort reversed=false
 Speedbar Width=90
 View Style=Simple
 listViewIconSize=30
+
+[KScreen]
+ScaleFactor=1
+ScreenScaleFactors=eDP-1=1;DP-1=1;HDMI-1=1;DP-2=1;HDMI-2=1;
 
 [KShortcutsDialog Settings]
 Dialog Size=631,480

@@ -11,7 +11,6 @@
 #
 # To get a config file with the same key positions, but for your current
 # layout, use the i3-config-wizard
-#
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -230,8 +229,8 @@ bindsym $mod+Control+t exec telegram-desktop
 bindsym $mod+Control+w exec libreoffice --nologo --writer
 
 # bind audio keys for volume control
-bindsym XF86AudioRaiseVolume exec pactl set-sink-mute 0 false, pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-mute 0 false, pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-mute 0 false, exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-mute 0 false, exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 # bind audio keys for player control
 bindsym XF86AudioNext exec playerctl next
@@ -249,12 +248,11 @@ default_orientation auto
 focus_follows_mouse yes
 
 # window rules (you can find the window class using xprop)
-default_border          normal 0 px
-default_floating_border normal 0 px
-hide_edge_borders both
-
 # disable window title for split layout
-# new_window none
+default_border          pixel 0
+# show border for floating windows
+default_floating_border normal 4 px
+# hide_edge_borders both
 
 # handle floating dialogs
 for_window [window_role="pop-up"] 	    floating enable
@@ -262,6 +260,7 @@ for_window [window_role="task_dialog"] 	floating enable
 
 # special window rules
 for_window [class="qemu-system-x86_64"] border pixel 0
+for_window [class="TelegramDesktop"]   floating enable
 
 # set title format for all windows
 for_window [class=".*"] title_format " <small>  %title</small>"

@@ -9,6 +9,7 @@ endif
 call plug#begin('~/.vim/plugged')       "set plugin path
 
 Plug 'ayu-theme/ayu-vim'                "ayu colors and airline
+Plug 'digitaltoad/vim-pug'              "pug syntax highlighting
 Plug 'junegunn/goyo.vim'                "distraction-free writing
 Plug 'prettier/vim-prettier'            "vim wrapper for prettier
 Plug 'tpope/vim-surround'               "useful for surrounding texts
@@ -96,6 +97,7 @@ set hid                     "hide inactive buffers
 set history=500             "save the last 500 changes
 set lazyredraw              "do not redraw while executing macros (avoid lag)
 set secure                  "disable unsafe commands
+set mouse=a                 "enable mouse movement
 set noerrorbells            "no error sound
 set novisualbell            "no visual notification for error sounds
 set termguicolors           "enable true colors support

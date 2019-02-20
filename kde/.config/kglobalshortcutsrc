@@ -9,8 +9,8 @@ switch-to-activity-f77b3278-bcd1-4442-9d01-bf0fbeb352fa=none,none,Switch to acti
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to Deutsch (Österreich)=,none,Tastaturbelegung zu Deutsch (\xc3\x96sterreich) umschalten
 Switch keyboard layout to German (Austria)=,none,Switch keyboard layout to German (Austria)
-Switch to Next Keyboard Layout=Ctrl+Alt+K,none,Switch to Next Keyboard Layout
-_k_friendly_name=KDE Daemon
+Switch to Next Keyboard Layout=Ctrl+Alt+K,Ctrl+Alt+K,Switch to Next Keyboard Layout
+_k_friendly_name=System Settings
 
 [code-oss.desktop]
 _k_friendly_name=Launch Code - OSS

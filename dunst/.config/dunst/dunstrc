@@ -1,5 +1,5 @@
 [global]
-font = monospace 10
+font = sans-serif 10
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
@@ -76,7 +76,7 @@ hide_duplicates_count = yes
 #geometry = "250x50-40+40"
 geometry = "416x52-12+40"
 
-# Define the corner radius of the notification window in pixel size. 
+# Define the corner radius of the notification window in pixel size.
 # If the radius is 0, you have no rounded corners. The radius will be automatically lowered if it exceeds half of the notification height to avoid clipping text and/or icons.
 corner_radius = 0
 
@@ -162,7 +162,7 @@ verbosity = mesg
 dmenu = /usr/bin/rofi drun
 
 # Browser for opening urls in context menu.
-browser = /usr/bin/firefox-developer-edition -new-tab
+browser = /usr/bin/firefox -new-tab
 
 # Align icons left/right/off
 icon_position = right
@@ -172,7 +172,7 @@ max_icon_size = 48
 icon_path = /usr/share/icons/Papirus-Dark/32x32/actions/:/usr/share/icons/Papirus-Dark/32x32/devices/:/usr/share/icons/Papirus-Dark/32x32/mimetypes/:/usr/share/icons/Papirus-Dark/32x32/status/:/usr/share/icons/Papirus-Dark/32x32/apps/:/usr/share/icons/Papirus-Dark/32x32/emblems/:/usr/share/icons/Papirus-Dark/32x32/panel/:/usr/share/icons/Papirus-Dark/32x32/categories/:/usr/share/icons/Papirus-Dark/32x32/extra/:/usr/share/icons/Papirus-Dark/32x32/places/
 
 frame_width = 3
-frame_color = "#61afef"
+frame_color = "#fafafa"
 
 [shortcuts]
 
@@ -198,16 +198,16 @@ context = mod4+shift+Prior
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
-frame_color = "#61afef"
-foreground = "#61afef"
-background = "#282c34"
+frame_color = "#fafafa"
+foreground = "#6c7680"
+background = "#fafafa"
 timeout = 4
 #icon = /path/to/icon
 
 [urgency_normal]
-frame_color = "#98c379"
+frame_color = "#fafafa"
 foreground = "#98c379"
-background = "#282c34"
+background = "#fafafa"
 timeout = 6
 #icon = /path/to/icon
 

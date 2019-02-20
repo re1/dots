@@ -4,21 +4,33 @@
 #        _ / /\__ \ | | | | | (__
 #       (_)___|___/_| |_|_|  \___|
 
-[[ $- != *i* ]] && return   # if not running interactively, don't do anything
-source ~/.zsh_plugins.sh    # load compiled plugins
+# if not running interactively, don't do anything
+[[ $- != *i* ]] && return
+# load compiled plugins
+source ~/.zsh_plugins.sh
 
 # load and initialize autocompletion
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+compinit
+# load history search
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+# bind up and down keys for history search
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
 # initialize fasd
 eval "$(fasd --init posix-alias zsh-hook)"
 # change directory without cd
 setopt autocd
-
 # save command history to file
 HISTFILE=~/.zsh_history
 HISTSIZE=2000
 SAVEHIST=$HISTSIZE
-
+# update spaceship char
+SPACESHIP_CHAR_SYMBOL='→ '
+# no chicken emoji in fontawesome
+SPACESHIP_GOLANG_SYMBOL="  "
 # list only needed spaceship prompts
 SPACESHIP_PROMPT_ORDER=(
     time          # Time stamps section
@@ -73,7 +85,7 @@ alias ls='ls --color=auto'
 alias l='ls'
 alias la='ls -a'
 alias mkdir='mkdir -p'
-alias t='tree'
+alias t='tree -C'
 alias ta='tree -aC -I .git'
 alias td='tree -dC'
 
@@ -95,6 +107,8 @@ alias pacupg='sudo pacman -Syu'
 alias pacin='sudo pacman -S'
 alias pacrem='sudo pacman -Rns'
 alias pacrmorphans='sudo pacman -Rs $(pacman -Qtdq)'
+# @dylanaraps has some weird aliases
+alias anakin='sudo pacman -Rns $(pacman -Qtdq)'
 # list packages as in https://bbs.archlinux.org/viewtopic.php?id=93683
 function paclist() {
   LC_ALL=C pacman -Qei $(pacman -Qu | cut -d " " -f 1) | \
