@@ -91,10 +91,10 @@ alias td='tree -dC'
 
 # Git
 alias ga='git add .; git status'
-alias gc='git add .; git status; git commit -e'
+alias gc='git add .; git status; git commit -S -e'
 alias gp='git push'
 alias gl='git pull'
-alias gcp='git add .; git status; git commit -e; git push'
+alias gcp='git add .; git status; git commit -S -e; git push'
 # download gitignore for arguments from gitignore.io
 gi () {
     old="$IFS"; IFS=','
