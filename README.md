@@ -1,38 +1,20 @@
-Thank you for visting my dot-files!
+I am currently working on [Arch Linux](http://archlinux.org/) using the [GNOME 3](https://www.gnome.org/) desktop environment. In order to avoid distraction I appreciate the default settings. Here is a short list customized applications and components:
 
-As you can see below I am working on [Arch Linux](http://archlinux.org/) with [KDE](https://www.kde.org/) as my window manager and desktop environment. Have a short list of the most important components:
-
-- **Terminal**: [Konsole](https://konsole.kde.org/) or [RXVT-unicode](http://software.schmorp.de/pkg/rxvt-unicode.html)
+- **Terminal**: [st](https://st.suckless.org/) (no patches)
 - **Shell**: [Zsh](https://www.zsh.org/) with [Antibody](https://getantibody.github.io/) and [Spaceship](https://github.com/denysdovhan/spaceship-prompt) prompt
 - **Editor**: [Neovim](https://www.vim.org/) with [Airline](https://github.com/vim-airline/vim-airline) using the [Ayu](https://github.com/ayu-theme/ayu-vim) color scheme
-- **Theme**: [Arc Dark](https://github.com/NicoHood/arc-theme)
-- **Fonts**: [Noto](https://www.google.com/get/noto/) and [Fira](https://mozilla.github.io/Fira/)
-- **Icons**: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) or on light
-  themes [Paper](https://github.com/snwh/paper-icon-theme)
-
-My current setup looks something like this:
-
-![screenshot](screenshot.png)
-
-Window decorations are [SierraBreeze](https://github.com/ishovkun/SierraBreeze):
-
-```sh
-git clone https://aur.archlinux.org/sierrabreeze-kwin-decoration-git.git
-cd sierrabreeze-kwin-decoration-git && makepkg -si
-cd ../ && rm -rf sierrabreeze-kwin-decoration-git/
-```
-
-I would love to get some feedback so please do not be shy to leave a comment or even a pull request!
+- **Editor Font**: [Fira Code](https://mozilla.github.io/Fira/)
+- **Icons**: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
 
 ## Usage
 
-Files are managed using [GNU Stow](https://www.gnu.org/software/stow/) (`pacman -S stow`).
+Files are managed using [GNU Stow](https://www.gnu.org/software/stow/)
 
 ```sh
-git clone https://github.com/re1/dots
-stow -d dots -t ~ {PACKAGES}
+git clone https://github.com/re1/dots && cd dots
+stow all the packages you want
 ```
 
 ## Contribution
 
-If you like my dotfiles (and also if you hate them) you can create a pull request for specific files.
+If you like this repository (and also if you hate it) feel free to create a pull request.
