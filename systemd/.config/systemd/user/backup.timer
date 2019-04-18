@@ -1,9 +1,0 @@
-[Unit]
-Description=Timer for daily backups using borg
-
-[Timer]
-OnCalendar=daily
-Persistent=true
-
-[Install]
-WantedBy=timers.target
