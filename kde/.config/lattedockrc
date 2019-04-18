@@ -1,0 +1,38 @@
+[ActionsWidget]
+ColumnState=AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAikAAAACAQAAAQAAAAAAAAAAAAAAAGT/////AAAAgQAAAAAAAAACAAAA+gAAAAEAAAAAAAABLwAAAAEAAAAAAAAD6AAAAABk
+
+[ConfigDialog]
+Height 1080=461
+Width 1920=679
+
+[General]
+Number of Actions=0
+
+[KPropertiesDialog]
+Height 1200=339
+Width 1920=433
+
+[PlasmaRunnerManager]
+LaunchCounts=1 shell_st,1 services_kvantummanager.desktop
+pluginWhiteList=services,places,desktopsessions,PowerDevil,shell,bookmarks,recentdocuments,locations,baloosearch
+
+[ScreenConnectors]
+10=HDMI1
+11=LVDS1
+12=eDP-1
+13=HDMI-2
+
+[UniversalSettings]
+canDisableBorders=true
+currentLayout=Default
+downloadWindowSize=800,550
+lastNonAssignedLayout=Default
+launchers=
+layoutsColumnWidths=86,72,65,49
+layoutsWindowSize=700,450
+memoryUsage=0
+mouseSensitivity=2
+screenTrackerInterval=2500
+showInfoWindow=true
+unifiedGlobalShortcuts=true
+version=2

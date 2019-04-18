@@ -1,0 +1,9 @@
+[Unit]
+Description=Run a borg backup
+
+[Service]
+Type=simple
+ExecStart=/home/markus/.local/bin/backup
+SuccessExitStatus=0 1 SIGKILL
+Restart=on-failure
+RestartSec=7200

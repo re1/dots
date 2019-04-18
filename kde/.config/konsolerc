@@ -1,0 +1,31 @@
+[Desktop Entry]
+DefaultProfile=Konsole.profile
+
+[Favorite Profiles]
+Favorites=
+
+[KonsoleWindow]
+ShowWindowTitleOnTitleBar=true
+UseSingleInstance=true
+
+[MainWindow]
+Height 1080=1026
+Height 1200=1138
+Height 1440=1342
+MenuBar=Enabled
+State=AAAA/wAAAAD9AAAAAAAAA1UAAAV0AAAABAAAAAQAAAAIAAAACPwAAAAA
+ToolBarsMovable=Disabled
+Width 1920=853
+Width 2560=853
+Window-Maximized 1080x1920=true
+Window-Maximized 1440x2560=false
+
+[Notification Messages]
+CloseAllEmptyTabs=true
+
+[PrintOptions]
+PrinterFriendly=true
+ScaleOutput=true
+
+[TabBar]
+ExpandTabWidth=true

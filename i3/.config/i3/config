@@ -1,0 +1,315 @@
+# re1's  _ _____
+#       (_)___ /
+#       | | |_ \
+#       | |___) |
+#       |_|____/    config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Noto Sans, Font Awesome 5 Free 10
+
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $left   h
+set $down   j
+set $up     k
+set $right  l
+
+# set modifiers
+set $mod Mod4
+set $alt Mod1
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return         exec i3-sensible-terminal
+bindsym $mod+Shift+Return   exec i3-sensible-terminal -e i3-sensible-editor
+
+# kill focused window
+bindsym $mod+q  kill
+bindsym Mod1+F4 kill
+
+# start a program launcher
+bindsym $mod+d              exec rofi -show drun -columns 2
+bindsym $mod+w              exec rofi -show window
+bindsym $mod+Shift+d        exec rofi -show run
+
+# change focus
+bindsym $mod+$left          focus left
+bindsym $mod+$down          focus down
+bindsym $mod+$up            focus up
+bindsym $mod+$right         focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left           focus left
+bindsym $mod+Down           focus down
+bindsym $mod+Up             focus up
+bindsym $mod+Right          focus right
+
+# move focused window
+bindsym $mod+Shift+$left    move left
+bindsym $mod+Shift+$down    move down
+bindsym $mod+Shift+$up      move up
+bindsym $mod+Shift+$right   move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left     move left
+bindsym $mod+Shift+Down     move down
+bindsym $mod+Shift+Up       move up
+bindsym $mod+Shift+Right    move right
+
+# split (horizontal, vertical, toggle)
+# bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+s split toggle
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout
+bindsym $mod+e          layout default
+bindsym $mod+t          layout toggle tabbed split
+bindsym $mod+Shift+t    layout toggle stacking split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+c focus child
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# switch to workspace
+bindsym $mod+Tab        workspace next
+bindsym $mod+Shift+Tab  workspace prev
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# move focused workspace to output
+bindsym $mod+Control+comma  move workspace to output left
+bindsym $mod+Control+period move workspace to output right
+bindsym $mod+Control+minus  move workspace to output primary
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym $left           resize shrink width 8 px or 8 ppt
+    bindsym $down           resize grow height 8 px or 8 ppt
+    bindsym $up             resize shrink height 8 px or 8 ppt
+    bindsym $right          resize grow width 8 px or 8 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left            resize shrink width 8 px or 8 ppt
+    bindsym Down            resize grow height 8 px or 8 ppt
+    bindsym Up              resize shrink height 8 px or 8 ppt
+    bindsym Right           resize grow width 8 px or 8 ppt
+
+    # same bindings, but faster
+    bindsym Shift+$left     resize shrink width 16 px or 16 ppt
+    bindsym Shift+$down     resize grow height 16 px or 16 ppt
+    bindsym Shift+$up       resize shrink height 16 px or 16 ppt
+    bindsym Shift+$right    resize grow width 16 px or 16 ppt
+
+    # same bindings, but faster, but for the arrow keys
+    bindsym Shift+Left      resize shrink width 16 px or 16 ppt
+    bindsym Shift+Down      resize grow height 16 px or 16 ppt
+    bindsym Shift+Up        resize shrink height 16 px or 16 ppt
+    bindsym Shift+Right     resize grow width 16 px or 16 ppt
+
+    # back to normal: Enter or Escape or Mod1+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# power management
+mode "power" {
+    # sleep
+    bindsym l mode "default", exec xset dpms force off && slock
+    bindsym s mode "default", exec systemctl suspend && slock
+    bindsym h mode "default", exec systemctl hibernate && slock
+    # i3
+    bindsym r mode "default", restart
+    bindsym e mode "default", exit
+    # poweroff
+    bindsym Shift+r mode "default", exec systemctl reboot
+    bindsym Shift+s mode "default", exec systemctl poweroff
+    # return
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Pause mode "power"
+bindsym $mod+Escape mode "power"
+
+# screenshots
+bindsym Print exec import image.png
+
+# common apps
+bindsym $mod+Shift+f exec thunar
+bindsym $mod+Shift+m exec wxmaxima
+bindsym $mod+Shift+p exec charm
+bindsym $mod+Shift+w exec firefox
+bindsym $mod+Shift+z exec zeal
+
+bindsym $mod+Control+c exec libreoffice --nologo --calc
+bindsym $mod+Control+s exec spotify
+bindsym $mod+Control+t exec telegram-desktop
+bindsym $mod+Control+w exec libreoffice --nologo --writer
+
+# bind audio keys for volume control
+bindsym XF86AudioRaiseVolume exec pactl set-sink-mute 0 false, exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-mute 0 false, exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+# bind audio keys for player control
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+
+# multihead settings
+bindsym $mod+p exec xfce4-display-settings -m
+
+# wide-screen monitors get horizontal, rotated monitors vertical orientation
+default_orientation auto
+
+# make focus follow mouse movement
+focus_follows_mouse yes
+
+# window rules (you can find the window class using xprop)
+# disable window title for split layout
+default_border          pixel 0
+# show border for floating windows
+default_floating_border normal 4 px
+# hide_edge_borders both
+
+# handle floating dialogs
+for_window [window_role="pop-up"] 	    floating enable
+for_window [window_role="task_dialog"] 	floating enable
+
+# special window rules
+for_window [class="qemu-system-x86_64"] border pixel 0
+for_window [class="TelegramDesktop"]   floating enable
+
+# set title format for all windows
+for_window [class=".*"] title_format " <small>  %title</small>"
+
+# colors
+set $bg         #1f2430
+set $fg         #cbccc6
+set $primary    #bae67e
+set $secondary  #73d0ff
+set $alert      #f28799
+
+# colorclass            border  bg      text        indicator   child_border
+client.focused		    $bg     $bg     $primary    $primary    $bg
+client.focused_inactive	$bg     $bg     $secondary  $secondary  $bg
+client.unfocused		$bg     $bg     $fg         $fg         $bg
+client.urgent			$bg     $bg     $alert      $alert      $bg
+client.placeholder		$bg     $bg     $fg         $bg         $bg
+client.background       $bg
+
+
+# =========== #
+#   i3-gaps   #
+# =========== #
+#
+# Them gaps for you ricers
+# set $gaps_inner 12
+# set $gaps_outer 0
+
+# gaps inner $gaps_inner
+# gaps outer $gaps_outer
+# smart_gaps on
+
+# mode "gaps" {
+#     bindsym Left    gaps outer all minus 4
+#     bindsym Down    gaps inner all minus 4
+#     bindsym Up      gaps inner all plus 4
+#     bindsym Right   gaps outer all plus 4
+#
+#     bindsym Shift+Left  gaps outer all minus 8
+#     bindsym Shift+Left  gaps inner all minus 8
+#     bindsym Shift+Left  gaps inner all plus 8
+#     bindsym Shift+Left  gaps outer all plus 8
+#
+#     bindsym d mode "default", gaps inner current set $gaps_inner; gaps outer current set $gaps_outer
+#     bindsym 0 mode "default", gaps inner current set 0; gaps outer current set 0
+#
+#     bindsym Return mode "default"
+#     bindsym Esfocus follow mouse movement}
+
+# bindsym $mod+g mode "gaps"
+# bindsym $mod+Shift+g gaps inner $gaps
+
