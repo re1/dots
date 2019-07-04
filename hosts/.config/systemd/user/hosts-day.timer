@@ -1,0 +1,10 @@
+[Unit]
+Description=Timer for updating hosts file in the morning
+
+[Timer]
+OnCalendar=*-*-* 08:00:00
+Persistent=true
+Unit=hosts-day.service
+
+[Install]
+WantedBy=timers.target
