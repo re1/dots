@@ -104,6 +104,10 @@ gi () {
     IFS=$old
 }
 
+# Node
+alias yd='yarn develop'
+alias yb='yarn build'
+
 # avoid permission problems
 alias chmod='chmod --preserve-root'
 # Pacman as in https://wiki.archlinux.org/index.php/Pacman_Tips)
