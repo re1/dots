@@ -97,6 +97,7 @@ set hid                     "hide inactive buffers
 set history=500             "save the last 500 changes
 set lazyredraw              "do not redraw while executing macros (avoid lag)
 set secure                  "disable unsafe commands
+set shell=/bin/zsh          "set default shell
 set mouse=a                 "enable mouse movement
 set noerrorbells            "no error sound
 set novisualbell            "no visual notification for error sounds
@@ -180,10 +181,9 @@ map 0 ^
 "nmap <silent> <Down> gj
 "nmap <silent> <Up> gk
 
-"copy to, cut to and paste from clipboard
+"copy to and cut to clipboard
 vnoremap <c-c> "+y
 vnoremap <c-x> "+d
-map <c-v> "+P
 "save file using control-s as in most other editors
 map <c-s> :w<CR>
 

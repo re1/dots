@@ -8,7 +8,8 @@
 [[ $- != *i* ]] && return
 # load compiled plugins
 source ~/.zsh_plugins.sh
-
+# load starship prompt
+eval "$(starship init zsh)"
 # load and initialize autocompletion
 autoload -Uz compinit
 compinit
@@ -27,47 +28,19 @@ setopt autocd
 HISTFILE=~/.zsh_history
 HISTSIZE=2000
 SAVEHIST=$HISTSIZE
-# update spaceship char
-SPACESHIP_CHAR_SYMBOL='→ '
-# no chicken emoji in fontawesome
-SPACESHIP_GOLANG_SYMBOL="  "
-# list only needed spaceship prompts
-SPACESHIP_PROMPT_ORDER=(
-    time          # Time stamps section
-    user          # Username section
-    dir           # Current directory section
-    host          # Hostname section
-    git           # Git section (git_branch + git_status)
-    package       # Package version
-    node          # Node.js section
-    golang        # Go section
-    php           # PHP section
-    rust          # Rust section
-    docker        # Docker section
-    venv          # virtualenv section
-    pyenv         # Pyenv section
-    dotnet        # .NET section
-    ember         # Ember.js section
-    exec_time     # Execution time
-    line_sep      # Line break
-    battery       # Battery level and status
-    jobs          # Background jobs indicator
-    exit_code     # Exit code section
-    char          # Prompt character
-)
-
 # default applications
 export BROWSER=/usr/bin/firefox
 export EDITOR=/usr/bin/nvim
 # PATH extensions
 export PATH="$HOME/.local/bin:$PATH"                        # Add user's local binaries to PATH
 export PATH="$(yarn global bin):$PATH"                      # Add yarn global binaries to PATH
-# export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"     # Add ruby gems to PATH
+#export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"    # Add ruby gems to PATH
 
 
 # ----------------------- #
 #   Aliases & Functions   #
 # ----------------------- #
+alias b='bat'
 alias c='cat'
 alias p='pass'
 
@@ -76,6 +49,10 @@ alias ab='antibody bundle < ~/.zsh_plugins > ~/.zsh_plugins.sh'
 
 # Clipboard
 alias clip='xclip -selection clipboard'
+
+# Docker
+alias up='docker-compose up'
+alias down='docker-compose down'
 
 # Fasd
 alias e='f -e nvim'
@@ -107,6 +84,8 @@ gi () {
 # Node
 alias yd='yarn develop'
 alias yb='yarn build'
+alias dev='yarn develop'
+alias build='yarn build'
 
 # avoid permission problems
 alias chmod='chmod --preserve-root'
