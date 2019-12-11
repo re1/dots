@@ -14,7 +14,7 @@ $endif$
 $if(fontsize)$
   $fontsize$,
 $else$
-  10.5pt
+  10pt
 $endif$
 $if(lang)$
   $babel-lang$,
@@ -100,7 +100,8 @@ $endif$
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
-  \usepackage[scale=0.9]{FiraMono}
+  \usepackage[default]{lato}
+  \usepackage[scale=0.85]{FiraMono}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex

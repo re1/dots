@@ -73,7 +73,7 @@ alias ga='git add .; git status'
 alias gc='git add .; git status; git commit -S -e'
 alias gp='git push'
 alias gl='git pull'
-alias gcp='git add .; git status; git commit -e; git push'
+alias gcp='git add .; git status; git commit -S -e; git push'
 alias gms='git checkout stable; git merge master; git push; git checkout master'
 # download gitignore for arguments from gitignore.io
 gi () {
@@ -83,8 +83,9 @@ gi () {
 }
 
 # Node
-alias yd='yarn develop'
 alias yb='yarn build'
+alias yc='yarn clean'
+alias yd='yarn develop'
 alias dev='yarn develop'
 alias build='yarn build'
 
