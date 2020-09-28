@@ -14,7 +14,7 @@ $endif$
 $if(fontsize)$
   $fontsize$,
 $else$
-  10pt
+  11pt
 $endif$
 $if(lang)$
   $babel-lang$,
@@ -96,12 +96,14 @@ $endif$
 $if(linestretch)$
 \usepackage{setspace}
 $endif$
-\usepackage{amssymb,amsmath}
+\usepackage{tabularx, tikz}
+\usepackage{amssymb,amsmath,mathtools,mathabx,siunitx}
+% Fonts
+\usepackage{crimson}
+\usepackage[scale=0.8]{FiraMono}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
-  \usepackage[default]{lato}
-  \usepackage[scale=0.85]{FiraMono}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
@@ -123,6 +125,7 @@ $if(sansfont)$
   \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
 $endif$
 $if(monofont)$
+  \setmonofont[Contextuals={Alternate}]{Fira Code}
   \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}
 $endif$
 $for(fontfamilies)$
@@ -244,14 +247,21 @@ $endif$
 $if(beamer)$
 \newif\ifbibliography
 $endif$
+% Listings
 $if(listings)$
 \usepackage{listings}
+\usepackage{lstfiracode} % https://ctan.org/pkg/lstfiracode
+\lstset{
+  language=Pascal,
+  style=FiraCodeStyle,   % Use predefined FiraCodeStyle
+  basicstyle=\ttfamily   % Use \ttfamily for source code listings
+}
 \newcommand{\passthrough}[1]{#1}
 \lstset{defaultdialect=[5.3]Lua}
 \lstset{defaultdialect=[x86masm]Assembler}
 $endif$
 $if(lhs)$
-\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+\lstnewenvironment{code}{}{}
 $endif$
 $if(highlighting-macros)$
 $highlighting-macros$

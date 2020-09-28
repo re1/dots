@@ -2,3 +2,5 @@ zsh-users/zsh-completions               # many zsh completions
 zsh-users/zsh-autosuggestions           # fish-like autosuggestions
 zsh-users/zsh-syntax-highlighting       # fish-like syntax highlighting
 ninrod/pass-zsh-completion              # pass command completion
+MichaelAquilina/zsh-you-should-use      # reminds you to use aliases
+MichaelAquilina/zsh-auto-notify         # notifies of task completion

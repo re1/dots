@@ -9,19 +9,10 @@ endif
 call plug#begin('~/.vim/plugged')       "set plugin path
 
 Plug 'ayu-theme/ayu-vim'                "ayu colors and airline
-Plug 'digitaltoad/vim-pug'              "pug syntax highlighting
 Plug 'junegunn/goyo.vim'                "distraction-free writing
 Plug 'prettier/vim-prettier'            "vim wrapper for prettier
 Plug 'tpope/vim-surround'               "useful for surrounding texts
 Plug 'vim-airline/vim-airline'          "lightweight powerline
-
-if has('nvim')                          "check for nvim
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'              "for deoplate.nvim
-    Plug 'roxma/vim-hug-neovim-rpc'     "for deoplate.nvim
-endif
 
 call plug#end()                         "init plugin system
 
@@ -116,10 +107,10 @@ set expandtab       "convert tabs to spaces (sorry guys)
 set linebreak       "wrap lines a convenient points
 set nojoinspaces    "single space after punctuation
 set shiftround      "round indent to multiple of shift width
-set shiftwidth=4    "number of spaces per indentation
+set shiftwidth=2    "number of spaces per indentation
 set si              "indent after indentation keywords (like brackets)
-set softtabstop=4   "number of spaces a tab during editing operations (inserts)
-set tabstop=4       "number of spaces a tab counts for
+set softtabstop=2   "number of spaces a tab during editing operations (inserts)
+set tabstop=2       "number of spaces a tab counts for
 set wrap            "wrap lines too long to be displayed
 
 """ Searching

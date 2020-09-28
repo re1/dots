@@ -32,17 +32,24 @@ SAVEHIST=$HISTSIZE
 export BROWSER=/usr/bin/firefox
 export EDITOR=/usr/bin/nvim
 # PATH extensions
-export PATH="$HOME/.local/bin:$PATH"                        # Add user's local binaries to PATH
-export PATH="$(yarn global bin):$PATH"                      # Add yarn global binaries to PATH
+export PATH="$HOME/.local/bin:$PATH"    # Add user's local binaries to PATH
+export PATH="$(yarn global bin):$PATH"  # Add yarn global binaries to PATH
+export PATH="$HOME/go/bin:$PATH"        # Add go binaries to PATH
 #export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"    # Add ruby gems to PATH
 
+export ANDROID_HOME="/opt/android-sdk"                      # Android development tools
+export ANDROID_SDK_ROOT="/opt/android-sdk"                  # Android SDK
+export PATH="$ANDROID_HOME/platform-tools:$PATH"            # Add Android tools to PATH
+export PATH="$HOME/.local/share/flutter/bin:$PATH"          # Add flutter binaries to PATH
 
 # ----------------------- #
 #   Aliases & Functions   #
 # ----------------------- #
 alias b='bat'
 alias c='cat'
+alias g='git'
 alias p='pass'
+alias ydl='youtube-dl'
 
 # Antibody bundle plugins and compile them to ~/.zsh_plugins.sh
 alias ab='antibody bundle < ~/.zsh_plugins > ~/.zsh_plugins.sh'
@@ -61,7 +68,6 @@ alias o='a -e xdg-open'
 
 # Files and directories
 alias ls='ls --color=auto'
-alias l='ls'
 alias la='ls -a'
 alias mkdir='mkdir -p'
 alias t='tree -C'
@@ -86,6 +92,7 @@ gi () {
 alias yb='yarn build'
 alias yc='yarn clean'
 alias yd='yarn develop'
+alias ys='yarn start'
 alias dev='yarn develop'
 alias build='yarn build'
 
