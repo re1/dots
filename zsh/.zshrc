@@ -93,6 +93,12 @@ alias yb='yarn build'
 alias yc='yarn clean'
 alias yd='yarn develop'
 alias ys='yarn start'
+
+alias nb='npm run build'
+alias nc='npm run clean'
+alias np='npm run develop'
+alias ns='npm run start'
+
 alias dev='yarn develop'
 alias build='yarn build'
 
