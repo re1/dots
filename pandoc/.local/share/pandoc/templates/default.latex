@@ -100,7 +100,7 @@ $endif$
 \usepackage{amssymb,amsmath,mathtools,mathabx,siunitx}
 % Fonts
 \usepackage{crimson}
-\usepackage[scale=0.8]{FiraMono}
+\usepackage[scale=0.72]{FiraMono}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}

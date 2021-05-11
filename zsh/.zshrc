@@ -1,4 +1,4 @@
-#   re1's          _
+#uto   re1's          _
 #          _______| |__  _ __ ___
 #         |_  / __| '_ \| '__/ __|
 #        _ / /\__ \ | | | | | (__
@@ -11,6 +11,7 @@ source ~/.zsh_plugins.sh
 # load starship prompt
 eval "$(starship init zsh)"
 # load and initialize autocompletion
+fpath+=(~/.zsh $fpath)
 autoload -Uz compinit
 compinit
 # load history search
@@ -32,15 +33,18 @@ SAVEHIST=$HISTSIZE
 export BROWSER=/usr/bin/firefox
 export EDITOR=/usr/bin/nvim
 # PATH extensions
-export PATH="$HOME/.local/bin:$PATH"    # Add user's local binaries to PATH
-export PATH="$(yarn global bin):$PATH"  # Add yarn global binaries to PATH
-export PATH="$HOME/go/bin:$PATH"        # Add go binaries to PATH
+export PATH="$HOME/.local/bin:$PATH"      # user's local binaries
+export PATH="$(yarn global bin):$PATH"    # yarn global binaries
+export PATH="$HOME/go/bin:$PATH"          # go binaries
+export DENO_INSTALL="/home/markus/.deno"  # deno install reference
+export PATH="$DENO_INSTALL/bin:$PATH"     # deno binary
 #export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"    # Add ruby gems to PATH
 
 export ANDROID_HOME="/opt/android-sdk"                      # Android development tools
 export ANDROID_SDK_ROOT="/opt/android-sdk"                  # Android SDK
 export PATH="$ANDROID_HOME/platform-tools:$PATH"            # Add Android tools to PATH
 export PATH="$HOME/.local/share/flutter/bin:$PATH"          # Add flutter binaries to PATH
+export JAVA_HOME="/usr/lib/jvm/default"                     # Java
 
 # ----------------------- #
 #   Aliases & Functions   #
@@ -81,11 +85,10 @@ alias gp='git push'
 alias gl='git pull'
 alias gcp='git add .; git status; git commit -S -e; git push'
 alias gms='git checkout stable; git merge master; git push; git checkout master'
-# download gitignore for arguments from gitignore.io
-gi () {
-    old="$IFS"; IFS=','
-    curl "https://www.gitignore.io/api/$*" >> "$PWD/.gitignore"
-    IFS=$old
+
+# download gitignore for arguments from gitignore.io (now toptal)
+function gi() {
+    curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@;
 }
 
 # Node
