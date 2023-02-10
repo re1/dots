@@ -1,4 +1,4 @@
-#uto   re1's          _
+#   re1's          _
 #          _______| |__  _ __ ___
 #         |_  / __| '_ \| '__/ __|
 #        _ / /\__ \ | | | | | (__
@@ -29,22 +29,41 @@ setopt autocd
 HISTFILE=~/.zsh_history
 HISTSIZE=2000
 SAVEHIST=$HISTSIZE
+# Plugin configuration
+export AUTO_NOTIFY_THRESHOLD=120
+export AUTO_NOTIFY_EXPIRE_TIME=5000
+AUTO_NOTIFY_IGNORE+=("yarn" "npm" "docker")
 # default applications
 export BROWSER=/usr/bin/firefox
 export EDITOR=/usr/bin/nvim
 # PATH extensions
-export PATH="$HOME/.local/bin:$PATH"      # user's local binaries
-export PATH="$(yarn global bin):$PATH"    # yarn global binaries
-export PATH="$HOME/go/bin:$PATH"          # go binaries
-export DENO_INSTALL="/home/markus/.deno"  # deno install reference
-export PATH="$DENO_INSTALL/bin:$PATH"     # deno binary
-#export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"    # Add ruby gems to PATH
+export PATH="$HOME/.local/bin:$PATH"                        # user's local binaries
+export PATH="$(yarn global bin):$PATH"                      # yarn global binaries
+export PATH="$HOME/go/bin:$PATH"                            # go binaries
+export DENO_INSTALL="/home/markus/.deno"                    # deno install reference
+export PATH="$DENO_INSTALL/bin:$PATH"                       # deno binary
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"     # Add ruby gems to PATH
 
 export ANDROID_HOME="/opt/android-sdk"                      # Android development tools
 export ANDROID_SDK_ROOT="/opt/android-sdk"                  # Android SDK
 export PATH="$ANDROID_HOME/platform-tools:$PATH"            # Add Android tools to PATH
 export PATH="$HOME/.local/share/flutter/bin:$PATH"          # Add flutter binaries to PATH
+export PATH="$HOME/.dotnet/tools:$PATH"                     # Add dotnet tools to path
 export JAVA_HOME="/usr/lib/jvm/default"                     # Java
+
+export DOTNET_CLI_TELEMETRY_OPTOUT=1 # disable dotnet telemetry
+export DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT=1 # again..
+
+# NVM
+source /usr/share/nvm/init-nvm.sh
+
+# zsh parameter completion for the dotnet CLI
+_dotnet_zsh_complete()
+{
+  local completions=("$(dotnet complete "$words")")
+  reply=( "${(ps:\n:)completions}" )
+}
+compctl -K _dotnet_zsh_complete dotnet
 
 # ----------------------- #
 #   Aliases & Functions   #
@@ -99,7 +118,7 @@ alias ys='yarn start'
 
 alias nb='npm run build'
 alias nc='npm run clean'
-alias np='npm run develop'
+alias nd='npm run develop'
 alias ns='npm run start'
 
 alias dev='yarn develop'
@@ -119,3 +138,19 @@ function paclist() {
   LC_ALL=C pacman -Qei $(pacman -Qu | cut -d " " -f 1) | \
     awk 'BEGIN {FS=":"} /^Name/{printf("\033[1;36m%s\033[1;37m", $2)} /^Description/{print $2}'
 }
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/markus/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/markus/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/markus/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/markus/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
