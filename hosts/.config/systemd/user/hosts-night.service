@@ -1,8 +1,0 @@
-[Unit]
-Description=Update hosts file for the evening
-
-[Service]
-Type=simple
-Restart=no
-ExecStart=/usr/bin/cp /home/markus/etc/hosts/hosts-night /home/markus/etc/hosts/hosts
-ExecStop=notify-send "systemd" "Hosts were updated for the evening"
