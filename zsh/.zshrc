@@ -66,6 +66,9 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH="$HOME/.local/share/flutter/bin:$PATH" # Add Flutter binaries to Path
 export CHROME_EXECUTABLE=/usr/bin/chromium # Set Chrome browser binary for Flutter
 
+# Docker
+export DOCKER_BUILDKIT=1 # Enable Docker Buildkit for faster builds
+
 # Dotnet development
 export PATH="$HOME/.dotnet/tools:$PATH" # Add dotnet tools to path
 export DOTNET_CLI_TELEMETRY_OPTOUT=1 # disable dotnet telemetry
