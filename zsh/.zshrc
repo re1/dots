@@ -4,59 +4,72 @@
 #        _ / /\__ \ | | | | | (__
 #       (_)___|___/_| |_|_|  \___|
 
-# if not running interactively, don't do anything
+# If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-# load compiled plugins
+
+# Load compiled plugins
 source ~/.zsh_plugins.sh
-# load starship prompt
+
+# Load starship prompt
 eval "$(starship init zsh)"
-# load and initialize autocompletion
+
+# Load and initialize autocompletion
 fpath+=(~/.zsh $fpath)
 autoload -Uz compinit
 compinit
-# load history search
+
+# Load history search
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-# bind up and down keys for history search
+
+# Bind up and down keys for history search
 bindkey '^[[A' up-line-or-beginning-search
 bindkey '^[[B' down-line-or-beginning-search
-# initialize fasd
+
+# Initialize fasd
 eval "$(fasd --init posix-alias zsh-hook)"
-# change directory without cd
+
+# Change directory without cd
 setopt autocd
-# save command history to file
+
+# Save command history to file
 HISTFILE=~/.zsh_history
 HISTSIZE=2000
 SAVEHIST=$HISTSIZE
+
 # Plugin configuration
 export AUTO_NOTIFY_THRESHOLD=120
 export AUTO_NOTIFY_EXPIRE_TIME=5000
 AUTO_NOTIFY_IGNORE+=("yarn" "npm" "docker")
-# default applications
+
+# Default applications
 export BROWSER=/usr/bin/firefox
 export EDITOR=/usr/bin/nvim
+
 # PATH extensions
-export PATH="$HOME/.local/bin:$PATH"                        # user's local binaries
-export PATH="$(yarn global bin):$PATH"                      # yarn global binaries
-export PATH="$HOME/go/bin:$PATH"                            # go binaries
-export DENO_INSTALL="/home/markus/.deno"                    # deno install reference
-export PATH="$DENO_INSTALL/bin:$PATH"                       # deno binary
-export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"     # Add ruby gems to PATH
+export PATH="$HOME/.local/bin:$PATH" # user's local binaries
+export PATH="$HOME/go/bin:$PATH" # go binaries
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH" # Add ruby gems to PATH
 
-export ANDROID_HOME="/opt/android-sdk"                      # Android development tools
-export ANDROID_SDK_ROOT="/opt/android-sdk"                  # Android SDK
-export PATH="$ANDROID_HOME/platform-tools:$PATH"            # Add Android tools to PATH
-export PATH="$HOME/.local/share/flutter/bin:$PATH"          # Add flutter binaries to PATH
-export PATH="$HOME/.dotnet/tools:$PATH"                     # Add dotnet tools to path
-export JAVA_HOME="/usr/lib/jvm/default"                     # Java
+# Java development
+export JAVA_HOME="/usr/lib/jvm/default" # Java
 
+# Android development
+export ANDROID_HOME="$HOME/Android/Sdk/"
+export PATH=$PATH:$ANDROID_HOME/tools/
+export PATH=$PATH:$ANDROID_HOME/tools/bin/
+export PATH=$PATH:$ANDROID_HOME/platform-tools/
+export PATH=$PATH:$ANDROID_HOME/emulator
+
+# Flutter development
+export PATH="$HOME/.local/share/flutter/bin:$PATH" # Add Flutter binaries to Path
+export CHROME_EXECUTABLE=/usr/bin/chromium # Set Chrome browser binary for Flutter
+
+# Dotnet development
+export PATH="$HOME/.dotnet/tools:$PATH" # Add dotnet tools to path
 export DOTNET_CLI_TELEMETRY_OPTOUT=1 # disable dotnet telemetry
 export DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT=1 # again..
-
-# NVM
-source /usr/share/nvm/init-nvm.sh
-
 # zsh parameter completion for the dotnet CLI
 _dotnet_zsh_complete()
 {
@@ -64,6 +77,9 @@ _dotnet_zsh_complete()
   reply=( "${(ps:\n:)completions}" )
 }
 compctl -K _dotnet_zsh_complete dotnet
+
+# NVM
+source /usr/share/nvm/init-nvm.sh
 
 # ----------------------- #
 #   Aliases & Functions   #
@@ -105,7 +121,7 @@ alias gl='git pull'
 alias gcp='git add .; git status; git commit -S -e; git push'
 alias gms='git checkout stable; git merge master; git push; git checkout master'
 
-# download gitignore for arguments from gitignore.io (now toptal)
+# Download gitignore for arguments
 function gi() {
     curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@;
 }
@@ -124,33 +140,20 @@ alias ns='npm run start'
 alias dev='yarn develop'
 alias build='yarn build'
 
-# avoid permission problems
+# Avoid permission problems
 alias chmod='chmod --preserve-root'
+
 # Pacman as in https://wiki.archlinux.org/index.php/Pacman_Tips)
 alias pacupg='sudo pacman -Syu'
 alias pacin='sudo pacman -S'
 alias pacrem='sudo pacman -Rns'
 alias pacrmorphans='sudo pacman -Rs $(pacman -Qtdq)'
+
 # @dylanaraps has some weird aliases
 alias anakin='sudo pacman -Rns $(pacman -Qtdq)'
-# list packages as in https://bbs.archlinux.org/viewtopic.php?id=93683
+
+# List packages as in https://bbs.archlinux.org/viewtopic.php?id=93683
 function paclist() {
   LC_ALL=C pacman -Qei $(pacman -Qu | cut -d " " -f 1) | \
     awk 'BEGIN {FS=":"} /^Name/{printf("\033[1;36m%s\033[1;37m", $2)} /^Description/{print $2}'
 }
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/markus/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/markus/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/markus/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/markus/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
