@@ -6,45 +6,22 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')       "set plugin path
+call plug#begin('~/.vim/plugged')               "set plugin path
 
-Plug 'ayu-theme/ayu-vim'                "ayu colors and airline
-Plug 'junegunn/goyo.vim'                "distraction-free writing
-Plug 'prettier/vim-prettier'            "vim wrapper for prettier
-Plug 'tpope/vim-surround'               "useful for surrounding texts
-Plug 'vim-airline/vim-airline'          "lightweight powerline
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }  "color theme
+Plug 'prettier/vim-prettier'                    "vim wrapper for prettier
+Plug 'itchyny/lightline.vim'                    "status line
 
-call plug#end()                         "init plugin system
+call plug#end()                                 "init plugin system
 
 """ Variables
 let mapleader = ' '
 
 """ Plugins
-"syntax highlighting colors
-let ayucolor='mirage'
-"enable autocompletion on startup
-let g:deoplete#enable_at_startup = 1
-"set airline StatusLine colors
-let g:airline_theme='ayu'
-"adjust powerline icons to work with urxvt
-let g:airline_symbols = {}
-let g:airline_symbols.crypt = ''
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.paste = 'p'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = 'x'
-let g:airline_symbols.whitespace = 'Ξ'
-"powerline symbols
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.maxlinenr = ''
 "prettier use custom autoformat
 let g:prettier#autoformat = 0
+"lightline with catppuccin theme
+let g:lightline = {'colorscheme': 'catppuccin'}
 "automatic commands
 if has("autocmd")
     "run prettier on save
@@ -140,7 +117,7 @@ endtry
 
 
 """ Utility
-colorscheme ayu
+colorscheme catppuccin
 "remove gui and terminal background for better terminal integration
 hi Normal guibg=NONE ctermbg=NONE
 "change completion menu colors
