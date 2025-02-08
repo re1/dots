@@ -6,13 +6,16 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')               "set plugin path
+call plug#begin('~/.vim/plugged')   "set plugin path
 
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }  "color theme
-Plug 'prettier/vim-prettier'                    "vim wrapper for prettier
 Plug 'itchyny/lightline.vim'                    "status line
 
-call plug#end()                                 "init plugin system
+if has ('nvim')
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+endif
+
+call plug#end()                     "init plugin system
 
 """ Variables
 let mapleader = ' '
@@ -24,8 +27,6 @@ let g:prettier#autoformat = 0
 let g:lightline = {'colorscheme': 'catppuccin'}
 "automatic commands
 if has("autocmd")
-    "run prettier on save
-    autocmd BufWritePre,InsertLeave *.css,*.graphql,*.js,*.json,*.jsx,*.less,*.md,*.mjs,*.scss,*.ts,*.tsx,*.vue,*.yaml,*yml Prettier
     "delete trailing whitespace on save
     autocmd BufWritePre * %s/\s\+$//e
     "omni-complete functions
