@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/markus/.zsh/completions:"* ]]; then export FPATH="/home/markus/.zsh/completions:$FPATH"; fi
 #   re1's          _
 #          _______| |__  _ __ ___
 #         |_  / __| '_ \| '__/ __|
@@ -160,3 +162,12 @@ function paclist() {
   LC_ALL=C pacman -Qei $(pacman -Qu | cut -d " " -f 1) | \
     awk 'BEGIN {FS=":"} /^Name/{printf("\033[1;36m%s\033[1;37m", $2)} /^Description/{print $2}'
 }
+
+# pnpm
+export PNPM_HOME="/home/markus/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+. "/home/markus/.deno/env"
