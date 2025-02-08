@@ -7,6 +7,6 @@ I am currently working on [Arch Linux](http://archlinux.org/) using the [GNOME 3
 Files are managed using [GNU Stow](https://www.gnu.org/software/stow/)
 
 ```sh
-git clone https://github.com/re1/dots && cd dots
-stow all the packages you want
+git clone https://github.com/re1/dots ~/dots && cd ~/dots
+stow zsh nvim
 ```
