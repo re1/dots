@@ -63,24 +63,12 @@ set scrolloff=6		  "show two lines before window border
 set whichwrap+=<,>,[,]	  "allow horizontal movement between lines
 set foldlevelstart=99	  "start without closed folds
 
-""" Highlighting
-colorscheme catppuccin
-"remove gui and terminal background for better terminal integration
-hi Normal guibg=NONE ctermbg=NONE
-"change completion menu colors
-hi Pmenu ctermfg=7 ctermbg=0
-hi PmenuSel ctermfg=0 ctermbg=4
-"change tab line colors
-hi TabLine ctermfg=8
-hi TabLineSel ctermfg=8 ctermbg=3
-"hi lines with more than 100 characters
-hi OverLength ctermbg=red ctermfg=white
-match OverLength /\%101v.\+/
 
 """ Commands
 
 "save file using sudo
 command W w !sudo tee > /dev/null %
+
 
 """ Keybindings
 
