@@ -41,7 +41,9 @@ set complete+=kspell	"complete with dictionary words when spell check is on
 set matchpairs+=<:>	"match XML
 
 """ Formatting
-set softtabstop=2   "number of spaces that a <Tab> counts for
+set expandtab	    "always use spaces (sorry guys)
+set tabstop=2       "number of spaces that a <Tab> counts for
+set softtabstop=2   "number of spaces that a <Tab> counts for when inserted
 set shiftwidth=2    "number of spaces per indentation
 set shiftround      "round indent to multiple of shift width
 set smartindent     "indent after indentation keywords (like brackets)
