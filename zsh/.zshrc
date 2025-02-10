@@ -1,5 +1,3 @@
-# Add deno completions to search path
-if [[ ":$FPATH:" != *":/home/markus/.zsh/completions:"* ]]; then export FPATH="/home/markus/.zsh/completions:$FPATH"; fi
 #   re1's          _
 #          _______| |__  _ __ ___
 #         |_  / __| '_ \| '__/ __|
@@ -9,7 +7,7 @@ if [[ ":$FPATH:" != *":/home/markus/.zsh/completions:"* ]]; then export FPATH="/
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Load compiled plugins
+# Load compiled plugins (generate with ab)
 source ~/.zsh_plugins.sh
 
 # Load starship prompt
@@ -28,10 +26,6 @@ zle -N down-line-or-beginning-search
 # Bind up and down keys for history search
 bindkey '^[[A' up-line-or-beginning-search
 bindkey '^[[B' down-line-or-beginning-search
-
-# Initialize fasd
-eval "$(fasd --init posix-alias zsh-hook)"
-
 # Change directory without cd
 setopt autocd
 
@@ -43,19 +37,19 @@ SAVEHIST=$HISTSIZE
 # Plugin configuration
 export AUTO_NOTIFY_THRESHOLD=120
 export AUTO_NOTIFY_EXPIRE_TIME=5000
-AUTO_NOTIFY_IGNORE+=("yarn" "npm" "docker")
+AUTO_NOTIFY_IGNORE+=("yarn" "npm" "pnpm" "docker" "podman")
 
 # Default applications
 export BROWSER=/usr/bin/firefox
 export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
 
-# PATH extensions
-export PATH="$HOME/.local/bin:$PATH" # user's local binaries
-export PATH="$HOME/go/bin:$PATH" # go binaries
-export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH" # Add ruby gems to PATH
+# Go
+export PATH="$HOME/.local/bin:$PATH" # User's local binaries
+export PATH="$HOME/go/bin:$PATH" # Go binaries
 
 # Java development
-export JAVA_HOME="/usr/lib/jvm/default" # Java
+export JAVA_HOME="/usr/lib/jvm/default"
 
 # Android development
 export ANDROID_HOME="$HOME/Android/Sdk/"
@@ -68,23 +62,16 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH="$HOME/.local/share/flutter/bin:$PATH" # Add Flutter binaries to Path
 export CHROME_EXECUTABLE=/usr/bin/chromium # Set Chrome browser binary for Flutter
 
-# Docker
-export DOCKER_BUILDKIT=1 # Enable Docker Buildkit for faster builds
-
 # Dotnet development
 export PATH="$HOME/.dotnet/tools:$PATH" # Add dotnet tools to path
-export DOTNET_CLI_TELEMETRY_OPTOUT=1 # disable dotnet telemetry
-export DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT=1 # again..
-# zsh parameter completion for the dotnet CLI
-_dotnet_zsh_complete()
-{
-  local completions=("$(dotnet complete "$words")")
-  reply=( "${(ps:\n:)completions}" )
-}
-compctl -K _dotnet_zsh_complete dotnet
+export DOTNET_CLI_TELEMETRY_OPTOUT=1 # Disable dotnet telemetry
+export DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT=1 # Again..
 
 # NVM
 source /usr/share/nvm/init-nvm.sh
+
+# PNPM
+export PATH="$HOME/.local/share/pnpm:$PATH"
 
 # ----------------------- #
 #   Aliases & Functions   #
@@ -104,11 +91,6 @@ alias clip='xclip -selection clipboard'
 # Docker
 alias up='docker-compose up'
 alias down='docker-compose down'
-
-# Fasd
-alias e='f -e nvim'
-alias j='fasd_cd -d'
-alias o='a -e xdg-open'
 
 # Files and directories
 alias ls='ls --color=auto'
@@ -162,12 +144,3 @@ function paclist() {
   LC_ALL=C pacman -Qei $(pacman -Qu | cut -d " " -f 1) | \
     awk 'BEGIN {FS=":"} /^Name/{printf("\033[1;36m%s\033[1;37m", $2)} /^Description/{print $2}'
 }
-
-# pnpm
-export PNPM_HOME="/home/markus/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-. "/home/markus/.deno/env"
