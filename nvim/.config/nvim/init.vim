@@ -1,8 +1,8 @@
 """ Plug
 "automate Plug install for new homes
-if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
-    silent !curl -fLo stdpath('data') . '/site/autoload/plug.vim' --create-dirs
-	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let target = stdpath('data') . '/site/autoload/plug.vim'
+if empty(glob(target))
+    silent execute '!curl -fLo' . target . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
