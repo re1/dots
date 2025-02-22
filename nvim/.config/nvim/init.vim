@@ -17,7 +17,13 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'stevearc/conform.nvim'
 
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+
 Plug 'itchyny/lightline.vim'
+
+Plug 'nvim-tree/nvim-web-devicons'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 
 call plug#end()
 
@@ -43,7 +49,7 @@ set complete+=kspell	"complete with dictionary words when spell check is on
 set matchpairs+=<:>	"match XML
 
 """ Formatting
-set expandtab	    "always use spaces (sorry guys)
+set expandtab	      "always use spaces (sorry guys)
 set tabstop=2       "number of spaces that a <Tab> counts for
 set softtabstop=2   "number of spaces that a <Tab> counts for when inserted
 set shiftwidth=2    "number of spaces per indentation
@@ -52,18 +58,22 @@ set smartindent     "indent after indentation keywords (like brackets)
 set linebreak       "wrap lines a convenient points
 
 """ Searching
-set gdefault	    "add g flag to search/replace by default
+set gdefault	      "add g flag to search/replace by default
 set ignorecase	    "ignore casing for searching
-set smartcase	    "smart casing for searching
+set smartcase	      "smart casing for searching
 
 """ Help
 set relativenumber  "show line numbers relative to current position
 set showmatch       "show matching brackets
 
 """ Visibility
-set scrolloff=6		  "show two lines before window border
-set whichwrap+=<,>,[,]	  "allow horizontal movement between lines
+set scrolloff=6		      "show two lines before window border
+set whichwrap+=<,>,[,]	"allow horizontal movement between lines
 set foldlevelstart=99	  "start without closed folds
+
+""" netrw
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
 
 
 """ Commands
