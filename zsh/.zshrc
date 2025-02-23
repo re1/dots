@@ -14,7 +14,7 @@ source ~/.zsh_plugins.sh
 eval "$(starship init zsh)"
 
 # Load and initialize autocompletion
-fpath+=(~/.zsh $fpath)
+fpath+=(~/.zsh/completions $fpath)
 autoload -Uz compinit
 compinit
 
