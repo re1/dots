@@ -67,11 +67,12 @@ export PATH="$HOME/.dotnet/tools:$PATH" # Add dotnet tools to path
 export DOTNET_CLI_TELEMETRY_OPTOUT=1 # Disable dotnet telemetry
 export DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT=1 # Again..
 
-# NVM
-source /usr/share/nvm/init-nvm.sh
-
 # PNPM
 export PATH="$HOME/.local/share/pnpm:$PATH"
+
+# Volta (replaces nvm)
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 # ----------------------- #
 #   Aliases & Functions   #
