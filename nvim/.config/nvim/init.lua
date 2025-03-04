@@ -17,14 +17,17 @@ vim.g.mapleader = " "
 -- Prevent leader being overriden by a keybind
 vim.keymap.set("n", "<Space>", "<Nop>", { noremap = true, silent = true })
 
+-------------
+-- Plugins --
+-------------
+
 require("lazy").setup({
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-	{ "neovim/nvim-lspconfig" },
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/nvim-cmp" },
+	{ "hrsh7th/nvim-cmp", dependencies = { "hrsh7th/cmp-nvim-lsp" } },
+	{ "neovim/nvim-lspconfig", dependencies = { "hrsh7th/cmp-nvim-lsp" } },
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	{ "stevearc/conform.nvim" },
-	{ "nvim-tree/nvim-web-devicons" },
+	{ "nvim-tree/nvim-web-devicons", lazy = true },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
