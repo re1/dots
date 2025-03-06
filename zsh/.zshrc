@@ -10,6 +10,9 @@
 # Load compiled plugins (generate with ab)
 source ~/.zsh_plugins.sh
 
+# Load external integrations
+source /usr/share/z/z.sh
+
 # Load starship prompt
 eval "$(starship init zsh)"
 
