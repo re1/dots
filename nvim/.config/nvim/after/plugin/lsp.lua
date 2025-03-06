@@ -75,6 +75,15 @@ require("lspconfig").jsonls.setup({})
 require("lspconfig").html.setup({})
 require("lspconfig").denols.setup({})
 
+-- Bash
+require("lspconfig").bashls.setup({})
+
+-- GraphQL
+require("lspconfig").graphql.setup({})
+
+-- Yaml
+require("lspconfig").yamlls.setup({})
+
 -- LaTeX
 require("lspconfig").texlab.setup({
 	settings = {
