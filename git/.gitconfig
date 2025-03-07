@@ -1,0 +1,19 @@
+[branch]
+  sort = -committerdate
+[diff]
+  algorithm = histogram
+  colorMobed = plain
+  renames = true
+[help]
+  autocorrect = prompt
+[init]
+  defaultBranch = main
+[pull]
+  rebase = true
+[push]
+  autoSetupRemote = true
+[rebase]
+  autoStash = true
+  updateRefs = true
+[tag]
+  sort = version:refname
