@@ -37,7 +37,25 @@ require("lazy").setup({
 			},
 		},
 	},
-	{ "nvim-telescope/telescope.nvim", tag = "0.1.8", dependencies = { "nvim-lua/plenary.nvim" } },
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.8",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
+			extensions = {
+				file_browser = {
+					collapse_dirs = true,
+					grouped = true,
+					hijack_netrw = true,
+					display_stat = false,
+				},
+			},
+		},
+	},
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	},
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -67,8 +85,7 @@ vim.opt.matchpairs:append("<:>") -- Match XML
 -- Formatting
 vim.opt.expandtab = true -- Always use spaces
 vim.opt.tabstop = 2 -- Number of spaces that a <Tab> counts for
-vim.opt.softtabstop = 2 -- Number of spaces that a <Tab> counts for when inserted
-vim.opt.shiftwidth = 2 -- Number of spaces per indentation
+vim.opt.shiftwidth = 2 -- Number of spaces per indentation (0 for tabstop)
 vim.opt.shiftround = true -- Round indent to multiple of shift width
 vim.opt.smartindent = true -- Indent after indentation keywords (like brackets)
 vim.opt.linebreak = true -- Wrap lines at convenient points
