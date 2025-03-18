@@ -78,9 +78,15 @@ require("lazy").setup({
 -- General
 vim.opt.undofile = true -- Enable persistent undo
 
+-- Sync OS and Neovim clipboard (after startup for speed)
+vim.schedule(function()
+	vim.opt.clipboard = "unnamedplus"
+end)
+
 -- Completion
 vim.opt.complete:append("kspell") -- Complete with dictionary
 vim.opt.matchpairs:append("<:>") -- Match XML
+vim.opt.updatetime = 250 -- Decreases delay before showing plugin completions
 
 -- Formatting
 vim.opt.expandtab = true -- Always use spaces
@@ -89,11 +95,11 @@ vim.opt.shiftwidth = 2 -- Number of spaces per indentation (0 for tabstop)
 vim.opt.shiftround = true -- Round indent to multiple of shift width
 vim.opt.smartindent = true -- Indent after indentation keywords (like brackets)
 vim.opt.linebreak = true -- Wrap lines at convenient points
+vim.opt.breakindent = true -- Continue indentation after line breaksymlink
 
 -- Searching
-vim.opt.gdefault = true -- Add g flag to search/replace by default
 vim.opt.ignorecase = true -- Ignore casing for searching
-vim.opt.smartcase = true -- Smart casing for searching
+vim.opt.smartcase = true -- Case sensitive if string includes capital letters
 
 -- Help
 vim.opt.relativenumber = true -- Show line numbers relative to current position
@@ -103,6 +109,9 @@ vim.opt.showmatch = true -- Show matching brackets
 vim.opt.scrolloff = 6 -- Show six lines before window border
 vim.opt.whichwrap:append("<,>,[,]") -- Allow horizontal movement between lines
 vim.opt.foldlevelstart = 99 -- Start without closed folds
+vim.opt.inccommand = "split" -- Preview substitutions
+vim.opt.cursorline = true -- Highlight current line (increases redraw time)
+vim.opt.signcolumn = "yes" -- Reserve sign space (Git, LSP) in gutter to avoid layout shift
 
 -- netrw
 vim.g.netrw_banner = 0 -- Disable netrw banner
@@ -122,11 +131,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.keymap.set("n", "0", "^")
 
 -- Copy and cut to clipboard
-vim.keymap.set("v", "<C-c>", "+y")
-vim.keymap.set("v", "<C-x>", "+d")
+vim.keymap.set("v", "<C-c>", "+y", { desc = "Copy to clipboard" })
+vim.keymap.set("v", "<C-x>", "+d", { desc = "Cut to clipboard" })
 
 -- Save file using Ctrl+s as most other editors
-vim.keymap.set("n", "<C-s>", ":w<CR>")
+vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save file" })
 
 -- Move lines by pressing Alt
 vim.keymap.set("n", "<A-Down>", ":m .+1<CR>==")
@@ -138,9 +147,16 @@ vim.keymap.set("i", "<A-Up>", "<Esc>:m .-2<CR>==gi")
 vim.keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv")
 
+-- Clear search highlights on <Esc>
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search higlights" })
+
 -- Toggle spellchecking
-vim.keymap.set("n", "<F7>", ":setlocal spell! spelllang=en_gb spell?<CR>")
-vim.keymap.set("n", "<F8>", ":setlocal spell! spelllang=de_at spell?<CR>")
+vim.keymap.set("n", "<F7>", ":setlocal spell! spelllang=en_gb spell?<CR>", {
+	desc = "Toggle English spellchecking",
+})
+vim.keymap.set("n", "<F8>", ":setlocal spell! spelllang=de_at spell?<CR>", {
+	desc = "Toggle German spellchecking",
+})
 
 --------------
 -- Commands --

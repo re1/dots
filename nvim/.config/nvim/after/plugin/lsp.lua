@@ -1,6 +1,3 @@
--- Reserve a space in the gutter to avoid layout shift
-vim.opt.signcolumn = "yes"
-
 -- Add cmp_nvim_lsp capabilities settings to lspconfig
 -- This should be executed before you configure any language server
 local lspconfig_defaults = require("lspconfig").util.default_config
@@ -11,18 +8,31 @@ lspconfig_defaults.capabilities = vim.tbl_deep_extend("force", lspconfig_default
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
 	callback = function(event)
-		local opts = { buffer = event.buf }
+		-- Helper function to include buffer in LSP keymaps
+		local map = function(keys, func, desc)
+			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = desc })
+		end
 
-		vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-		vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-		vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-		vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-		vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-		vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
-		vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
-		vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-		vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-		vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+		local telescope = require("telescope.builtin")
+
+		map("gd", telescope.lsp_definitions, "[G]oto [D]efinitions")
+		map("gr", telescope.lsp_references, "[G]oto [R]eferences")
+		map("gi", telescope.lsp_implementations, "[G]oto [I]mplementation")
+		map("gt", telescope.lsp_type_definitions, "[G]oto [T]type definitions")
+
+		map("fds", telescope.lsp_document_symbols, "[F]ind [D]ocument [S]ymbols")
+		map("fws", telescope.lsp_dynamic_workspace_symbols, "[F]ind [W]orkspace [S]ymbols")
+
+		map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+		map("gs", vim.lsp.buf.signature_help, "[G]oto [S]ignature")
+
+		map("K", vim.lsp.buf.hover, "Quick documentation")
+
+		map("<F2>", vim.lsp.buf.rename, "Rename")
+		map("<F3>", function()
+			vim.lsp.buf.format({ async = true })
+		end, "Format")
+		map("<F4>", vim.lsp.buf.code_action, "Code action")
 	end,
 })
 
