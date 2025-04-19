@@ -18,6 +18,8 @@ end)
 -- Completion
 vim.opt.complete:append("kspell") -- Complete with dictionary
 vim.opt.completeopt:append("menuone") -- Show popup with single item to show more info
+vim.opt.completeopt:append("noinsert") -- Do not insert text but select the first available item
+vim.opt.completeopt:append("preview") -- Show extra information on the selected item
 vim.opt.completeopt:append("fuzzy") -- Enable fuzzy completion
 vim.opt.matchpairs:append("<:>") -- Match XML
 vim.opt.updatetime = 250 -- Decreases delay before showing plugin completions
