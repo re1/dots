@@ -1,3 +1,32 @@
 theme = catppuccin-mocha
 background = 1e1e1e
 
+# Arrow key split navigation
+keybind = ctrl+left=goto_split:left
+keybind = ctrl+down=goto_split:bottom
+keybind = ctrl+up=goto_split:top
+keybind = ctrl+right=goto_split:right
+
+# Arrow key split creation
+keybind = ctrl+shift+left=new_split:left
+keybind = ctrl+shift+down=new_split:down
+keybind = ctrl+shift+up=new_split:up
+keybind = ctrl+shift+right=new_split:right
+
+# Vim style split navigation
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top
+keybind = ctrl+l=goto_split:right
+
+# Vim style split creation
+keybind = ctrl+shift+h=new_split:left
+keybind = ctrl+shift+j=new_split:down
+keybind = ctrl+shift+k=new_split:up
+keybind = ctrl+shift+l=new_split:right
+
+# Gnome style create and close
+keybind = ctrl+n=new_window
+keybind = ctrl+t=new_tab
+keybind = ctrl+q=quit
+keybind = ctrl+w=close_tab
