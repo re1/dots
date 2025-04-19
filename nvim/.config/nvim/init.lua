@@ -1,79 +1,11 @@
--- Install lazy.nvim automatically if not present
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.uv.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"--branch=stable",
-		"https://github.com/folke/lazy.nvim.git",
-		lazypath,
-	})
-end
-vim.opt.rtp:prepend(lazypath)
+-------------------
+-- Configuration --
+-------------------
 
 -- Set leader before loading lazy.nvim to ensure correct mappings
 vim.g.mapleader = " "
 -- Prevent leader being overriden by a keybind
 vim.keymap.set("n", "<Space>", "<Nop>", { noremap = true, silent = true })
-
--------------
--- Plugins --
--------------
-
-require("lazy").setup({
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-	{ "hrsh7th/nvim-cmp", dependencies = { "hrsh7th/cmp-nvim-lsp" } },
-	{ "neovim/nvim-lspconfig", dependencies = { "hrsh7th/cmp-nvim-lsp" } },
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	{ "stevearc/conform.nvim" },
-	{ "nvim-tree/nvim-web-devicons", lazy = true },
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {
-			options = {
-				theme = "catppuccin",
-			},
-		},
-	},
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = {
-			extensions = {
-				file_browser = {
-					collapse_dirs = true,
-					grouped = true,
-					hijack_netrw = true,
-					display_stat = false,
-				},
-			},
-		},
-	},
-	{
-		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-	},
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		keys = {
-			{
-				"<leader>?",
-				function()
-					require("which-key").show({ global = false })
-				end,
-				desc = "Buffer Local Keymaps (which-key)",
-			},
-		},
-	},
-})
-
--------------------
--- Configuration --
--------------------
 
 -- General
 vim.opt.undofile = true -- Enable persistent undo
@@ -85,8 +17,11 @@ end)
 
 -- Completion
 vim.opt.complete:append("kspell") -- Complete with dictionary
+vim.opt.completeopt:append("menuone") -- Show popup with single item to show more info
+vim.opt.completeopt:append("fuzzy") -- Enable fuzzy completion
 vim.opt.matchpairs:append("<:>") -- Match XML
 vim.opt.updatetime = 250 -- Decreases delay before showing plugin completions
+vim.opt.winborder = "rounded" -- Borders for help windows
 
 -- Formatting
 vim.opt.expandtab = true -- Always use spaces
@@ -112,6 +47,9 @@ vim.opt.foldlevelstart = 99 -- Start without closed folds
 vim.opt.inccommand = "split" -- Preview substitutions
 vim.opt.cursorline = true -- Highlight current line (increases redraw time)
 vim.opt.signcolumn = "yes" -- Reserve sign space (Git, LSP) in gutter to avoid layout shift
+
+-- Diagnostic
+vim.diagnostic.config({ virtual_text = true })
 
 -- netrw
 vim.g.netrw_banner = 0 -- Disable netrw banner
@@ -164,3 +102,87 @@ vim.keymap.set("n", "<F8>", ":setlocal spell! spelllang=de_at spell?<CR>", {
 
 -- Command to save file with sudo
 vim.api.nvim_create_user_command("W", "w !sudo tee > /dev/null %", {})
+
+-------------
+-- Plugins --
+-------------
+
+-- Install lazy.nvim automatically if not present
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.uv.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"--branch=stable",
+		"https://github.com/folke/lazy.nvim.git",
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "neovim/nvim-lspconfig", dependencies = { "hrsh7th/cmp-nvim-lsp" } },
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"hrsh7th/cmp-path",
+		},
+	},
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{ "stevearc/conform.nvim" },
+	{ "nvim-tree/nvim-web-devicons", lazy = true },
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			options = {
+				theme = "catppuccin",
+			},
+		},
+	},
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.8",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
+			extensions = {
+				file_browser = {
+					collapse_dirs = true,
+					grouped = true,
+					hidden = { file_browser = true, folder_browser = true },
+					hijack_netrw = true,
+					display_stat = false,
+				},
+			},
+		},
+	},
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		keys = {
+			{ "fc", "<cmd>TodoTelescope<cr>", desc = "[F]ind [C]omments" },
+		},
+		opts = {},
+	},
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Local Keymaps (which-key)",
+			},
+		},
+	},
+})

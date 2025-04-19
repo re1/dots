@@ -13,6 +13,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = desc })
 		end
 
+		-- Future-proof for removing cmp-nvim-lsp by enabling lsp features
+		vim.lsp.completion.enable(true, event.data.client_id, event.buf, { autotrigger = false })
+
 		local telescope = require("telescope.builtin")
 
 		map("gd", telescope.lsp_definitions, "[G]oto [D]efinitions")
@@ -28,6 +31,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		map("K", vim.lsp.buf.hover, "Quick documentation")
 
+		-- Common in other editors
 		map("<F2>", vim.lsp.buf.rename, "Rename")
 		map("<F3>", function()
 			vim.lsp.buf.format({ async = true })
@@ -67,14 +71,9 @@ cmp.setup({
 	}),
 	preselect = "item",
 	completion = {
-		completeopt = "menu,menuone,noinsert",
+		completeopt = "menu,menuone,noinsert,fuzzy",
 	},
 })
-
--- Borders for help windows
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
 -- Vim scripting
 require("lspconfig").lua_ls.setup({})
