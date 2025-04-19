@@ -18,15 +18,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		local telescope = require("telescope.builtin")
 
-		map("gd", telescope.lsp_definitions, "[G]oto [D]efinitions")
-		map("gr", telescope.lsp_references, "[G]oto [R]eferences")
-		map("gi", telescope.lsp_implementations, "[G]oto [I]mplementation")
-		map("gt", telescope.lsp_type_definitions, "[G]oto [T]type definitions")
+		-- Override vim lookups with telescope
+		-- TODO: <leader>f over g for telescope to keep original motions?
+		map("grr", telescope.lsp_references, "[G]oto [R]eferences")
+		map("gri", telescope.lsp_implementations, "[G]oto [I]mplementation")
 
-		map("fds", telescope.lsp_document_symbols, "[F]ind [D]ocument [S]ymbols")
-		map("fws", telescope.lsp_dynamic_workspace_symbols, "[F]ind [W]orkspace [S]ymbols")
+		map("<leader>fd", telescope.lsp_definitions, "[F]oto [D]efinitions")
+		map("<leader>fds", telescope.lsp_document_symbols, "[F]ind [D]ocument [S]ymbols")
+		map("<leader>ftd", telescope.lsp_type_definitions, "[F]ind [T]type [D]efinitions")
+		map("<leader>fws", telescope.lsp_dynamic_workspace_symbols, "[F]ind [W]orkspace [S]ymbols")
 
-		map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 		map("gs", vim.lsp.buf.signature_help, "[G]oto [S]ignature")
 
 		map("K", vim.lsp.buf.hover, "Quick documentation")
@@ -69,10 +70,6 @@ cmp.setup({
 		-- Go to previous item
 		["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
 	}),
-	preselect = "item",
-	completion = {
-		completeopt = "menu,menuone,noinsert,fuzzy",
-	},
 })
 
 -- Vim scripting
