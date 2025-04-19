@@ -168,7 +168,7 @@ require("lazy").setup({
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		keys = {
-			{ "fc", "<cmd>TodoTelescope<cr>", desc = "[F]ind [C]omments" },
+			{ "<leader>fc", "<cmd>TodoTelescope<cr>", desc = "[F]ind [C]omments" },
 		},
 		opts = {},
 	},
