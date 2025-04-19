@@ -24,9 +24,3 @@ keybind = ctrl+shift+h=new_split:left
 keybind = ctrl+shift+j=new_split:down
 keybind = ctrl+shift+k=new_split:up
 keybind = ctrl+shift+l=new_split:right
-
-# Gnome style create and close
-keybind = ctrl+n=new_window
-keybind = ctrl+t=new_tab
-keybind = ctrl+q=quit
-keybind = ctrl+w=close_tab
