@@ -1,9 +1,5 @@
 [branch]
   sort = -committerdate
-[core]
-  pager = delta
-[delta]
-  navigate = true
 [diff]
   algorithm = histogram
   colorMobed = plain
@@ -14,10 +10,6 @@
   autocorrect = prompt
 [init]
   defaultBranch = main
-[interactive]
-  diffFilter = delta --color-only
-[merge]
-  conflictstyle = zdiff3
 [pull]
   rebase = true
 [push]
@@ -27,3 +19,6 @@
   updateRefs = true
 [tag]
   sort = version:refname
+
+[include]
+  path = ~/.config/delta/.gitconfig
