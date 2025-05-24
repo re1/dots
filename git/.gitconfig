@@ -1,13 +1,23 @@
 [branch]
   sort = -committerdate
+[core]
+  pager = delta
+[delta]
+  navigate = true
 [diff]
   algorithm = histogram
   colorMobed = plain
   renames = true
+[github]
+  user = re1
 [help]
   autocorrect = prompt
 [init]
   defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only
+[merge]
+  conflictstyle = zdiff3
 [pull]
   rebase = true
 [push]
