@@ -132,7 +132,9 @@ require("lazy").setup({
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-path",
+			"saadparwaiz1/cmp_luasnip",
 		},
+		event = { "InsertEnter" },
 	},
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	{ "stevearc/conform.nvim" },
@@ -186,5 +188,9 @@ require("lazy").setup({
 				desc = "Buffer Local Keymaps (which-key)",
 			},
 		},
+	},
+	{
+		"L3MON4D3/LuaSnip",
+		build = "make install_jsregexp",
 	},
 })

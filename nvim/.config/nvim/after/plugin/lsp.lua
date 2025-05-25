@@ -41,69 +41,42 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-local cmp = require("cmp")
-
-cmp.setup({
-	sources = {
-		{ name = "nvim_lsp" },
-	},
-	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
-	},
-	mapping = cmp.mapping.preset.insert({
-		-- Carriage return complete (usually Enter)
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
-		-- Simple tab complete
-		["<Tab>"] = cmp.mapping(function(fallback)
-			local col = vim.fn.col(".") - 1
-
-			if cmp.visible() then
-				cmp.select_next_item({ behavior = "select" })
-			elseif col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
-				fallback()
-			else
-				cmp.complete()
-			end
-		end, { "i", "s" }),
-
-		-- Go to previous item
-		["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
-	}),
-})
-
--- Vim scripting
-require("lspconfig").lua_ls.setup({})
-
--- Web development
-require("lspconfig").cssls.setup({})
-require("lspconfig").jsonls.setup({})
-require("lspconfig").html.setup({})
-require("lspconfig").denols.setup({})
-
--- Bash
-require("lspconfig").bashls.setup({})
-
--- GraphQL
-require("lspconfig").graphql.setup({})
-
--- Yaml
-require("lspconfig").yamlls.setup({})
-
--- LaTeX
-require("lspconfig").texlab.setup({
-	settings = {
-		texlab = {
-			build = {
-				args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "-outdir=out", "%f" },
-			},
-			chktex = {
-				onOpenAndSave = true,
-			},
-		},
-	},
-})
-
 vim.g.markdown_fenced_languages = {
 	"ts=typescript",
 }
+
+local servers = {
+
+	-- Scripting
+	lua_ls = {},
+	bashls = {},
+
+	-- Web development
+	cssls = {},
+	html = {},
+	denols = {},
+
+	-- Structured data
+	graphql = {},
+	jsonls = {},
+	yamlls = {},
+
+	-- LaTex
+	texlab = {
+		settings = {
+			texlab = {
+				build = {
+					args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "-outdir=out", "%f" },
+				},
+				chktex = {
+					onOpenAndSave = true,
+				},
+			},
+		},
+	},
+}
+
+for name, opts in pairs(servers) do
+	vim.lsp.enable(name)
+	vim.lsp.config(name, opts)
+end
