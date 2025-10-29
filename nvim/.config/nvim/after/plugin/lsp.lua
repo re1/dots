@@ -55,6 +55,7 @@ local servers = {
 	cssls = {},
 	html = {},
 	denols = {},
+	eslint = {},
 
 	-- Structured data
 	graphql = {},

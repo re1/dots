@@ -193,4 +193,9 @@ require("lazy").setup({
 		"L3MON4D3/LuaSnip",
 		build = "make install_jsregexp",
 	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+	},
 })
