@@ -22,3 +22,6 @@
 
 [include]
   path = ~/.config/delta/.gitconfig
+[user]
+	name = Markus Reichl
+	email = markus@re1.at

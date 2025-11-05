@@ -1,12 +1,5 @@
--- Add cmp_nvim_lsp capabilities settings to lspconfig
--- This should be executed before you configure any language server
-local lspconfig_defaults = require("lspconfig").util.default_config
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-lspconfig_defaults.capabilities = vim.tbl_deep_extend("force", lspconfig_defaults.capabilities, capabilities)
-
 -- Configuration for when a language server is active in the file
 vim.api.nvim_create_autocmd("LspAttach", {
-	desc = "LSP actions",
 	callback = function(event)
 		-- Helper function to include buffer in LSP keymaps
 		local map = function(keys, func, desc)
@@ -18,26 +11,30 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		local telescope = require("telescope.builtin")
 
-		-- Override vim lookups with telescope
-		-- TODO: <leader>f over g for telescope to keep original motions?
+		-- Telescope overrides native
 		map("grr", telescope.lsp_references, "[G]oto [R]eferences")
 		map("gri", telescope.lsp_implementations, "[G]oto [I]mplementation")
+		map("grt", telescope.lsp_type_definitions, "[G]oto [T]ype Definitions")
 
-		map("<leader>fd", telescope.lsp_definitions, "[F]oto [D]efinitions")
+		-- Additional native
+		map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+		map("gs", vim.lsp.buf.signature_help, "[G]oto [S]ignature")
+
+		-- Additional telescope
+		map("grd", telescope.lsp_definitions, "[G]oto [D]efinitions")
+
 		map("<leader>fds", telescope.lsp_document_symbols, "[F]ind [D]ocument [S]ymbols")
 		map("<leader>ftd", telescope.lsp_type_definitions, "[F]ind [T]type [D]efinitions")
 		map("<leader>fws", telescope.lsp_dynamic_workspace_symbols, "[F]ind [W]orkspace [S]ymbols")
 
-		map("gs", vim.lsp.buf.signature_help, "[G]oto [S]ignature")
-
-		map("K", vim.lsp.buf.hover, "Quick documentation")
-
 		-- Common in other editors
+		map("K", vim.lsp.buf.hover, "Quick documentation")
 		map("<F2>", vim.lsp.buf.rename, "Rename")
 		map("<F3>", function()
 			vim.lsp.buf.format({ async = true })
 		end, "Format")
 		map("<F4>", vim.lsp.buf.code_action, "Code action")
+		map("<A-CR>", vim.lsp.buf.code_action, "Code action")
 	end,
 })
 
@@ -45,39 +42,13 @@ vim.g.markdown_fenced_languages = {
 	"ts=typescript",
 }
 
-local servers = {
-
-	-- Scripting
-	lua_ls = {},
-	bashls = {},
-
-	-- Web development
-	cssls = {},
-	html = {},
-	denols = {},
-	eslint = {},
-
-	-- Structured data
-	graphql = {},
-	jsonls = {},
-	yamlls = {},
-
-	-- LaTex
-	texlab = {
-		settings = {
-			texlab = {
-				build = {
-					args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "-outdir=out", "%f" },
-				},
-				chktex = {
-					onOpenAndSave = true,
-				},
-			},
+vim.lsp.config("ts_ls", {
+	plugins = {
+		{
+			name = "@vue/typescript-plugin",
+			location = vim.fn.expand("$MASON/packages/vue-language-server") .. "/node_modules/@vue/language-server",
+			languages = { "vue" },
 		},
 	},
-}
-
-for name, opts in pairs(servers) do
-	vim.lsp.enable(name)
-	vim.lsp.config(name, opts)
-end
+	filetypes = { "typescript", "javascript", "vue" },
+})

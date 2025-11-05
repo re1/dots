@@ -125,20 +125,16 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-	{ "neovim/nvim-lspconfig", dependencies = { "hrsh7th/cmp-nvim-lsp" } },
 	{
-		"hrsh7th/nvim-cmp",
+		"neovim/nvim-lspconfig",
 		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-nvim-lsp-signature-help",
-			"hrsh7th/cmp-path",
-			"saadparwaiz1/cmp_luasnip",
+			{ "mason-org/mason.nvim", opts = {} },
+			{ "mason-org/mason-lspconfig.nvim", opts = {} },
+			"saghen/blink.cmp",
 		},
-		event = { "InsertEnter" },
 	},
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	{ "stevearc/conform.nvim" },
-	{ "nvim-tree/nvim-web-devicons", lazy = true },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -149,9 +145,23 @@ require("lazy").setup({
 		},
 	},
 	{
+		"saghen/blink.cmp",
+		version = "1.*",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		opts = {
+			signature = {
+				enabled = true,
+			},
+		},
+	},
+	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope-ui-select.nvim",
+			"nvim-telescope/telescope-file-browser.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
 		opts = {
 			extensions = {
 				file_browser = {
@@ -161,15 +171,15 @@ require("lazy").setup({
 					hijack_netrw = true,
 					display_stat = false,
 				},
+				["ui-select"] = {
+					--require("telescope.themes").get_dropdown(),
+				},
 			},
 		},
 	},
 	{
-		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-	},
-	{
 		"folke/todo-comments.nvim",
+		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		keys = {
 			{ "<leader>fc", "<cmd>TodoTelescope<cr>", desc = "[F]ind [C]omments" },
@@ -188,14 +198,5 @@ require("lazy").setup({
 				desc = "Buffer Local Keymaps (which-key)",
 			},
 		},
-	},
-	{
-		"L3MON4D3/LuaSnip",
-		build = "make install_jsregexp",
-	},
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = true,
 	},
 })
