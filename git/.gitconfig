@@ -1,13 +1,12 @@
-[branch]
-  sort = -committerdate
+[user]
+  name = Markus Reichl
+  email = markus@re1.at
 [diff]
   algorithm = histogram
   colorMobed = plain
   renames = true
 [github]
   user = re1
-[help]
-  autocorrect = prompt
 [init]
   defaultBranch = main
 [pull]
@@ -20,8 +19,11 @@
 [tag]
   sort = version:refname
 
+[credential "https://github.com"]
+  helper = !/usr/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+  helper = !/usr/bin/gh auth git-credential
+
 [include]
   path = ~/.config/delta/.gitconfig
-[user]
-	name = Markus Reichl
-	email = markus@re1.at
