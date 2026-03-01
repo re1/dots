@@ -2,6 +2,7 @@ require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		python = { "black" },
+		html = { "prettierd", "prettier" },
 		markdown = { "prettierd", "prettier" },
 		javascript = { "prettierd", "prettier" },
 		javascriptreact = { "prettierd", "prettier" },
@@ -10,6 +11,7 @@ require("conform").setup({
 		vue = { "prettierd", "prettier" },
 		css = { "prettierd", "prettier" },
 		graphql = { "prettierd", "prettier" },
+		tex = { "latexindent" },
 	},
 	default_format_opts = {
 		lsp_format = "fallback",

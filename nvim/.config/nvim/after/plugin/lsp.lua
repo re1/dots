@@ -6,9 +6,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = desc })
 		end
 
-		-- Future-proof for removing cmp-nvim-lsp by enabling lsp features
-		vim.lsp.completion.enable(true, event.data.client_id, event.buf, { autotrigger = false })
-
 		local telescope = require("telescope.builtin")
 
 		-- Telescope overrides native
@@ -24,7 +21,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("grd", telescope.lsp_definitions, "[G]oto [D]efinitions")
 
 		map("<leader>fds", telescope.lsp_document_symbols, "[F]ind [D]ocument [S]ymbols")
-		map("<leader>ftd", telescope.lsp_type_definitions, "[F]ind [T]type [D]efinitions")
+		map("<leader>ftd", telescope.lsp_type_definitions, "[F]ind [T]ype [D]efinitions")
 		map("<leader>fws", telescope.lsp_dynamic_workspace_symbols, "[F]ind [W]orkspace [S]ymbols")
 
 		-- Common in other editors

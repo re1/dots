@@ -10,20 +10,13 @@ vim.keymap.set("n", "<Space>", "<Nop>", { noremap = true, silent = true })
 -- General
 vim.opt.undofile = true -- Enable persistent undo
 
--- Sync OS and Neovim clipboard (after startup for speed)
+-- Sync OS and Neovim clipboard
 vim.schedule(function()
 	vim.opt.clipboard = "unnamedplus"
 end)
 
 -- Completion
-vim.opt.complete:append("kspell") -- Complete with dictionary
-vim.opt.completeopt:append("menuone") -- Show popup with single item to show more info
-vim.opt.completeopt:append("noinsert") -- Do not insert text but select the first available item
-vim.opt.completeopt:append("preview") -- Show extra information on the selected item
-vim.opt.completeopt:append("fuzzy") -- Enable fuzzy completion
-vim.opt.matchpairs:append("<:>") -- Match XML
 vim.opt.updatetime = 250 -- Decreases delay before showing plugin completions
-vim.opt.winborder = "rounded" -- Borders for help windows
 
 -- Formatting
 vim.opt.expandtab = true -- Always use spaces
@@ -32,7 +25,7 @@ vim.opt.shiftwidth = 2 -- Number of spaces per indentation (0 for tabstop)
 vim.opt.shiftround = true -- Round indent to multiple of shift width
 vim.opt.smartindent = true -- Indent after indentation keywords (like brackets)
 vim.opt.linebreak = true -- Wrap lines at convenient points
-vim.opt.breakindent = true -- Continue indentation after line breaksymlink
+vim.opt.breakindent = true -- Continue indentation after line breaks
 
 -- Searching
 vim.opt.ignorecase = true -- Ignore casing for searching
@@ -44,14 +37,12 @@ vim.opt.showmatch = true -- Show matching brackets
 
 -- Visibility
 vim.opt.scrolloff = 6 -- Show six lines before window border
+vim.opt.matchpairs:append("<:>") -- Match XML
 vim.opt.whichwrap:append("<,>,[,]") -- Allow horizontal movement between lines
 vim.opt.foldlevelstart = 99 -- Start without closed folds
 vim.opt.inccommand = "split" -- Preview substitutions
 vim.opt.cursorline = true -- Highlight current line (increases redraw time)
 vim.opt.signcolumn = "yes" -- Reserve sign space (Git, LSP) in gutter to avoid layout shift
-
--- Diagnostic
-vim.diagnostic.config({ virtual_text = true })
 
 -- netrw
 vim.g.netrw_banner = 0 -- Disable netrw banner
@@ -59,8 +50,8 @@ vim.g.netrw_winsize = 25 -- Set netrw window size to 25%
 
 -- Delete trailing whitespace on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	command = "%s/s+$//e",
+	pattern = { "*" },
+	command = [[%s/\s+$//e]],
 })
 
 --------------
@@ -133,7 +124,8 @@ require("lazy").setup({
 			"saghen/blink.cmp",
 		},
 	},
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter-context" },
 	{ "stevearc/conform.nvim" },
 	{
 		"nvim-lualine/lualine.nvim",
@@ -170,9 +162,6 @@ require("lazy").setup({
 					hidden = { file_browser = true, folder_browser = true },
 					hijack_netrw = true,
 					display_stat = false,
-				},
-				["ui-select"] = {
-					--require("telescope.themes").get_dropdown(),
 				},
 			},
 		},
