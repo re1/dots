@@ -11,10 +11,6 @@ call plug#begin('~/.vim/plugged')   "set plugin path
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }  "color theme
 Plug 'itchyny/lightline.vim'                    "status line
 
-if has ('nvim')
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-endif
-
 call plug#end()                     "init plugin system
 
 """ Variables
@@ -34,27 +30,21 @@ if has("autocmd")
 endif
 
 
-""" Neovim
-if has('nvim')
+syntax on
 
-""" vim
-else
-    syntax on
+set nocompatible                "disable vi emulation
+set ttyfast                     "optimize for fast terminal connections
 
-    set nocompatible                "disable vi emulation
-    set ttyfast                     "optimize for fast terminal connections
-
-    set autoindent                  "indent after indented line
-    set autoread                    "reload files change outside vim
-    set backspace=eol,start,indent  "more backspace functionality
-    set encoding=utf-8              "allow UTF-8 characters
-    set hlsearch                    "highlight matching search patterns
-    set incsearch                   "enable incremental searching
-    set laststatus=2                "always show the status line
-    set ruler                       "highlight current line
-    set showcmd                     "show command while typing
-    set wildmenu                    "autocomplete files on tab
-endif
+set autoindent                  "indent after indented line
+set autoread                    "reload files change outside vim
+set backspace=eol,start,indent  "more backspace functionality
+set encoding=utf-8              "allow UTF-8 characters
+set hlsearch                    "highlight matching search patterns
+set incsearch                   "enable incremental searching
+set laststatus=2                "always show the status line
+set ruler                       "highlight current line
+set showcmd                     "show command while typing
+set wildmenu                    "autocomplete files on tab
 
 
 """ General
