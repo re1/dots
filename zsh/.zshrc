@@ -103,6 +103,7 @@ alias mkdir='mkdir -p'
 alias t='tree -C'
 alias ta='tree -aC -I .git'
 alias td='tree -dC'
+alias o='xdg-open'
 
 # Git
 alias ga='git add .; git status'
