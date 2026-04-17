@@ -35,10 +35,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-vim.g.markdown_fenced_languages = {
-	"ts=typescript",
-}
-
 vim.lsp.config("ts_ls", {
 	plugins = {
 		{

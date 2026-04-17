@@ -124,7 +124,16 @@ require("lazy").setup({
 			"saghen/blink.cmp",
 		},
 	},
-	{ "nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
+		build = ":TSUpdate",
+		opts = { auto_install = true },
+		init = function()
+			vim.opt.foldmethod = "expr"
+			vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+		end,
+	},
 	{ "nvim-treesitter/nvim-treesitter-context" },
 	{ "stevearc/conform.nvim" },
 	{

@@ -1,6 +1,7 @@
 [user]
   name = Markus Reichl
   email = markus@re1.at
+  signingkey = 9E02C7EF696E7FD20B67160AED811DA41650F85E
 [diff]
   algorithm = histogram
   colorMobed = plain
