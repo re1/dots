@@ -151,19 +151,16 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-ui-select.nvim",
-			"nvim-telescope/telescope-file-browser.nvim",
 			"nvim-tree/nvim-web-devicons",
 		},
-		opts = {
-			extensions = {
-				file_browser = {
-					collapse_dirs = true,
-					grouped = true,
-					hidden = { file_browser = true, folder_browser = true },
-					hijack_netrw = true,
-					display_stat = false,
-				},
-			},
+	},
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"nvim-tree/nvim-web-devicons",
 		},
 	},
 	{

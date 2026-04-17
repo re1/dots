@@ -1,4 +1,3 @@
-require("telescope").load_extension("file_browser")
 require("telescope").load_extension("ui-select")
 
 local builtin = require("telescope.builtin")
@@ -12,6 +11,3 @@ vim.keymap.set("n", "<leader>ft", builtin.builtin, { desc = "[F]ind [T]elescope"
 vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "[F]ind [O]ld files" })
 vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "[F]ind [W]ord" })
 vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "Find buffers" })
-
-local filebrowser = require("telescope").extensions.file_browser
-vim.keymap.set("n", "<leader>fb", filebrowser.file_browser, { desc = "[F]ile [B]rowser" })
