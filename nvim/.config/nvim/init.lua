@@ -141,7 +141,7 @@ require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
 			options = {
-				theme = "catppuccin",
+				theme = "auto",
 			},
 		},
 	},
@@ -150,6 +150,9 @@ require("lazy").setup({
 		version = "1.*",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		opts = {
+			keymap = {
+				preset = "enter",
+			},
 			signature = {
 				enabled = true,
 			},
@@ -194,4 +197,6 @@ require("lazy").setup({
 			},
 		},
 	},
+	{ "tpope/vim-fugitive" },
+	{ "lewis6991/gitsigns.nvim" },
 })
