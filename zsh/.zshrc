@@ -47,6 +47,9 @@ export BROWSER=/usr/bin/firefox
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 
+# Docker
+export DOCKER_HOST=unix:///run/user/1000/podman/podman.sock
+
 # Go
 export PATH="$HOME/.local/bin:$PATH" # User's local binaries
 export PATH="$HOME/go/bin:$PATH" # Go binaries
