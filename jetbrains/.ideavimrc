@@ -1,0 +1,51 @@
+let mapleader=" "
+
+""" General
+set history=500             "save command/search history
+set clipboard+=unnamedplus  "use system clipboard
+
+""" Formatting
+set expandtab       "convert tabs to spaces (sorry guys)
+set shiftround      "round indent to multiple of shift width
+set shiftwidth=2    "number of spaces per indentation
+set softtabstop=2   "number of spaces a tab inserts
+set tabstop=2       "number of spaces a tab counts for
+
+""" Searching
+set hlsearch    "highlight matching search patterns
+set incsearch   "incremental search
+set ignorecase  "ignore casing for searching
+set smartcase   "smart casing for searching
+
+""" Help / UI
+set number          "show line numbers
+set relativenumber  "relative line numbers
+set showcmd         "show command while typing
+set showmode        "show current mode
+set scrolloff=6     "keep 6 lines visible above/below cursor
+
+""" Usability
+set whichwrap+=<,>,h,l,[,]  "allow horizontal movement between lines
+
+""" IntelliJ
+set ideajoin
+
+""" Keybindings
+map <leader>r <Action>(RenameElement)
+map <leader>f <Action>(ReformatCode)
+map <leader>a <Action>(ShowIntentionActions)
+
+"copy to and cut to clipboard
+vnoremap <c-c> "+y
+vnoremap <c-x> "+d
+
+"save file using control-s
+map <c-s> :w<CR>
+
+"move lines
+nnoremap <A-Down> :m .+1<CR>==
+nnoremap <A-Up> :m .-2<CR>==
+inoremap <A-Down> <Esc>:m .+1<CR>==gi
+inoremap <A-Up> <Esc>:m .-2<CR>==gi
+vnoremap <A-Down> :m '>+1<CR>gv=gv
+vnoremap <A-Up> :m '<-2<CR>gv=gv
