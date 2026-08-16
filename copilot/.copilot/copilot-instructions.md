@@ -15,13 +15,40 @@ Assume the following tools to be available.
   - `yq` for YAML
   - `tomlq` for TOML
 
+## Git
+
+You will never make a commit unless you are asked to.
+
+## Docker
+
+Assume Podman as the container service.
+
 ## Java
 
-- Assume Java 21 as the language level
-- Prefer switch over else-if
-- Prefer var over explicit type
+Assume Java 21 as the language level.
+
+Prefer switch over else-if.
+
+Prefer var over explicit type.
+
+Always use imports instead of qualified names when there is no conflict.
+
+Prefer records over classes for DTOs.
 
 ## JS/TS
 
-- Assume baseline for browser features
-- Use coalescing operators and optional chaining over if statements
+Read the `package.json` file to inform yourself about available dependencies and scripts.
+
+`prettier` is installed globally for formatting.
+
+Assume baseline for browser features.
+
+Use coalescing operators and optional chaining over if statements.
+
+Destructure objects in arrow functions if there are no conflicts.
+
+## GitHub Actions
+
+Use `actionlint` to lint GitHub workflow defintions.
+
+Ask to use nektos `act` to test GitHub actions where reasonable.
